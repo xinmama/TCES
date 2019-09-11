@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ssm.dao.BattleDao">
+
+	<!-- 获取对战列信息列表，展示  --> 
+	<select id="getBattle" resultType="ssm.entity.Battle">
+		select * from battle;
+	</select>
+	
+	<!-- 添加对战 -->
+	<insert id="addBattle" parameterType="ssm.entity.Battle" >
+		insert into battle(player1_id,player2_id,song1,song2) 
+		values(#{player1_id},#{player2_id},#{song1},#{song2});
+	</insert>
+	
+	<!-- 先判断对战的状态 -->
+	<select id="getStatus" resultType="int">
+		select count(1)  from battle where status=1;
+	</select>
+	
+	<!-- 修改战队信息 -->
+	<update id="updateStatus" parameterType="int"  >
+		update battle set status=1 where id=#{id};
+	</update>
+	
+	<!-- 修改对战状态 -->
+	<update id="updateStatusClose" parameterType="int"  >
+		update battle set status=0 where id=#{id};
+	</update>
+	
+	<!-- 获取票数信息 -->
+	<select id="getTicketByStatus"  resultType="ssm.entity.Battle">
+		select id,player1_id,player2_id,ticket1,ticket2,song1,song2 from battle where status=1;
+	</select>
+	
+	<!-- 通过id查询战队信息 -->
+	<select id="selectBattleById" parameterType="int" resultType="ssm.entity.Battle">
+		select * from battle where id=#{id};
+	</select>
+	
+	<!-- 修改选手票数 -->
+	<update id="update_ticket1" parameterType="int">
+		update battle set ticket1=ticket1+1 where status=1;
+	</update>
+	
+	<update id="update_ticket2" parameterType="int">
+		update battle set ticket2=ticket2+1 where status=1;
+	</update>
+	
+</mapper>	
