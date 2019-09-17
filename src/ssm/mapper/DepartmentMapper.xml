@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ssm.dao.DepartmentDao">
+	
+	<!-- 查询全部院系信息 -->
+	<select id="selectDepartment" resultType="ssm.entity.Department">
+		select * from department;
+	</select>
+	
+	<!-- 查询该院系是否存在 -->
+	<select id="selectDepartmentByName" parameterType="String" resultType="int">
+		select count(1) from department where dep_name=#{dep_name};
+	</select>
+	
+	<insert id="addDepartment" parameterType="String">
+		insert into department(dep_name) values(#{dep_name});
+	</insert>
+	
+</mapper>
