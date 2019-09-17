@@ -1,6 +1,7 @@
 package ssm.entity;
 
 public class Department {
+
 	
 	private int id;
 	private String dep_name;
@@ -17,6 +18,6 @@ public class Department {
 	public void setDep_name(String dep_name) {
 		this.dep_name = dep_name;
 	}
-	
+
 	
 }

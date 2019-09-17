@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="名榜,wangid">
-    <title>WangID办公管理系统</title>
+    <title>首页</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
@@ -26,21 +26,7 @@
 </head>
 
 <body>
-	<!-- ie过低提示升级 -->
-	<!--[if lt IE 9]>
-		<style>
-			.upgrade{text-align:center;line-height: 40px; position:fixed; width:100%; height:100%; background:#fff; z-index:9999;}
-			.upgrade h2{margin:100px 0 50px 0;}
-		</style>
-		<div class="upgrade">
-			<h2>天啦！你的浏览器版本好低，看不到T_T，请升级浏览器再浏览吧^_^Y！</h2>
-			<h3>
-				<p>360浏览器下载：<a target="_blank" href="http://se.360.cn/">http://se.360.cn/</a></p>
-				<p>谷歌浏览器下载：<a target="_blank" href="https://www.google.cn/chrome/">https://www.google.cn/chrome/</a></p>
-				<p>IE浏览器下载：<a target="_blank" href="https://support.microsoft.com/zh-cn/help/17621/internet-explorer-downloads">https://support.microsoft.com/zh-cn/help/17621/internet-explorer-downloads</a></p>
-			</h3>
-		</div>
-	<![endif]-->
+	
 	<div class="bg_box" style="background: url(images/bg_default.jpg) no-repeat center center; background-size: cover;"></div>
 	<div class="container">
 		<div class="top_box">
@@ -58,8 +44,8 @@
 	    <div class="content_box">
 	    	<div class="left_box">
 	    		<div class="head">
-	    			<i><img src="images/head.jpg" /></i><!-- 注释去间隔
-	    	     --><dl>
+	    			<i><img src="images/head.jpg" /></i>
+	    			<dl>
 	    				<dd><b>姓名：</b>欣妈妈</dd>
 	    				<dd><b>部门：</b>技术部</dd>
 	    				<dd><b>职务：</b>设计师</dd>
