@@ -1,0 +1,98 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="renderer" content="webkit"/>
+	<meta name="force-rendering" content="webkit"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="名榜,wangid">
+	<title>添加班级界面</title>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/style.css">
+	 <link rel="stylesheet" href="css/children.css">
+
+	<!-- 在线图标库 地址：http://fontawesome.dashgame.com/-->
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+	<!-- layui css -->
+	<link rel="stylesheet" href="layui/css/layui.css" media="all">
+	<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script> 
+	<!-- layui js -->
+	<script src="layui/layui.js"></script>
+</head>
+
+
+<body style="background: #fff;">
+<div class="tianjia_xx">
+<form id="addclass">
+    <table class="if_tianjiatext layui-table" lay-size="lg"> 
+    <tbody>
+        <tr>
+            <td class="td_1">系别</td>
+            <td>
+                <div class="layui-input-inline">
+                    <select name="dep_id">
+                    	<c:forEach items="${depname}" var="item">
+                    		<option value="${item.id}">${item.dep_name}</option>
+                        </c:forEach>   
+                    </select>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td  class="class_no" >班级</td>
+            <td><input type="text" name="classes_no" placeholder="请输入班级"></td>
+        </tr>
+
+        <tr class="tianjie_button" >
+            <td colspan="2" style="border-right:1px solid #e6e6e6;">
+                <button type="button" onclick="add()">确定添加</button>
+            </td>  
+        </tr>
+    </tbody>
+    </table>
+</form>
+</div>
+<script type="text/javascript">
+	 function add(){
+		 
+		//1.先判断输入框内容是否为空，再添加班级
+		 $("input[type='text']").each(function () {
+	           if ($(this).val() == "") {
+	               alert("内容不能为空！");
+	               
+	           }else{
+	        	 var url="${pageContext.request.contextPath}/add_class";//跳的controller对应的方法
+	      		 var param=$("#addclass").serialize();
+
+	      			$.post(url,param,function(data){
+	      				alert(data.content);
+	      				if(data.flag==1){
+	      					layer.closeAll(); //疯狂模式，关闭所有层
+	      					layer.closeAll('dialog'); //关闭信息框
+	      					layer.closeAll('page'); //关闭所有页面层
+	      					layer.closeAll('iframe'); //关闭所有的iframe层
+	      					layer.closeAll('loading'); //关闭加载层
+	      					layer.closeAll('tips'); //关闭所有的tips层  
+
+	      					//location.href="${pageContext.request.contextPath}/class_list";
+	      				}
+	      			});
+	           }
+	     });
+		
+	 }
+	 
+	 
+	
+
+</script> 
+</body>
+
+</html>
+    
