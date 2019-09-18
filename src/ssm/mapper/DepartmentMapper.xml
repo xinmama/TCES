@@ -28,5 +28,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update department set dep_name = #{dep_name} where id = #{id};
 	</update>
 	
+	<delete id="deleteDepartmentById" parameterType="int">
+		delete from department where id = #{id};
+	</delete>
 	
 </mapper>

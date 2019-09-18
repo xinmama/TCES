@@ -53,10 +53,8 @@ public class DepartmentController {
 			int addResult = departmentService.addDepartment(dep_name);
 			
 			if(addResult>0) {
-				System.out.println("添加信息成功！");
 				return new ResultMsg(1, "添加信息成功！");
 			}else {
-				System.out.println("添加信息失败！");
 				return new ResultMsg(0, "添加信息失败！");
 			}
 		}
@@ -75,25 +73,37 @@ public class DepartmentController {
 	}
 	
 	//执行修改操作
-		@RequestMapping("/update_department")
-		@ResponseBody
-		public ResultMsg update_department(Department department) {
-			int selectResult = departmentService.selectDepartmentByName(department.getDep_name());
+	@RequestMapping("/update_department")
+	@ResponseBody
+	public ResultMsg update_department(Department department) {
+		int selectResult = departmentService.selectDepartmentByName(department.getDep_name());
 			
-			if(selectResult==1) {
-				return new ResultMsg(-1,"院系名称已存在，请重新输入！");
-			}else {
-				int updateResult = departmentService.updateDepartmentById(department);
+		if(selectResult==1) {
+			return new ResultMsg(-1,"院系名称已存在，请重新输入！");
+		}else {
+			int updateResult = departmentService.updateDepartmentById(department);
 				
-				if(updateResult>0) {
-					System.out.println("修改信息成功！");
-					return new ResultMsg(1, "修改信息成功！");
-				}else {
-					System.out.println("修改信息失败！");
-					return new ResultMsg(0, "修改信息失败！");
-				}
+			if(updateResult>0) {
+				return new ResultMsg(1, "修改信息成功！");
+			}else {
+				return new ResultMsg(0, "修改信息失败！");
 			}
-			
 		}
+			
+	}
+	
+	//执行删除操作
+	@ResponseBody
+	@RequestMapping("delete_department")
+	public ResultMsg delete_department(int id) {	
+		int deleteResult = departmentService.deleteDepartmentById(id);
+		
+		if(deleteResult>0) {
+			return new ResultMsg(1, "删除信息成功！");
+		}else {
+			return new ResultMsg(0, "删除信息失败！");
+		}
+	}
+		
 	
 }

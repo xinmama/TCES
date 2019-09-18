@@ -17,5 +17,7 @@ public interface DepartmentDao {
 	public Department selectDepartmentById(int id);
 	
 	public int updateDepartmentById(Department department);
+	
+	public int deleteDepartmentById(int id);
 
 }

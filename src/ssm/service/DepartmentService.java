@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sun.jndi.url.iiopname.iiopnameURLContextFactory;
+
 import ssm.dao.DepartmentDao;
 import ssm.entity.Department;
 
@@ -34,6 +36,10 @@ public class DepartmentService {
 	
 	public int updateDepartmentById(Department department) {
 		return departmentDao.updateDepartmentById(department);
+	}
+	
+	public int deleteDepartmentById(int id) {
+		return departmentDao.deleteDepartmentById(id);
 	}
 
 }

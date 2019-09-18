@@ -49,7 +49,9 @@
 		 //判断输入框内容是否为空
 		 $("input[type='text']").each(function () {
 	           if ($(this).val() == "") {
-	               alert("内容不能为空！");
+	        	   layer.alert('内容不能为空！');
+
+     		    	layer.msg('内容不能为空！', {icon: 1});
 	           }else{
 	        	   
 	        	//提交内容
@@ -60,12 +62,8 @@
 					data:$("#form").serialize(),
 					dataType:"json",
 	      			success:function(data){
-		      		    if(data.flag==-1){
-		      		    	
-		      		    	layer.alert(data.content, {
-		      		    	  icon: 1,
-		      		    	  skin: 'layer-ext-moon' 
-		      		    	})
+		      		    if(data.flag==-1){		    	
+		      		    	alert(data.content);
 		      		    	
 		      			}else if(data.flag==1){
 		      				alert(data.content);

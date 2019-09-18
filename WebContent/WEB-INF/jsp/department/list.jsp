@@ -102,7 +102,25 @@
 		layer.confirm('你确定要删除该信息吗？', {
 		  btn: ['确定','取消'] //按钮
 		}, function(){
-		  layer.msg('删除成功！', {icon: 1});
+			
+			$.ajax({
+				url:"${pageContext.request.contextPath}/delete_department?id="+id,
+				async:false,
+				type:"post",
+				dataType:"json",
+      			success:function(data){
+      				
+	      		     if(data.flag==1){
+	      				alert(data.content);
+	      				var index = parent.layer.getFrameIndex(window.name);  
+	        		    parent.layer.close(index);//关闭当前页  
+	    		   	 	parent.location.reload();//刷新父级页面
+	      			}else{
+		      			alert(data.content);
+		      		}
+	      		    
+      			}
+      		});
 		});
 	}
 
