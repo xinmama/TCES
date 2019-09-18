@@ -1,15 +1,14 @@
 package ssm.entity;
 
 public class Department {
-
 	
-	private int id;
+	private Integer id;
 	private String dep_name;
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getDep_name() {
@@ -18,6 +17,4 @@ public class Department {
 	public void setDep_name(String dep_name) {
 		this.dep_name = dep_name;
 	}
-
-	
 }

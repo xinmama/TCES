@@ -13,4 +13,9 @@ public interface DepartmentDao {
 	public int selectDepartmentByName(String dep_name);
 	
 	public int addDepartment(String dep_name);
+	
+	public Department selectDepartmentById(int id);
+	
+	public int updateDepartmentById(Department department);
+
 }
