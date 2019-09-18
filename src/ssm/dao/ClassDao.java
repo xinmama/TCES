@@ -18,4 +18,14 @@ public interface ClassDao {
 	
 	//4.添加班级
 	public int addClasses(Classes classes);
+	
+	//5.查询班级信息（通过id）
+	public Classes selectClassesById(int id);
+	
+	//6.修改班级信息
+	public int updateClasses(Classes classes);
+	
+	//7.删除班级信息
+	public int deleteClasses(int id);
+	
 }

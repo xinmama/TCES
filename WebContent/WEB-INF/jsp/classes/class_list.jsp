@@ -56,36 +56,40 @@
     <!-- 下面写内容 -->
     <table class="layui-table" lay-filter="mylist" lay-size="lg">
         <thead>
-        <tr>
-            <th lay-data="{type:'checkbox',fixed:'left'}"></th>
-            <th lay-data="{field:'yx', align:'center',width:60}">id</th>
-            <th lay-data="{field:'time',align:'center', minWidth:130}">班级</th>
-            <th lay-data="{field:'www',align:'center',minWidth:130}">院系</th>
-           
-            <th lay-data="{field:'option',align:'center',width:200,toolbar:'#barDemo',fixed: 'right'}">操作</th>
-        </tr>
+        	<tr>
+            	<th lay-data="{type:'checkbox',fixed:'left'}"></th>
+            	<th lay-data="{field:'yx', align:'center',width:60}">id</th>
+            	<th lay-data="{field:'time',align:'center', minWidth:130}">班级</th>
+            	<th lay-data="{field:'www',align:'center',minWidth:130}">院系</th>           
+            	<th lay-data="{field:'option',align:'center',width:200,fixed: 'right'}">操作</th>
+        	</tr>
         </thead>
         <tbody>
         <c:forEach items="${classes}" var="item">
-        <tr>
-            <td></td>
-            <td>${item.id}</td>
-            <td>${item.classes_no}</td>
-            <td>${item.department.dep_name}</td>
-            
-        </tr>
+        	<tr>
+            	<td></td>
+            	<td>${item.id}</td>
+            	<td>${item.classes_no}</td>
+            	<td>${item.department.dep_name}</td>
+            	<td>
+            		<div class="layui-inline">
+						<button class="layui-btn layui-btn-sm layui-btn-normal " data-id="1" onclick="update('${item.id}')"><i class="layui-icon"></i>修改</button>
+						<button class="layui-btn layui-btn-sm layui-btn-danger del-btn" data-id="1" onclick="del('${item.id}')"><i class="layui-icon"></i>删除</button>
+					</div>
+            	</td>
+			</tr>
+			
+       		
 		</c:forEach>
         </tbody>
     </table>
-    <script type="text/html" id="barDemo">
-        <a class="layui-btn layui-btn-xs" lay-event="edit" onclick="update('1')">修改</a>
-        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-    </script>
+    
 </div>
 <script type="text/javascript">
 
 	//修改按钮
    function update(id){
+
 	   layer.open({
            type: 2,//层类型
            title: "修改信息",//标题
@@ -101,6 +105,42 @@
        });
     }
 
+	
+	//删除按钮
+	function del(id){
+		//询问框
+
+		layer.confirm('你确定要删除该信息吗？', {
+		  btn: ['确定','取消'] //按钮
+		}, function(){
+			
+			$.ajax({
+				url:"${pageContext.request.contextPath}/delete_class?id="+id,
+				async:false,
+				type:"post",				
+				dataType:"json",
+      			success:function(data){
+	      		    if(data.flag==1){
+      					alert(data.content);	
+      					//关闭当前遮罩层
+      				  	var index = parent.layer.getFrameIndex(window.name);  
+      			   	 	parent.layer.close(index);//关闭当前页  
+      			      
+      			   		parent.location.reload();
+
+      				}else{
+      					alert(data.content);
+      				}
+      			}
+      		});
+		  
+		});
+	}
+
+	
+	
+	
+	
 
     //静态表格
     layui.use('table',function(){
@@ -127,15 +167,18 @@
                     //向服务端发送删除指令
                 });
             } else if(layEvent === 'edit'){
-                layer.msg('修改操作');
+                //layer.msg('修改操作');
             }
         });
         //监听头工具栏事件
-
+		
+        
+        
         //添加班级信息的弹窗
         table.on('toolbar(mylist)', function(obj){
             var checkStatus = table.checkStatus(obj.config.id)
                 ,data = checkStatus.data; //获取选中的数据
+             
             switch(obj.event){
                 case 'add':
                     //iframe窗
@@ -160,7 +203,7 @@
                     } else if(data.length > 1){
                         layer.msg('只能同时编辑一个');
                     } else {
-
+                    	   alert(obj.data);
                         layer.open({
                             type: 2,//层类型
                             title: "修改信息",//标题

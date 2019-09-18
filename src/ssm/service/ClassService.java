@@ -33,4 +33,21 @@ public class ClassService {
 	public int addClasses(Classes classes) {
 		return classDao.addClasses(classes);
 	}
+	
+	//5.通过id查询班级信息
+	public Classes selectClassesById(int id) {
+		return classDao.selectClassesById(id);
+	} 
+	
+	//6.修改班级信息
+	public int updateClasses(Classes classes) {
+		return classDao.updateClasses(classes);
+	}
+	
+	//7.删除班级信息
+	public int deleteClasses(int id) {
+		return classDao.deleteClasses(id);
+	}
+	
+	
 }

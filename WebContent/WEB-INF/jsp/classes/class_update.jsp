@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,36 +29,73 @@
 
 <body style="background: #fff;">
 <div class="tianjia_xx">
+<form id="updateclass">
     <table class="if_tianjiatext layui-table" lay-size="lg">
         <tbody>
         <tr>
+        	<input type="hidden" name="id" value="${classes.id}">
             <td class="td_1">系别</td>
             <td>
                 <div class="layui-input-inline">
-                    <select name="dep_id">
-                        <c:forEach items="${depname}" var="item">
-                    		<option value="${item.id}">${item.dep_name}</option>
-                        </c:forEach>                       
+                    <select name="dep_id">                      		
+                    		<c:forEach items="${department}" var="item">
+                    		
+                    				<option value="${item.id}" ${item.dep_name==classes.department.dep_name?'selected':''}>${item.dep_name}</option>
+                    		
+                        	</c:forEach>                      
                     </select>
                 </div>
             </td>
         </tr>
         <tr>
             <td  class="class_no">班级</td>
-            <td><input type="text" >${class_no}</td>
+            <td><input type="text" name="classes_no" value="${classes.classes_no}"></td>
         </tr>
 
         <tr class="tianjie_button">
             <td colspan="2" style="border-right:1px solid #e6e6e6;">
-                <button type="button" onclick="update()">确定修改</button>
+                <button type="button" onclick="update_commit()">确定修改</button>
             </td>
         </tr>
         </tbody>
     </table>
+    </form>
 </div>
 <script type="text/javascript">
-	function update(){
-		
+	//修改班级信息
+	//先查询班级信息并展示
+	function update_commit(){
+		 $("input[type='text']").each(function () {
+	           if ($(this).val() == "") {	   
+	               alert("内容不能为空！");
+	           }else{
+	        	   
+	        	//提交内容
+	      		$.ajax({
+					url:"${pageContext.request.contextPath}/update_class",
+					async:false,
+					type:"post",
+					data:$("#updateclass").serialize(),
+					dataType:"json",
+	      			success:function(data){
+		      			if(data.flag==1){
+	      					alert(data.content);	
+	      					//关闭当前遮罩层
+	      				  	var index = parent.layer.getFrameIndex(window.name);  
+	      			   	 	parent.layer.close(index);//关闭当前页  
+	      			        //location.reload();
+	      			   		parent.location.reload();
+
+	      				}else{
+	      					alert(data.content);
+	      				}
+		      		    
+	      			}
+	      		});
+	      		 
+	           }
+	     })
+
 	}
 </script>
 </body>

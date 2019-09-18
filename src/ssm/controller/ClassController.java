@@ -30,6 +30,7 @@ public class ClassController {
 		return mv;
 	}
 	
+
 	
 	//2.访问班级管理（添加）页面
 	@RequestMapping("/class_add")
@@ -42,9 +43,13 @@ public class ClassController {
 	
 	//3.访问班级管理（修改）页面 
 	@RequestMapping("/class_update")
-	public ModelAndView class_update(int id) {
-		
+	public ModelAndView class_update(int id) {	
 		ModelAndView mv=new ModelAndView("classes/class_update");
+		Classes classes=classService.selectClassesById(id);
+		List<Department> department=classService.getDepartment();
+		
+		mv.addObject("department", department);
+		mv.addObject("classes", classes);
 		return mv;
 	}
 	
@@ -56,8 +61,7 @@ public class ClassController {
 		System.out.println(classes_no);
 		
 		int i=classService.selectClassesByClassNo(classes_no);
-		
-		
+
 		if(i==1) {
 			return new ResultMsg(0, "该班级已存在，请重新添加！");
 		}else {
@@ -73,6 +77,44 @@ public class ClassController {
 			
 		}
 		
+	}
+	
+	//5.修改班级信息
+	@ResponseBody
+	@RequestMapping("/update_class")
+	
+	public ResultMsg update_class(Classes classes) {
+
+		System.out.println("id:"+classes.getId());
+		System.out.println("班级号："+classes.getClasses_no());
+		System.out.println("部门号:"+classes.getDep_id());
+		
+		int l=classService.selectClassesByClassNo(classes.getClasses_no());
+		System.out.println(l);
+		
+		if(l>0) {
+			return new ResultMsg(0,"该班级已存在，请勿重复操作。");
+		}else {
+			int k=classService.updateClasses(classes);
+			if(k>0) {
+				return new ResultMsg(1,"修改成功！");
+			}else {
+				return new ResultMsg(0,"修改失败！");
+			}
+		}
+		
+	}
+	
+	//6.删除班级
+	@ResponseBody
+	@RequestMapping("/delete_class")
+	public ResultMsg deleteClasses(int id) {
+		int m=classService.deleteClasses(id);
+		if(m>0) {
+			return new ResultMsg(1,"删除成功！");
+		}else {
+			return new ResultMsg(0,"删除失败！");
+		}
 	}
 	
 }

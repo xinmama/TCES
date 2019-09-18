@@ -34,4 +34,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="addClasses" parameterType="ssm.entity.Classes" >
 		insert into classes(dep_id,classes_no) values(#{dep_id},#{classes_no});
 	</insert>
+	
+	<!-- 5.查询班级信息，并展示  -->
+	<select id="selectClassesById" parameterType="int" resultMap="classess">
+		select classes.*,department.dep_name from classes,department where classes.dep_id=department.id and classes.id=#{id};
+	</select>
+	
+	<!-- 6.修改班级信息  -->
+	<update id="updateClasses" parameterType="ssm.entity.Classes" >
+		update classes set dep_id=#{dep_id},classes_no=#{classes_no} where id=#{id};
+	</update>
+	
+	<!-- 7.删除班级信息 -->
+	<delete id="deleteClasses" parameterType="int" >
+		delete  from classes where id=#{id};
+	</delete>
+	
 </mapper>

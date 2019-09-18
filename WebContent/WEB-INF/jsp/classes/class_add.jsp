@@ -71,16 +71,17 @@
 	      		 var param=$("#addclass").serialize();
 
 	      			$.post(url,param,function(data){
-	      				alert(data.content);
+	      				
 	      				if(data.flag==1){
-	      					layer.closeAll(); //疯狂模式，关闭所有层
-	      					layer.closeAll('dialog'); //关闭信息框
-	      					layer.closeAll('page'); //关闭所有页面层
-	      					layer.closeAll('iframe'); //关闭所有的iframe层
-	      					layer.closeAll('loading'); //关闭加载层
-	      					layer.closeAll('tips'); //关闭所有的tips层  
+	      					alert(data.content);	
+	      					//关闭当前遮罩层
+	      				  	var index = parent.layer.getFrameIndex(window.name);  
+	      			   	 	parent.layer.close(index);//关闭当前页  
+	      			        //location.reload();
+	      			   	parent.location.reload();
 
-	      					//location.href="${pageContext.request.contextPath}/class_list";
+	      				}else{
+	      					alert(data.content);
 	      				}
 	      			});
 	           }
