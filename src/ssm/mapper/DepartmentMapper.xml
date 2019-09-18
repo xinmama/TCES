@@ -11,11 +11,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 查询该院系是否存在 -->
 	<select id="selectDepartmentByName" parameterType="String" resultType="int">
-		select count(1) from department where dep_name=#{dep_name};
+		select count(1) from department where dep_name = #{dep_name};
 	</select>
 	
+	<!-- 插入1条院系信息 -->
 	<insert id="addDepartment" parameterType="String">
-		insert into department(dep_name) values(#{dep_name});
+		insert into department(dep_name) values (#{dep_name});
 	</insert>
+	
+	<!-- 通过id查询1条院系信息 -->
+	<select id="selectDepartmentById" parameterType="int" resultType="ssm.entity.Department">
+		select * from department where id = #{id};
+	</select>
+	
+	<update id="updateDepartmentById" parameterType="ssm.entity.Department">
+		update department set dep_name = #{dep_name} where id = #{id};
+	</update>
+	
 	
 </mapper>

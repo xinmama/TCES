@@ -58,27 +58,55 @@
 			<tr>
 				<th lay-data="{type:'checkbox',fixed:'left'}"></th>
 				<th lay-data="{field:'yx', align:'center',width:60}">id</th>
-				<th lay-data="{field:'time',align:'center', minWidth:170}">系别名称</th>
-				<th lay-data="{field:'option',align:'center',width:180,toolbar:'#barDemo',fixed: 'right'}">操作</th>
+				<th lay-data="{field:'time',align:'center', minWidth:130}">系别名称</th>
+				<th lay-data="{field:'option',align:'center',width:260,fixed: 'right'}">操作</th>
 			</tr> 
 		</thead>
 		<tbody>
 			<c:forEach items="${departments}" var="item">
 			<tr>
 				<td></td>
-				<td>${item.id }</td>
+				<td>${item.id}</td>
 				<td>${item.dep_name}</td>
+				<td>		
+					<div class="layui-inline">
+						<button class="layui-btn layui-btn-sm layui-btn-normal " data-id="1" onclick="update('${item.id}')"><i class="layui-icon"></i>修改</button>
+						<button class="layui-btn layui-btn-sm layui-btn-danger del-btn" data-id="1" onclick="del('${item.id}')"><i class="layui-icon"></i>删除</button>
+					</div>
+				</td>
 			</tr>
-			
-			<script type="text/html" id="barDemo">
-				<a class="layui-btn layui-btn-xs" lay-event="edit">修改</a>
-				<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-			</script> 
 			</c:forEach>
 		</tbody>  
 	</table>
 </div> 
 <script type="text/javascript">
+	function update(id){
+		layer.open({
+			type: 2,//层类型
+			title: "修改信息",//标题
+			closeBtn: 1, //不显示关闭按钮
+			shade: [0.3],//遮罩
+			skin: 'demo_class_color',//iframe皮肤
+			shadeClose:Boolean,//点击遮罩关闭
+			area: ['800px', '250px'],
+			// offset: 'rb', //右下角弹出
+			// time: 2000, //2秒后自动关闭
+			anim: 5,//动画
+			content: ['department_update?id='+id, 'no'], //iframe的url，no代表不显示滚动条 
+			});
+	}
+	
+	function del(id){
+		//询问框
+
+		layer.confirm('你确定要删除该信息吗？', {
+		  btn: ['确定','取消'] //按钮
+		}, function(){
+		  layer.msg('删除成功！', {icon: 1});
+		});
+	}
+
+
 	//静态表格
     layui.use('table',function(){
     	var table = layui.table;

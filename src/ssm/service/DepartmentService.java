@@ -27,4 +27,13 @@ public class DepartmentService {
 	public int addDepartment(String dep_name) {
 		return departmentDao.addDepartment(dep_name);
 	}
+	
+	public Department selectDepartmentById(int id) {
+		return departmentDao.selectDepartmentById(id);
+	}
+	
+	public int updateDepartmentById(Department department) {
+		return departmentDao.updateDepartmentById(department);
+	}
+
 }
