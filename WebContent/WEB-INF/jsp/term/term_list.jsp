@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="名榜,wangid">
-    <title>班级管理</title>
+    <title>学期管理</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
@@ -33,21 +33,12 @@
     <div class="zy_weizhi bord_b">
         <i class="fa fa-home fa-3x"></i>
         <a>首页</a>
-        <a>班级管理</a>
+        <a>学期管理</a>
 
     </div>
     <!-- 筛选 -->
     <div class="shuaix">
-    
-        <div class="left">
-            <b>院系：</b>
-            <select>
-                <option value="软件学院">软件学院</option>
-                <option value="计算机学院">计算机学院</option>
-                <option value="管理学院">管理学院</option>
-                <option value="土木学院">土木学院</option>
-            </select>
-        </div>
+       
         <div class="center"></div>
         <div class="right">
             <input type="text" placeholder="请输入关键词查询">
@@ -60,18 +51,18 @@
         	<tr>
             	<th lay-data="{type:'checkbox',fixed:'left'}"></th>
             	<th lay-data="{field:'yx', align:'center',width:60}">id</th>
-            	<th lay-data="{field:'time',align:'center', minWidth:130}">班级</th>
-            	<th lay-data="{field:'www',align:'center',minWidth:130}">院系</th>           
+            	<th lay-data="{field:'time',align:'center', minWidth:130}">学期名称</th>
+            	<th lay-data="{field:'www',align:'center',minWidth:130}">是否开启</th>           
             	<th lay-data="{field:'option',align:'center',width:200,fixed: 'right'}">操作</th>
         	</tr>
         </thead>
         <tbody>
-        <c:forEach items="${classes}" var="item">
+        <c:forEach items="${term}" var="item">
         	<tr>
             	<td></td>
             	<td>${item.id}</td>
-            	<td>${item.classes_no}</td>
-            	<td>${item.department.dep_name}</td>
+            	<td>${item.term_name}</td>
+            	<td>${item.is_open}</td>
             	<td>
             		<div class="layui-inline">
 						<button class="layui-btn layui-btn-sm layui-btn-normal " data-id="1" onclick="update('${item.id}')"><i class="layui-icon"></i>修改</button>
@@ -98,7 +89,7 @@
            shade: [0.3],//遮罩
            skin: 'demo_class_color',//iframe皮肤
            shadeClose:Boolean,//点击遮罩关闭
-           area: ['800px', '250px'],
+           area: ['800px', '460px'],
            // offset: 'rb', //右下角弹出
            // time: 2000, //2秒后自动关闭
            anim: 5,//动画
@@ -126,7 +117,7 @@
       					//关闭当前遮罩层
       				  	var index = parent.layer.getFrameIndex(window.name);  
       			   	 	parent.layer.close(index);//关闭当前页  
-      			        //location.reload();
+      			      
       			   		parent.location.reload();
 
       				}else{
@@ -194,7 +185,7 @@
                         // offset: 'rb', //右下角弹出
                         // time: 2000, //2秒后自动关闭
                         anim: 5,//动画
-                        content: ['class_add', 'no'], //iframe的url，no代表不显示滚动条
+                        content: ['term_add', 'no'], //iframe的url，no代表不显示滚动条
                     });
                     //
                     break;

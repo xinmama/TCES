@@ -13,6 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<resultMap type="ssm.entity.Classes" id="classess">
 		<id property="id" column="id" />
+		<result property="dep_id" column="dep_id" />
 		<result property="classes_no" column="classes_no" />
 		<association property="department" javaType="ssm.entity.Department">
 			<id property="id" column="id" />
@@ -50,4 +51,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete  from classes where id=#{id};
 	</delete>
 	
+	<!-- 8.通过班级号，部门id查询该班级是否存在    -->
+	<select id="selectClassesAll" parameterType="ssm.entity.Classes" resultType="int">
+		select count(1) from classes where classes_no=#{classes_no} and dep_id=#{dep_id};
+	</select>
 </mapper>

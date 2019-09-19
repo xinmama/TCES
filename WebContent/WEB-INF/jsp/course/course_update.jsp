@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="名榜,wangid">
-    <title>修改班级界面</title>
+    <title>修改课程界面</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
@@ -33,7 +33,7 @@
     <table class="if_tianjiatext layui-table" lay-size="lg">
         <tbody>
         <tr>
-        	<input type="hidden" name="id" value="${classes.id}">
+        	<input type="hidden" name="id" value="${course.id}">
             <td class="td_1">系别</td>
             <td>
                 <div class="layui-input-inline">
@@ -48,8 +48,8 @@
             </td>
         </tr>
         <tr>
-            <td  class="class_no">班级</td>
-            <td><input type="text" readonly="readonly" name="classes_no" value="${classes.classes_no}"></td>
+            <td  class="course_name">课程名称</td>
+            <td><input type="text" name="course_name" value="${course.course_name}"></td>
         </tr>
 
         <tr class="tianjie_button">
@@ -71,10 +71,11 @@
 	               alert("内容不能为空！");
 	               i=false;
 	           }
-	           if(i==true){   
+	           if(i==true){
+	        	   
 	        	//提交内容
 	      		$.ajax({
-					url:"${pageContext.request.contextPath}/update_class",
+					url:"${pageContext.request.contextPath}/update_course",
 					async:false,
 					type:"post",
 					data:$("#updateclass").serialize(),
@@ -87,6 +88,7 @@
 	      			   	 	parent.layer.close(index);//关闭当前页  
 	      			        //location.reload();
 	      			   		parent.location.reload();
+	      			   	parent.location.reload();
 
 	      				}else{
 	      					alert(data.content);
@@ -94,7 +96,8 @@
 		      		    
 	      			}
 	      		});
-	           }	 
+	      		 
+	           }
 	     })
 
 	}

@@ -28,4 +28,7 @@ public interface ClassDao {
 	//7.删除班级信息
 	public int deleteClasses(int id);
 	
+	//8.查询修改的班级是否已经存在（通过班级号，部门id）
+	public int selectClassesAll(Classes classes);
+	
 }

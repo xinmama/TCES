@@ -18,20 +18,9 @@ public class loginController {
   //访问登陆页面
 	@RequestMapping("login")
 	public ModelAndView login(){
-		ModelAndView mView= new ModelAndView("index");
-		return mView;
-		
+		ModelAndView mView= new ModelAndView("login/login");
+		return mView;		
 	}
 	
-	//判断用户是否存在
-	@RequestMapping("loginselectUserName")
-	@ResponseBody
-	public ResultMsg selectUserName(String username) {
-		int result=	loginService.selectUserName(username);
-		if  (result==0) {
-			return new ResultMsg(0,"账号不存在");
-		}
-		return new ResultMsg(1,"账号存在");
-		
-	}
+	
 }

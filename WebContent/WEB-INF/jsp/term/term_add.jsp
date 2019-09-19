@@ -10,7 +10,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="名榜,wangid">
-	<title>添加班级界面</title>
+	<title>添加学期界面</title>
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="css/style.css">
@@ -29,24 +29,17 @@
 
 <body style="background: #fff;">
 <div class="tianjia_xx">
-<form id="addclass">
+<form id="updatecourse">
     <table class="if_tianjiatext layui-table" lay-size="lg"> 
     <tbody>
+
         <tr>
-            <td class="td_1">系别</td>
-            <td>
-                <div class="layui-input-inline">
-                    <select name="dep_id">
-                    	<c:forEach items="${depname}" var="item">
-                    		<option value="${item.id}">${item.dep_name}</option>
-                        </c:forEach>   
-                    </select>
-                </div>
-            </td>
+            <td  class="class_no" >学期名称</td>
+            <td><input type="text" name="course_name" placeholder="请输入学期名称"></td>
         </tr>
         <tr>
-            <td  class="class_no" >班级</td>
-            <td><input type="text" name="classes_no" placeholder="请输入班级"></td>
+            <td  class="class_no" >是否开启</td>
+            <td><input type="text" name="course_name" placeholder="是否开启当前学期"></td>
         </tr>
 
         <tr class="tianjie_button" >
@@ -60,36 +53,34 @@
 </div>
 <script type="text/javascript">
 	 function add(){
-		 
+		 var i=true;
 		//1.先判断输入框内容是否为空，再添加班级
-		var i=true;
 		 $("input[type='text']").each(function () {
 	           if ($(this).val() == "") {
 	               alert("内容不能为空！");
-	           		i=false;
+	               i=false;
+	           }
+				
+	           if(i==true){
+	        	 var url="${pageContext.request.contextPath}/term_add";//跳的controller对应的方法
+	      		 var param=$("#updatecourse").serialize();
+
+	      			$.post(url,param,function(data){
+	      				
+	      				if(data.flag==1){
+	      					alert(data.content);	
+	      					//关闭当前遮罩层
+	      				  	var index = parent.layer.getFrameIndex(window.name);  
+	      			   	 	parent.layer.close(index);//关闭当前页  
+	      			        //location.reload();
+	      			   	parent.location.reload();
+
+	      				}else{
+	      					alert(data.content);
+	      				}
+	      			});
 	           }
 	     });
-		 
-		 if(i==true){
-
-			 var url="${pageContext.request.contextPath}/add_class";//跳的controller对应的方法
-	  		 var param=$("#addclass").serialize();
-
-	  			$.post(url,param,function(data){
-	  				
-	  				if(data.flag==1){
-	  					alert(data.content);	
-	  					//关闭当前遮罩层
-	  				  	var index = parent.layer.getFrameIndex(window.name);  
-	  			   	 	parent.layer.close(index);//关闭当前页  
-	  			        //location.reload();
-	  			   	parent.location.reload();
-
-	  				}else{
-	  					alert(data.content);
-	  				}
-	  			}); 
-		 }
 		
 	 }
 	 

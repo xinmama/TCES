@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ssm.dao.CourseDao">
+
+	<!-- 1.获取课程信息，并展示  -->
+	<select id="getCourse" resultMap="courses">
+		select course.*,department.dep_name from course,department where course.dep_id=department.id;
+	</select>
+	
+	<resultMap type="ssm.entity.Course" id="courses">
+		<id property="id" column="id" />
+		<result property="dep_id" column="dep_id" />
+		<result property="course_name" column="course_name" />
+		<association property="department" javaType="ssm.entity.Department">
+			<id property="id" column="id" />
+			<result property="dep_name" column="dep_name" />
+		</association>
+	</resultMap>
+	
+	<!-- 2.获取院系信息，展示 -->
+	<select id="getDepartment" resultType="ssm.entity.Department">
+		select * from department;
+	</select>
+	
+	<!-- 3.查询添加的课程是否已经存在（通过院系id,课程名查询） -->
+	<select id="selectCourseByAll" parameterType="ssm.entity.Course" resultType="int">
+		select count(1) from course where course_name=#{course_name} and dep_id=#{dep_id};
+	</select>
+	
+	<!-- 4.添加课程信息 -->
+	<insert id="addCourse" parameterType="ssm.entity.Course" >
+		insert into course(course_name,dep_id) values(#{course_name},#{dep_id});
+	</insert>
+	
+	<!-- 5.查询课程信息，并展示  -->
+	<select id="selectCourseById" parameterType="int" resultMap="courses">
+		select course.*,department.dep_name from course,department where course.dep_id=department.id and course.id=#{id};
+	</select>
+	
+	<!-- 6.修改课程信息  -->
+	<update id="updateCourse" parameterType="ssm.entity.Course" >
+		update course set dep_id=#{dep_id},course_name=#{course_name} where id=#{id};
+	</update>
+	
+	<!-- 7.删除课程信息 -->
+	<delete id="deleteCourse" parameterType="int" >
+		delete  from course where id=#{id};
+	</delete>
+</mapper>
