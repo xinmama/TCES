@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import ssm.entity.Department;
 import ssm.entity.Term;
 import ssm.service.TermService;
 
@@ -28,6 +29,15 @@ public class TermController {
 		return mView;
 	}
 	
-	//2.增加学期管理，
+
+	//2.访问学期管理（添加）界面
+		@RequestMapping("/term_add")
+		public ModelAndView term_add() {
+			ModelAndView mv=new ModelAndView("term/term_add");
+//			List<Department> depname=courseService.getDepartment();
+//			mv.addObject("depname",depname);
+			return mv;
+		}
+	
 	
 }

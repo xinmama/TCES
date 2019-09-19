@@ -8,4 +8,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getTerm" resultType="ssm.entity.Term">
 		select * from term;
 	</select>
+	
+	<!-- 2.查询添加的学期是否已经存在（通过学期名查询） -->
+	<select id="selectTermByTermname" parameterType="String" resultType="int">
+		select count(1) from term where term_name=#{term_name};
+	</select>
 </mapper>

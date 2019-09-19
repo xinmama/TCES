@@ -185,7 +185,7 @@
                         // offset: 'rb', //右下角弹出
                         // time: 2000, //2秒后自动关闭
                         anim: 5,//动画
-                        content: ['class_add', 'no'], //iframe的url，no代表不显示滚动条
+                        content: ['term_add', 'no'], //iframe的url，no代表不显示滚动条
                     });
                     //
                     break;
