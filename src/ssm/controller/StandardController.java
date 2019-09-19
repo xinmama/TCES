@@ -31,6 +31,7 @@ public class StandardController {
 	@RequestMapping("/standard_add")
 	public ModelAndView add() {
 		ModelAndView mv=new ModelAndView("standard/add");
+		
 		return mv;
 	}
 	
