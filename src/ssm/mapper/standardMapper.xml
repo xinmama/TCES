@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ssm.dao.StandardDao">
+	<!-- 查询全部选项指标信息 -->
+	<select id="selectStandart" resultType="ssm.entity.Standard">
+		select * from standard;
+	</select>
+	
+	<!-- 查询该选项指标是否存在 -->
+	<select id="selectStandard" parameterType="String" resultType="int">
+		select count(1) from standard where title_con=#{title_con};
+	</select>
+	
+	<!-- 插入选项指标信息 -->
+	<insert id="addStandard" parameterType="String">
+		insert into standard(title_con,type) values(#{title_con},#{type});
+	</insert>
+	
+</mapper>

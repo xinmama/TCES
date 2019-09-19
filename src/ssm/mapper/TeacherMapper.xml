@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ssm.dao.TeacherDao">
+
+	<!-- 查看教师信息 -->
+	<select id="getTeacher" resultMap="teacher">
+		select teacher.*,department.dep_name from teacher,department
+		where teacher.dep_id=department.id
+	</select>
+	
+	<resultMap type="ssm.entity.Teacher" id="teacher">
+		<id property="id" column="id"/>
+		<result property="teacher_no" column="teacher_no"/>
+		<result property="teacher_name" column="teacher_name"/>
+		<result property="teacher_pwd" column="teacher_pwd"/>
+		<result property="sex" column="sex"/>
+		<result property="tel" column="tel"/>
+		<result property="time" column="time"/>
+		<result property="remark" column="remark"/>
+		<result property="is_manage" column="is_manage"/>
+		<association property="department" javaType="ssm.entity.Department">
+			<id property="id" column="id" />
+			<result property="dep_name" column="dep_name" />
+		</association>
+	</resultMap>
+	
+	<!-- 通过id查询1条教师信息 -->
+	<select id="selectTeacherById" parameterType="int" resultMap="teacher">
+		select teacher.*,department.dep_name from teacher,department
+		where teacher.dep_id=department.id and teacher.id=#{id}
+	</select>
+	
+	<!-- 获取院系信息并显示 -->
+	<select id="getDepartment" resultType="ssm.entity.Department">
+		select * from department;
+	</select>
+	
+	<!-- 查询添加教师信息是否存在 -->
+	<select id="selectTeacherByTeacherNo" parameterType="String" resultType="int">
+		select count(1) from teacher where teacher_no=#{teacher_no};
+	</select>
+	
+	<!-- 添加教师信息 -->
+	<insert id="addTeacher" parameterType="ssm.entity.Teacher">
+		insert into teacher(teacher_no,teacher_name,teacher_pwd,sex,tel,dep_id)
+		values(#{teacher_no},#{teacher_name},#{teacher_no},#{sex},#{tel},#{dep_id});
+	</insert>
+	
+	<!-- 修改教师信息 -->
+	<update id="updateTeacherById" parameterType="ssm.entity.Teacher">
+		update teacher set teacher_name=#{teacher_name},teacher_pwd=#{teacher_pwd},sex=#{sex},tel=#{tel},dep_id=#{dep_id}
+		where id=#{id}
+	</update>
+	
+	<!-- 删除教师信息 -->
+	<delete id="deleteTeacherById" parameterType="int">
+		delete from teacher where id=#{id};
+	</delete>
+	
+</mapper>

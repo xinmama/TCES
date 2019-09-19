@@ -38,6 +38,7 @@
     </div>
     <!-- 筛选 -->
     <div class="shuaix">
+    
         <div class="left">
             <b>院系：</b>
             <select>
@@ -97,7 +98,7 @@
            shade: [0.3],//遮罩
            skin: 'demo_class_color',//iframe皮肤
            shadeClose:Boolean,//点击遮罩关闭
-           area: ['800px', '460px'],
+           area: ['800px', '250px'],
            // offset: 'rb', //右下角弹出
            // time: 2000, //2秒后自动关闭
            anim: 5,//动画
