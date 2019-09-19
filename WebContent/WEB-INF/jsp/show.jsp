@@ -15,6 +15,23 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <style>
+		.scroll-bar {
+		    height: 40px;
+		    width:100%;
+		    line-height: 40px;
+		    font-size: 40px;
+			color:#fff;
+		}
+		#marquee{
+			margin: 0;
+			padding: 0;
+		}
+		#marquee li{
+			width:100%;
+		}
+	
+	</style>
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -92,99 +109,45 @@
 	    		</div>
 	    	</div>
 	    	<div class="right_box">
-	    		<div class="icon_box">
-	    			<ul class="boxList">
-	    				<li class="list">
-	    					<i>
-	    						<img src="images/icon_01.png">
-	    						<b></b>
-	    					</i>
-		    				<a href="index.html" target="blank">
-		    					<span>通讯录</span>
-		    				</a>
-		    			</li>
-		    			<li class="list">
-	    					<i>
-	    						<img src="images/icon_02.png">
-	    						<b></b>
-	    					</i>
-		    				<a href="index.html" target="blank">
-		    					<span>尾款催收</span>
-		    				</a>
-		    			</li>
-		    			<li class="list">
-	    					<i>
-	    						<img src="images/icon_03.png">
-	    						<b></b>
-	    					</i>
-		    				<a href="index.html" target="blank">
-		    					<span>拜访记录</span>
-		    				</a>
-		    			</li>
-		    			<li class="list">
-	    					<i>
-	    						<img src="images/icon_04.png">
-	    						<b></b>
-	    					</i>
-		    				<a href="index.html" target="blank">
-		    					<span>企业邮箱</span>
-		    				</a>
-		    			</li>
-		    			<li class="list">
-	    					<i>
-	    						<img src="images/icon_05.png">
-	    						<b></b>
-	    					</i>
-	    					<a href="index.html" target="blank">
-		    					<span>通知公告</span>
-		    				</a>
-		    			</li>
-		    			<li class="list">
-	    					<i>
-	    						<img src="images/icon_06.png">
-	    						<b></b>
-	    					</i>
-	    					<a href="index.html" target="blank">
-		    					<span>行政人事</span>
-		    				</a>
-		    			</li>
-	    			</ul>
-	    			<a href="#">
-	    				<i>
-    						<img src="images/icon_add.png">
-    						<b></b>
-    					</i>
-    					<span>添加快捷方式</span>
-	    			</a>
-	    			<script>
-						jQuery(function(){						    
-						    //第九个例子的拖拽
-						    $(".list").Tdrag({
-						        scope:".boxList",
-						        pos:true,
-						        dragChange:true,
-						        changeMode:"sort",
-						        moveClass:"abc"
-						    });
-						})
+	    		<div class="icon_box" >
+								       
+						<section class="scroll-bar" id="scrollText">
+   						 <ul id="marquee">
+       						 <li>欢迎来到重庆工程学院教师综合评价系统！</li>
+   						 </ul>
+						</section>
+					
+				    
+					<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+					<script type="text/javascript" src="js/jquery.marquee.min.js"></script> 
+					<script>
+					$(function(){
+						$("#marquee").marquee({
+							duration: 15000,//时间
+							gap: 400,//间距
+							delayBeforeStart: 0,//开始滚动延迟时间
+							direction: 'left',//滚动方向
+							duplicated: true,//是否循环播放
+						}); 
+					})
 					</script>
 	    		</div>
 	    		<!-- iconbox end -->
 	    		<div class="info_box">
 	    			<div class="box battle">
 	    				<div class="tit">
-	    					<a class="on">营销战况</a><a>渠道战况</a><!-- 注释去间隔
+	    					<a class="on">学生评价</a><a>教师评价</a><!-- 注释去间隔
 	    	   注释去间隔 --><div class="scrollnews">
-	    	   					<span>WangID提醒您：</span>
+	    	   					<span>最新情况：</span>
 	    	   					<ul>
 	    	   						<li title="最新战报，章泽天 关晓彤 签名榜一个！2018-08-10 15:41:58">
-	    	   							最新战报，<b>章泽天 关晓彤</b> 签名榜一个！<i>2018-08-10 15:41:58</i>
+	    	   							<b>彭彭</b> 6666666<i>2018-08-10 15:41:58</i>
 	    	   						</li>
 	    	   						<li title="最新战报，章泽天 签名榜一个！2018-08-10 15:41:58">
-	    	   							最新战报，<b>章泽天</b> 签名榜一个！<i>2018-08-10 15:41:58</i>
+	    	   							<b>郎朗</b> 777777<i>2018-08-10 15:41:58</i>
 	    	   						</li>
 	    	   						<li title="最新战报，秋名山 签名榜一个！2018-08-10 15:41:58">
-	    	   							最新战报，<b>秋名山</b> 签名榜一个！<i>2018-08-10 15:41:58</i>
+	    	   							<b>秋名山</b> 88888<i>2018-08-10 15:41:58</i>
 	    	   						</li>
 	    	   					</ul>
 	    	   					<script type="text/javascript">
@@ -208,18 +171,18 @@
 					                            timer=setInterval(runtxt,4000)
 					                        }
 					                    )
-					                    timer=setInterval(runtxt,4000)
+					                    timer=setInterval(runtxt,2000)
 					                })
 	    	   					</script>
 	    	   				</div>
 	    				</div>
 	    				<div class="conbox">
 	    					<div class="con">
-	    						<h1>营销部各大区本月新增业绩PK实时展示图</h1>
+	    						<h1>2018-2019学年第一学期最佳教师度展示图</h1>
 	    						<div class="countbox">
 	    							<div class="count">
-	    								<span class="x"><img src="images/X.png"> x/营销分区</span>
-	    								<span class="y"><img src="images/Y.png"> y/营销业绩</span>
+	    								<span class="x"><img src="images/X.png"> x/教师</span>
+	    								<span class="y"><img src="images/Y.png"> y/分数</span>
 	    								<ul>
 	    									<li class="y1" style="height: calc(2% * 2); background: #ff4e00;"></li>
 	    									<li class="y2" style="height: calc(3% * 2); background: #ffa200;"></li>

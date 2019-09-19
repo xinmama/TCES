@@ -49,5 +49,9 @@ public class ClassService {
 		return classDao.deleteClasses(id);
 	}
 	
+	//8.查询修改的班级是否已经存在（通过班级号，部门id）
+	public int selectClassesAll(Classes classes) {
+		return classDao.selectClassesAll(classes);
+	}
 	
 }

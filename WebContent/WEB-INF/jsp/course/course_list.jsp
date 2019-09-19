@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta charset="utf-8">
@@ -11,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="名榜,wangid">
-    <title>班级管理</title>
+    <title>课程管理</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
@@ -33,7 +32,7 @@
     <div class="zy_weizhi bord_b">
         <i class="fa fa-home fa-3x"></i>
         <a>首页</a>
-        <a>班级管理</a>
+        <a>课程管理</a>
 
     </div>
     <!-- 筛选 -->
@@ -59,17 +58,17 @@
         	<tr>
             	<th lay-data="{type:'checkbox',fixed:'left'}"></th>
             	<th lay-data="{field:'yx', align:'center',width:60}">id</th>
-            	<th lay-data="{field:'time',align:'center', minWidth:130}">班级</th>
+            	<th lay-data="{field:'time',align:'center', minWidth:130}">课程名称</th>
             	<th lay-data="{field:'www',align:'center',minWidth:130}">院系</th>           
             	<th lay-data="{field:'option',align:'center',width:200,fixed: 'right'}">操作</th>
         	</tr>
         </thead>
         <tbody>
-        <c:forEach items="${classes}" var="item">
+        <c:forEach items="${courses}" var="item">
         	<tr>
             	<td></td>
             	<td>${item.id}</td>
-            	<td>${item.classes_no}</td>
+            	<td>${item.course_name}</td>
             	<td>${item.department.dep_name}</td>
             	<td>
             		<div class="layui-inline">
@@ -78,8 +77,6 @@
 					</div>
             	</td>
 			</tr>
-			
-       		
 		</c:forEach>
         </tbody>
     </table>
@@ -101,7 +98,7 @@
            // offset: 'rb', //右下角弹出
            // time: 2000, //2秒后自动关闭
            anim: 5,//动画
-           content: ['class_update?id='+id, 'no'], //iframe的url，no代表不显示滚动条
+           content: ['course_update?id='+id, 'no'], //iframe的url，no代表不显示滚动条
        });
     }
 
@@ -115,7 +112,7 @@
 		}, function(){
 			
 			$.ajax({
-				url:"${pageContext.request.contextPath}/delete_class?id="+id,
+				url:"${pageContext.request.contextPath}/delete_course?id="+id,
 				async:false,
 				type:"post",				
 				dataType:"json",
@@ -174,7 +171,7 @@
 		
         
         
-        //添加班级信息的弹窗
+        //添加课程信息的弹窗
         table.on('toolbar(mylist)', function(obj){
             var checkStatus = table.checkStatus(obj.config.id)
                 ,data = checkStatus.data; //获取选中的数据
@@ -193,7 +190,7 @@
                         // offset: 'rb', //右下角弹出
                         // time: 2000, //2秒后自动关闭
                         anim: 5,//动画
-                        content: ['class_add', 'no'], //iframe的url，no代表不显示滚动条
+                        content: ['course_add', 'no'], //iframe的url，no代表不显示滚动条
                     });
                     //
                     break;
@@ -215,7 +212,7 @@
                             // offset: 'rb', //右下角弹出
                             // time: 2000, //2秒后自动关闭
                             anim: 5,//动画
-                            content: ['class_update', 'no'], //iframe的url，no代表不显示滚动条
+                            content: ['course_update', 'no'], //iframe的url，no代表不显示滚动条
                         });
 
 

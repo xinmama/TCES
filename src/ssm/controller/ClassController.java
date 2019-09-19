@@ -89,9 +89,8 @@ public class ClassController {
 		System.out.println("班级号："+classes.getClasses_no());
 		System.out.println("部门号:"+classes.getDep_id());
 		
-		int l=classService.selectClassesByClassNo(classes.getClasses_no());
-		System.out.println(l);
-		
+		int l=classService.selectClassesAll(classes);
+				
 		if(l>0) {
 			return new ResultMsg(0,"该班级已存在，请勿重复操作。");
 		}else {
