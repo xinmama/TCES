@@ -1,6 +1,6 @@
 package ssm.entity;
 
-public class admin {
+public class Manage {
 	private int id;
 	private  String username;
 	private  String password;
