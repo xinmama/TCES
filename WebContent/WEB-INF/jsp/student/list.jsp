@@ -57,17 +57,25 @@
 		<thead>
 			<tr>
 				<th lay-data="{type:'checkbox',fixed:'left'}"></th>
+				<th lay-data="{field:'xx', align:'center',width:120}">id</th>
 				<th lay-data="{field:'yx', align:'center',width:120}">学号</th>
-				<th lay-data="{field:'time',align:'center', minWidth:120}">名称</th>
-				<th lay-data="{field:'option',align:'center',width:180,fixed: 'right'}">操作</th>
+				<th lay-data="{field:'time',align:'center', Width:60}">姓名</th>
+				<th lay-data="{field:'xx1',align:'center', Width:60}">班级</th>
+				<th lay-data="{field:'xx2',align:'center', Width:60}">性别</th>
+				<th lay-data="{field:'xx3',align:'center', Width:60}">电话</th>
+				<th lay-data="{field:'option',align:'center',width:300,fixed: 'right'}">操作</th>
 			</tr> 
 		</thead>
 		<tbody>
 		<c:forEach items="${students}" var="item">
 			<tr>
 				<td></td>
+				<td>${item.id}</td>
 				<td>${item.student_no }</td>
 				<td>${item.student_name}</td>
+				<td>${item.classes.classes_no}</td>
+				<td>${item.sex}</td>
+				<td>${item.tel}</td>
 				<td>		
 					<div class="layui-inline">
 						<button class="layui-btn layui-btn-sm layui-btn-normal " data-id="1" onclick="update('${item.id}')"><i class="layui-icon"></i>修改</button>
@@ -80,6 +88,56 @@
 	</table>
 </div> 
 <script type="text/javascript">
+
+
+//修改按钮
+function update(id){
+
+   layer.open({
+       type: 2,//层类型
+       title: "修改学生信息",//标题
+       closeBtn: 1, //不显示关闭按钮
+       shade: [0.3],//遮罩
+       skin: 'demo_class_color',//iframe皮肤
+       shadeClose:Boolean,//点击遮罩关闭
+       area: ['800px', '500px'],
+       // offset: 'rb', //右下角弹出
+       // time: 2000, //2秒后自动关闭
+       anim: 5,//动画
+       content: ['student_update?id='+id, 'no'], //iframe的url，no代表不显示滚动条
+   });
+}
+
+//删除按钮
+function del(id){
+	//询问框
+
+	layer.confirm('你确定要删除该信息吗？', {
+	  btn: ['确定','取消'] //按钮
+	}, function(){
+		
+		$.ajax({
+			url:"${pageContext.request.contextPath}/delete_student?id="+id,
+			async:false,
+			type:"post",				
+			dataType:"json",
+  			success:function(data){
+      		    if(data.flag==1){
+  					alert(data.content);	
+  					//关闭当前遮罩层
+  				  	var index = parent.layer.getFrameIndex(window.name);  
+  			   	 	parent.layer.close(index);//关闭当前页  
+  			      
+  			   		parent.location.reload();
+
+  				}else{
+  					alert(data.content);
+  				}
+  			}
+  		});
+	  
+	});
+}
 	//静态表格
     layui.use('table',function(){
     	var table = layui.table;
@@ -117,16 +175,16 @@
 				//iframe窗 
 				layer.open({
 				type: 2,//层类型
-				title: "添加信息",//标题
+				title: "添加学生",//标题
 				closeBtn: 1, //不显示关闭按钮
 				shade: [0.3],//遮罩
 				skin: 'demo_class_color',//iframe皮肤
 				shadeClose:Boolean,//点击遮罩关闭
-				area: ['800px', '250px'],
+				area: ['800px', '500px'],
 				// offset: 'rb', //右下角弹出
 				// time: 2000, //2秒后自动关闭
 				anim: 5,//动画
-				content: ['department_add', 'no'], //iframe的url，no代表不显示滚动条 
+				content: ['student_add', 'no'], //iframe的url，no代表不显示滚动条 
 				});
 				// 
 			break;

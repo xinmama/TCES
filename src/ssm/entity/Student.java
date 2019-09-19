@@ -6,18 +6,22 @@ public class Student {
 	private int id;
 	private String student_no;
 	private String student_name;
-	public String getStudent_name() {
-		return student_name;
-	}
-	public void setStudent_name(String student_name) {
-		this.student_name = student_name;
-	}
 	private String student_pwd;
 	private int classes_id;
 	private String sex;
 	private String tel;
 	private Date time;
 	private String remark;
+	private Classes classes;
+	
+	
+	
+	public Classes getClasses() {
+		return classes;
+	}
+	public void setClasses(Classes classes) {
+		this.classes = classes;
+	}
 	public int getId() {
 		return id;
 	}
@@ -65,6 +69,13 @@ public class Student {
 	}
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+	
+	public String getStudent_name() {
+		return student_name;
+	}
+	public void setStudent_name(String student_name) {
+		this.student_name = student_name;
 	}
 	
 	
