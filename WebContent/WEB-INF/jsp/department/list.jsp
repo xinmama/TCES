@@ -46,7 +46,7 @@
 				<option value="小">小</option>    
 			</select>
 		</div>
-		<div class="center">统计：【大：20 中：30 小：60】</div>
+		<div class="center"></div>
 		<div class="right">
 			<input type="text" placeholder="请输入关键词查询">
 			<a href="#">查询</a>
