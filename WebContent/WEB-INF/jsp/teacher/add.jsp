@@ -77,17 +77,12 @@
 <script type="text/javascript">
 		
 	 function add(){
-		 var  i=false;
+		 var  i=true;
 		//1.先判断输入框内容是否为空，再添加班级
 		 $("input[type='text']").each(function () {
 	           if ($(this).val() == "") {
-	        	   layer.alert('内容不能为空！');
-
-    		    	layer.msg('内容不能为空！', {icon: 1});
-	               
-	           }else{
-	        	   i=true;
-	          }
+	               i=false;
+	           }
 	     });
 		if(i==true){
 			 //提交内容
