@@ -29,22 +29,22 @@
 
 <body style="background: #fff;">
 <div class="tianjia_xx">
-<form id="updatecourse">
+<form id="addterm">
     <table class="if_tianjiatext layui-table" lay-size="lg"> 
     <tbody>
 
         <tr>
             <td  class="class_no" >学期名称</td>
-            <td><input type="text" name="course_name" placeholder="请输入学期名称"></td>
+            <td><input type="text" name="term_name" placeholder="请输入学期名称"></td>
         </tr>
         <tr>
             <td  class="class_no" >是否开启</td>
-            <td><input type="text" name="course_name" placeholder="是否开启当前学期"></td>
+            <td><input type="text" name="is_open" placeholder="是否开启当前学期"></td>
         </tr>
 
         <tr class="tianjie_button" >
             <td colspan="2" style="border-right:1px solid #e6e6e6;">
-                <button type="button" onclick="add()">确定添加</button>
+                <button type="button" onclick="addccc()">确定添加</button>
             </td>  
         </tr>
     </tbody>
@@ -52,7 +52,7 @@
 </form>
 </div>
 <script type="text/javascript">
-	 function add(){
+	 function addccc(){
 		 var i=true;
 		//1.先判断输入框内容是否为空，再添加班级
 		 $("input[type='text']").each(function () {
@@ -61,26 +61,31 @@
 	               i=false;
 	           }
 				
-	           if(i==true){
-	        	 var url="${pageContext.request.contextPath}/term_add";//跳的controller对应的方法
-	      		 var param=$("#updatecourse").serialize();
-
-	      			$.post(url,param,function(data){
-	      				
-	      				if(data.flag==1){
-	      					alert(data.content);	
-	      					//关闭当前遮罩层
-	      				  	var index = parent.layer.getFrameIndex(window.name);  
-	      			   	 	parent.layer.close(index);//关闭当前页  
-	      			        //location.reload();
-	      			   	parent.location.reload();
-
-	      				}else{
-	      					alert(data.content);
-	      				}
-	      			});
-	           }
 	     });
+		
+
+         if(i==true){
+			
+    		$.ajax({
+				url:"${pageContext.request.contextPath}/add_term",
+				async:false,
+				type:"post",
+				data:$("#addterm").serialize(),
+				dataType:"json",
+    			success:function(data){
+	      		    if(data.flag==1){
+	      				alert(data.content);
+	      				
+	      				var index = parent.layer.getFrameIndex(window.name);  
+	  			   	 	parent.layer.close(index);//关闭当前页  
+	  			   	parent.location.reload();
+	      			}else{
+		      			alert(data.content);
+		      		}
+	      		    
+    			}
+    		});
+         }
 		
 	 }
 	 
