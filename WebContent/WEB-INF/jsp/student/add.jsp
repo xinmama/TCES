@@ -82,12 +82,9 @@
 					.each(
 							function() {
 								if ($(this).val() == "") {
-									layer.alert('内容不能为空！');
-
-									layer.msg('内容不能为空！', {
-										icon : 1
-									});
-									i=false;
+									
+							i=false;
+							
 								} 
 							})
 							
@@ -120,6 +117,8 @@
 
 							}
 						});
+			}else{
+				alert("填写信息存在错误，请重新填写！");
 			}
 
 		}

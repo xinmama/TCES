@@ -10,7 +10,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="名榜,wangid">
-	<title>教师综合评价系统</title>
+	<title>分数查询</title>
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="css/style.css">
@@ -32,8 +32,8 @@
 	<div class="zy_weizhi bord_b">
 		<i class="fa fa-home fa-3x"></i>
 		<a>首页</a>
-		<a>评价选项</a>
-		<span>选项列表</span>
+		<a>教师分数管理</a>
+		<span>分数列表</span>
 	</div>
 	<!-- 筛选 --> 
 	<div class="shuaix">
@@ -46,7 +46,7 @@
 				<option value="小">小</option>    
 			</select>
 		</div>
-		<div class="center"></div>
+		<div class="center">统计：【大：20 中：30 小：60】</div>
 		<div class="right">
 			<input type="text" placeholder="请输入关键词查询">
 			<a href="#">查询</a>
@@ -57,29 +57,25 @@
 		<thead>
 			<tr>
 				<th lay-data="{type:'checkbox',fixed:'left'}"></th>
-				<th lay-data="{field:'yx', align:'center',width:60}">id</th>
-				<th lay-data="{field:'time',align:'center', minWidth:130}">选项题目</th>
-				<th lay-data="{field:'time1',align:'center', minWidth:130}">选项类别</th>
-				<th lay-data="{field:'option',align:'center',width:260,fixed: 'right'}">操作</th>
+				<th lay-data="{field:'xx', align:'center',width:120}">id</th>
+				<th lay-data="{field:'yx', align:'center',width:120}">学生名称</th>
+				<th lay-data="{field:'time',align:'center', Width:60}">学生班级</th>
+				<th lay-data="{field:'xx1',align:'center', Width:60}">教师名称</th>
+				<th lay-data="{field:'xx2',align:'center', Width:60}">课程名称</th>
+				<th lay-data="{field:'option',align:'center',width:300,fixed: 'right'}">操作</th>
 			</tr> 
 		</thead>
 		<tbody>
-			<c:forEach items="${standards}" var="item">
+		<c:forEach items="${st_scores}" var="item">
 			<tr>
 				<td></td>
 				<td>${item.id}</td>
-				<td>${item.title_con}</td>
-				<td>
-					<c:if test="${item.type==0}">
-						学生
-					</c:if>
-					<c:if test="${item.type==1}">
-						教师
-					</c:if>
-				</td>
+				<td>${item.student.student_name}</td>
+				<td>${item.classes.classes_no}</td>
+				<td>${item.teacher.teacher_name}</td>
+				<td>${item.course_name}</td>
 				<td>		
 					<div class="layui-inline">
-						<button class="layui-btn layui-btn-sm layui-btn-normal " data-id="1" onclick="update('${item.id}')"><i class="layui-icon"></i>修改</button>
 						<button class="layui-btn layui-btn-sm layui-btn-danger del-btn" data-id="1" onclick="del('${item.id}')"><i class="layui-icon"></i>删除</button>
 					</div>
 				</td>
@@ -89,51 +85,38 @@
 	</table>
 </div> 
 <script type="text/javascript">
-	function update(id){
-		layer.open({
-			type: 2,//层类型
-			title: "修改信息",//标题
-			closeBtn: 1, //不显示关闭按钮
-			shade: [0.3],//遮罩
-			skin: 'demo_class_color',//iframe皮肤
-			shadeClose:Boolean,//点击遮罩关闭
-			area: ['800px', '250px'],
-			// offset: 'rb', //右下角弹出
-			// time: 2000, //2秒后自动关闭
-			anim: 5,//动画
-			content: ['standard_update?id='+id, 'no'], //iframe的url，no代表不显示滚动条 
-			});
-	}
-	
-	function del(id){
-		//询问框
-
-		layer.confirm('你确定要删除该信息吗？', {
-		  btn: ['确定','取消'] //按钮
-		}, function(){
-			
-			$.ajax({
-				url:"${pageContext.request.contextPath}/delete_standard?id="+id,
-				async:false,
-				type:"post",
-				dataType:"json",
-      			success:function(data){
-      				
-	      		     if(data.flag==1){
-	      				alert(data.content);
-	      				var index = parent.layer.getFrameIndex(window.name);  
-	        		    parent.layer.close(index);//关闭当前页  
-	    		   	 	parent.location.reload();//刷新父级页面
-	      			}else{
-		      			alert(data.content);
-		      		}
-	      		    
-      			}
-      		});
-		});
-	}
 
 
+//删除按钮
+function del(id){
+	//询问框
+
+	layer.confirm('你确定要删除该信息吗？', {
+	  btn: ['确定','取消'] //按钮
+	}, function(){
+		
+		$.ajax({
+			url:"${pageContext.request.contextPath}/delete_st_score?id="+id,
+			async:false,
+			type:"post",				
+			dataType:"json",
+  			success:function(data){
+      		    if(data.flag==1){
+  					alert(data.content);	
+  					//关闭当前遮罩层
+  				  	var index = parent.layer.getFrameIndex(window.name);  
+  			   	 	parent.layer.close(index);//关闭当前页  
+  			      
+  			   		parent.location.reload();
+
+  				}else{
+  					alert(data.content);
+  				}
+  			}
+  		});
+	  
+	});
+}
 	//静态表格
     layui.use('table',function(){
     	var table = layui.table;
@@ -171,16 +154,16 @@
 				//iframe窗 
 				layer.open({
 				type: 2,//层类型
-				title: "添加信息",//标题
+				title: "添加学生",//标题
 				closeBtn: 1, //不显示关闭按钮
 				shade: [0.3],//遮罩
 				skin: 'demo_class_color',//iframe皮肤
 				shadeClose:Boolean,//点击遮罩关闭
-				area: ['800px', '250px'],
+				area: ['800px', '500px'],
 				// offset: 'rb', //右下角弹出
 				// time: 2000, //2秒后自动关闭
 				anim: 5,//动画
-				content: ['standard_add', 'no'], //iframe的url，no代表不显示滚动条 
+				content: ['student_add', 'no'], //iframe的url，no代表不显示滚动条 
 				});
 				// 
 			break;

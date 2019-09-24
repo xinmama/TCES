@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ssm.dao.St_scoreDao">
+	<resultMap type="ssm.entity.St_score" id="st_score">
+		<id property="id" column="id" />
+		<result property="student_id" column="student_id" />
+		<result property="classes_id" column="classes_id" />
+		<result property="teacher_id" column="teacher_id" />
+		<result property="st_score" column="st_score" />
+		<result property="course_name" column="course_name" />
+		<association property="classes"
+			javaType="ssm.entity.Classes">
+			<id property="id" column="id" />
+			<result property="classes_no" column="classes_no" />
+		</association>
+		<association property="student"
+			javaType="ssm.entity.Student">
+			<id property="id" column="id" />
+			<result property="student_name" column="student_name" />
+		</association>
+		<association property="teacher"
+			javaType="ssm.entity.Teacher">
+			<id property="id" column="id" />
+			<result property="teacher_name" column="teacher_name" />
+		</association>
+	</resultMap>
+
+	<select id="selectSt_score" resultMap="st_score">
+		select
+		student.student_name,classes.classes_no,teacher.teacher_name,st_score.course_name,st_score.id
+		from student,classes,teacher,st_score where
+		student.id=st_score.student_id and classes.id=st_score.classes_id and
+		teacher.id=st_score.teacher_id ;
+	</select>
+	
+	<!-- 删除分数记录 -->
+	<delete id="deleteSt_score" parameterType="int" >
+		delete  from st_score where id=#{id};
+	</delete>
+
+</mapper>
