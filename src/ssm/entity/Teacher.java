@@ -12,6 +12,8 @@ public class Teacher {
 	private int dep_id;
 	private Date time;
 	private Department department;
+	private String remark;
+	private int is_manage;
 	
 	public Department getDepartment() {
 		return department;
@@ -25,8 +27,6 @@ public class Teacher {
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
-	private String remark;
-	private int is_manage;
 	
 	public int getId() {
 		return id;
