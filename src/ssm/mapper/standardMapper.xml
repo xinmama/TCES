@@ -4,19 +4,45 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="ssm.dao.StandardDao">
-	<!-- 查询全部选项指标信息 -->
-	<select id="selectStandart" resultType="ssm.entity.Standard">
+	<!-- 查询全部评价指标信息 -->
+	<select id="selectStandard" resultType="ssm.entity.Standard">
 		select * from standard;
 	</select>
 	
-	<!-- 查询该选项指标是否存在 -->
-	<select id="selectStandard" parameterType="String" resultType="int">
+	<!-- 查询该评价指标是否存在 -->
+	<select id="selectStandardById" parameterType="String" resultType="int">
 		select count(1) from standard where title_con=#{title_con};
 	</select>
 	
-	<!-- 插入选项指标信息 -->
-	<insert id="addStandard" parameterType="String">
+	<!-- 插入评价指标信息 -->
+	<insert id="addStandard" parameterType="ssm.entity.Standard">
 		insert into standard(title_con,type) values(#{title_con},#{type});
-	</insert>
+	</insert> 
+	
+	<!-- 通过ID查询评价指标信息 -->
+	<select id="selectStandardByid" parameterType="int" resultType="ssm.entity.Standard">
+		select * from standard where id=#{id}
+	</select>
+	
+	<!-- 修改评价指标信息 -->
+	 <update id="updateStandardById" parameterType="ssm.entity.Standard">
+		update standard set title_con=#{title_con} where id=#{id}
+	</update> 
+	
+	<!-- 删除评价指标信息 -->
+	<delete id="deleteStandardById" parameterType="int">
+		delete from standard where id=#{id}
+	</delete>
 	
 </mapper>
+
+
+
+
+
+
+
+
+
+
+

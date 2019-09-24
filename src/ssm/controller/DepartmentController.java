@@ -65,10 +65,8 @@ public class DepartmentController {
 	@RequestMapping("/department_update")
 	public ModelAndView department_update(int id) {
 		ModelAndView mView = new ModelAndView("department/update");
-		
 		Department department = departmentService.selectDepartmentById(id);
 		mView.addObject("department", department);
-		
 		return mView;
 	}
 	
