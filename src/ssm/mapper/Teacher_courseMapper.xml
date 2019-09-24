@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ssm.dao.Teacher_courseDao">
+
+	<!-- 1.获取授课信息，并展示  -->
+	<select id="getTeacher_course" resultMap="teacher_course">
+		select teacher_course.*,teacher.teacher_name,classes.classes_no,course.course_name,term.term_name
+		from teacher_course,teacher,classes,course,term where teacher_course.teacher_id=teacher.id and
+		teacher_course.classes_id=classes.id and teacher_course.course_id=course.id and
+		teacher_course.term_id=term.id;
+	</select>
+	
+	<resultMap type="ssm.entity.Teacher_course" id="teacher_course">
+		<id property="id" column="id" />
+		<result property="teacher_id" column="teacher_id" />
+		<result property="classes_id" column="classes_id" />
+		<result property="course_id" column="course_id" />
+		<result property="term_id" column="term_id" />
+		<association property="teacher" javaType="ssm.entity.Teacher">
+			<id property="id" column="id" />
+			<result property="teacher_no" column="teacher_no"/>
+			<result property="teacher_name" column="teacher_name"/>
+			<result property="teacher_pwd" column="teacher_pwd"/>
+			<result property="sex" column="sex"/>
+			<result property="tel" column="tel"/>
+			<result property="dep_id" column="dep_id"/>
+			<result property="time" column="time"/>
+			<result property="remark" column="remark"/>
+			<result property="is_manage" column="is_manage"/>
+		</association>
+		<association property="classes" javaType="ssm.entity.Classes">
+			<id property="id" column="id" />
+			<result property="classes_no" column="classes_no" />
+		</association>
+		<association property="course" javaType="ssm.entity.Course">
+			<id property="id" column="id" />
+			<result property="course_name" column="course_name" />
+		</association>
+		<association property="term" javaType="ssm.entity.Term">
+			<id property="id" column="id" />
+			<result property="term_name" column="term_name" />
+		</association>
+	</resultMap>
+	
+	<!-- 2.添加授课信息 -->
+	<insert id="addTeacher_course" parameterType="ssm.entity.Teacher_course" >
+		insert into teacher_course(teacher_id,classes_id,course_id,term_id) values(#{teacher_id},#{classes_id},#{course_id},#{term_id});
+	</insert>
+	
+	<!-- 3.查询授课信息，判断是否存在 -->
+	<select id="selectTeacher_courseByAllId" parameterType="ssm.entity.Teacher_course" resultType="int">
+		select count(1) from teacher_course where teacher_id=#{teacher_id} and classes_id=#{classes_id} and
+		course_id=#{course_id} and term_id=#{term_id};
+	</select>
+	
+	<!-- 4.查询授课信息，并展示  -->
+	<select id="selectTeacher_courseById" parameterType="int" resultMap="teacher_course">
+		select teacher_course.*,teacher.teacher_name,classes.classes_no,course.course_name,term.term_name
+		from teacher_course,teacher,classes,course,term where teacher_course.teacher_id=teacher.id and
+		teacher_course.classes_id=classes.id and teacher_course.course_id=course.id and
+		teacher_course.term_id=term.id and teacher_course.id=#{id};
+	</select>
+	
+	<!-- 5.修改授课信息  -->
+	<update id="updateTeacher_course" parameterType="ssm.entity.Teacher_course">
+		update teacher_course set teacher_id=#{teacher_id},classes_id=#{classes_id},course_id=#{course_id},term_id=#{term_id} where id=#{id};
+	</update>
+	
+	<!-- 6.删除授课信息 -->
+	<delete id="deleteTeacher_course" parameterType="int" >
+		delete from teacher_course where id=#{id};
+	</delete>
+</mapper>
