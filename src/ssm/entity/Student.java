@@ -12,10 +12,18 @@ public class Student {
 	private String tel;
 	private Date time;
 	private String remark;
+	
 	private Classes classes;
+	private Teacher teacher;
 	
 	
 	
+	public Teacher getTeacher() {
+		return teacher;
+	}
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
+	}
 	public Classes getClasses() {
 		return classes;
 	}

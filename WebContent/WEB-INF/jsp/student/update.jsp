@@ -85,7 +85,7 @@
 		var i=true;
 		 $("input[type='text']").each(function () {
 	           if ($(this).val() == "") {	   
-	               alert("内容不能为空！");
+	               //alert("内容不能为空！");
 	               i=false;
 	           }
 	     })
@@ -115,8 +115,10 @@
 		      		    
 	      			}
 	      		});
-	     }
-
+	 	   }else{
+				alert("填写信息存在错误，请重新填写！");
+			}
+		
 	}
 </script>
 </body>
