@@ -30,7 +30,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="selectSt_score" resultMap="st_score">
 		select
-		student.student_name,classes.classes_no,teacher.teacher_name,st_score.course_name,st_score.id
+		student.student_name,classes.classes_no,teacher.teacher_name,st_score.course_name,st_score.st_score,st_score.id
 		from student,classes,teacher,st_score where
 		student.id=st_score.student_id and classes.id=st_score.classes_id and
 		teacher.id=st_score.teacher_id ;

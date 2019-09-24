@@ -63,9 +63,9 @@
 	    		<div class="head">
 	    			<i><img src="images/head.jpg" /></i><!-- 注释去间隔
 	    	     --><dl>
-	    				<dd><b>姓名：</b>欣妈妈</dd>
-	    				<dd><b>班级：</b>1690008</dd>
-	    				<dd><b>院系：</b>软件工程</dd>
+	    				<dd><b>姓名：</b>${teacher1.getTeacher_name()}</dd>
+	    				<dd><b>工号：</b>${teacher1.getTeacher_no()}</dd>
+	    				<dd><b>院系：</b>${teacher1.getDepartment().getDep_name()}</dd>
 	    				
 	    			</dl>
 	    		</div>

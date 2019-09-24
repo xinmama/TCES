@@ -28,4 +28,7 @@ public interface CourseDao {
 	
 	//7.删除课程信息
 	public int deleteCourse(int id);
+	
+	//8.查询按钮，查询信息
+	public List<Course> selectInformation(String info);
 }

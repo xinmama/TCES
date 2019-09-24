@@ -37,16 +37,6 @@
 	</div>
 	<!-- 筛选 --> 
 	<div class="shuaix">
-		<div class="left">
-			<b>意向：</b>
-			<select>   
-				<option value="全部">全部</option>   
-				<option value="大">大</option>   
-				<option value="中">中</option>   
-				<option value="小">小</option>    
-			</select>
-		</div>
-		<div class="center"></div>
 		<div class="right">
 			<input type="text" placeholder="请输入关键词查询">
 			<a href="#">查询</a>

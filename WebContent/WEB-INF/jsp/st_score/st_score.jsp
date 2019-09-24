@@ -46,7 +46,7 @@
 				<option value="小">小</option>    
 			</select>
 		</div>
-		<div class="center">统计：【大：20 中：30 小：60】</div>
+		
 		<div class="right">
 			<input type="text" placeholder="请输入关键词查询">
 			<a href="#">查询</a>
@@ -62,7 +62,8 @@
 				<th lay-data="{field:'time',align:'center', Width:60}">学生班级</th>
 				<th lay-data="{field:'xx1',align:'center', Width:60}">教师名称</th>
 				<th lay-data="{field:'xx2',align:'center', Width:60}">课程名称</th>
-				<th lay-data="{field:'option',align:'center',width:300,fixed: 'right'}">操作</th>
+				<th lay-data="{field:'xx3',align:'center', Width:60}">评价分数</th>
+				<th lay-data="{field:'option',align:'center',width:200,fixed: 'right'}">操作</th>
 			</tr> 
 		</thead>
 		<tbody>
@@ -74,6 +75,7 @@
 				<td>${item.classes.classes_no}</td>
 				<td>${item.teacher.teacher_name}</td>
 				<td>${item.course_name}</td>
+				<td>${item.st_score}</td>
 				<td>		
 					<div class="layui-inline">
 						<button class="layui-btn layui-btn-sm layui-btn-danger del-btn" data-id="1" onclick="del('${item.id}')"><i class="layui-icon"></i>删除</button>
