@@ -41,8 +41,8 @@
 				<div class="top_user">
 					<span><img src="images/head.jpg" /></span>
 					<dl>
-						<dt>关晓彤（营销总监）</dt>
-						<dd>级别：普通账户 </dd>
+						<dt>姓名：${user.teacher_name}</dt>
+						<dd>级别：教师 </dd>
 					</dl>
 				</div>
 

@@ -74,7 +74,7 @@
 	    				<li>
 	    					<h2>
 		    					<img src="images/sm_icon04.png">
-		    					<a>进入系统</a>
+		    					<a href="${pageContext.request.contextPath}/teacher_ml">进入系统</a>
 		    				</h2>
 	    				</li>					
 	    			</ul>

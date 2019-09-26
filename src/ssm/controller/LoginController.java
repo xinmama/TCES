@@ -24,7 +24,7 @@ public class LoginController {
 	
 	@RequestMapping("/login")
 	public ModelAndView login() {	
-		ModelAndView mv = new ModelAndView("login");		
+		ModelAndView mv = new ModelAndView("login/login");		
 		return mv;
 	}
 	
@@ -66,9 +66,10 @@ public class LoginController {
 				{
 					ModelAndView mv = new  ModelAndView("index/show_student");
 					HttpSession session = request.getSession(true); 
-					session.setAttribute("user",student);
+					
 													
 					Student student1=loginService.getInfoByStudentno(username);
+					session.setAttribute("user",student1);
 					mv.addObject("student1", student1);								
 					return mv;
 				}else {//如果不正确
@@ -84,8 +85,9 @@ public class LoginController {
 					{
 						ModelAndView mv = new  ModelAndView("index/show_teacher");
 						HttpSession session = request.getSession(true); 
-						session.setAttribute("user",teacher);
+						
 						Teacher teacher1=loginService.getInfoByTeacherno(username);
+						session.setAttribute("user",teacher1);
 						mv.addObject("teacher1", teacher1);						
 						return mv;
 					}else {//如果不正确

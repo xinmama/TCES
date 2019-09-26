@@ -41,8 +41,8 @@
 				<div class="top_user">
 					<span><img src="images/head.jpg" /></span>
 					<dl>
-						<dt>关晓彤（营销总监）</dt>
-						<dd>级别：普通账户 </dd>
+						<dt>姓名：${user.student_name}</dt>
+						<dd>级别：学生</dd>
 					</dl>
 				</div>
 
@@ -59,13 +59,17 @@
 				<!-- 左侧导航区域（可配合layui已有的垂直导航） -->
 				<ul class="layui-nav layui-nav-tree"  lay-filter="test">
 					<li class="layui-nav-item layui-nav-itemed">
-						<a class="" href="javascript:;"><i class="fa fa-clipboard fa-fw"></i>在线评教</a>
+						<a class="" href=""><i class="fa fa-clipboard fa-fw"></i>在线评教</a>
 					</li>
 					<li class="layui-nav-item">
 						<a href="javascript:;"><i class="fa fa-shield fa-fw"></i>查看结果</a>
 					</li>
 					<li class="layui-nav-item">
 						<a href="javascript:;"><i class="fa fa-user fa-fw"></i>个人信息</a>
+						<dl class="layui-nav-child">
+							<dd><a href="${pageContext.request.contextPath}/student_list" target="main_self_frame">查看个人信息</a></dd>
+							<dd><a href="${pageContext.request.contextPath}/teacher_list" target="main_self_frame">修改密码</a></a>
+						</dl>
 					</li>
 
 

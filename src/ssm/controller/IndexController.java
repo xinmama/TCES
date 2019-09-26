@@ -14,4 +14,17 @@ public class IndexController {
 		return mv;
 		
 	}
+	//访问学生目录页面
+	@RequestMapping("/student_ml")
+	public ModelAndView student_ml() {
+		ModelAndView mView=new ModelAndView("index/student");
+		return mView;
+	}
+	
+	//访问教师目录页面
+	@RequestMapping("/teacher_ml")
+	public ModelAndView teacher_ml() {
+		ModelAndView mView=new ModelAndView("index/teacher");
+		return mView;
+	}
 }
