@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ssm.dao.Tt_scoreDao">
+	<resultMap type="ssm.entity.Tt_score" id="tt_score">
+		<id property="id" column="id" />
+		<result property="teacher1_id" column="teacher1_id" />
+		<result property="dep_id" column="dep_id" />
+		<result property="teacher2_id" column="teacher2_id" />
+		<result property="tt_score" column="tt_score" />
+		<result property="course_name" column="course_name" />
+		<association property="teacher1"
+			javaType="ssm.entity.Teacher">
+			<id property="id" column="id" />
+			<result property="teacher_name" column="name1" />
+		</association>
+
+		<association property="teacher2"
+			javaType="ssm.entity.Teacher">
+			<id property="id" column="id" />
+			<result property="teacher_name" column="name2" />
+		</association>
+
+		<association property="department"
+			javaType="ssm.entity.Department">
+			<id property="id" column="id" />
+			<result property="dep_name" column="dep_name" />
+		</association>
+
+
+	</resultMap>
+
+	<!-- 2.获取评价老师与被评价老师的信息，展示 -->
+	<select id="getTt_score" resultMap="tt_score">
+select a.id as id,teacher1_id,teacher2_id,a.teacher_name as name1,a.dep_id,teacher.teacher_name as name2,course_name,dep_name,a.tt_score from
+(select tt_score.*,teacher.teacher_name,department.dep_name from tt_score,teacher,department
+where tt_score.teacher1_id=teacher.id and tt_score.dep_id=department.id) a
+INNER JOIN teacher
+on teacher.id = a.teacher2_id
+	</select>
+
+ <!-- 刪除信息 -->
+ <delete id="deleteTt_score" parameterType="int">
+ delete from tt_score where id=#{id}
+ 
+ </delete>
+
+</mapper>
