@@ -32,18 +32,18 @@
 <form id="form">
     <table class="if_tianjiatext layui-table" lay-size="lg"> 
     <tbody>
-<!--         <tr> -->
-<!--             <td class="td_1">学期</td> -->
-<!--             <td> -->
-<!--                 <div class="layui-input-inline"> -->
-<!--                     <select name="term_id"> -->
-<%--                     	<c:forEach items="${term}" var="item"> --%>
-<%--                     		<option value="${item.id}">${item.term_name}</option> --%>
-<%--                         </c:forEach>    --%>
-<!--                     </select> -->
-<!--                 </div> -->
-<!--             </td> -->
-<!--         </tr> -->
+         <tr> 
+             <td class="td_1">学期</td> 
+             <td> 
+                 <div class="layui-input-inline"> 
+                     <select name="term_id"> 
+                    	<c:forEach items="${term}" var="item"> 
+                     		<option value="${item.id}">${item.term_name}</option> 
+                         </c:forEach>    
+                     </select> 
+                 </div> 
+            </td> 
+        </tr> 
         <tr>
             <td class="td_1">教师</td>
             <td>
@@ -56,36 +56,36 @@
                 </div>
             </td>
         </tr>
-<!--         <tr> -->
-<!--             <td class="td_1">班级</td> -->
-<!--             <td> -->
-<!--                 <div class="layui-input-inline"> -->
-<!--                     <select name="classes_id"> -->
-<%--                     	<c:forEach items="${classes}" var="item"> --%>
-<%--                     		<option value="${item.id}">${item.classes_no}</option> --%>
-<%--                         </c:forEach>    --%>
-<!--                     </select> -->
-<!--                 </div> -->
-<!--             </td> -->
-<!--         </tr> -->
-<!--         <tr> -->
-<!--             <td class="td_1">课程</td> -->
-<!--             <td> -->
-<!--                 <div class="layui-input-inline"> -->
-<!--                     <select name="course_id"> -->
-<%--                     	<c:forEach items="${course}" var="item"> --%>
-<%--                     		<option value="${item.id}">${item.course_name}</option> --%>
-<%--                         </c:forEach>    --%>
-<!--                     </select> -->
-<!--                 </div> -->
-<!--             </td> -->
-<!--         </tr> -->
+         <tr> 
+             <td class="td_1">班级</td>
+            <td>
+                 <div class="layui-input-inline"> 
+                     <select name="classes_id"> 
+                     	<c:forEach items="${classes}" var="item"> 
+                     		<option value="${item.id}">${item.classes_no}</option> 
+                         </c:forEach>    
+                     </select> 
+                 </div> 
+             </td> 
+         </tr> 
+        <tr>
+             <td class="td_1">课程</td> 
+             <td> 
+                 <div class="layui-input-inline"> 
+                     <select name="course_id"> 
+                     	<c:forEach items="${course}" var="item"> 
+                     		<option value="${item.id}">${item.course_name}</option> 
+                         </c:forEach>    
+                     </select> 
+                 </div> 
+             </td> 
+        </tr> 
 
-<!--         <tr class="tianjie_button" > -->
-<!--             <td colspan="2" style="border-right:1px solid #e6e6e6;"> -->
-<!--                 <button type="button" onclick="add()">确定添加</button> -->
-<!--             </td>   -->
-<!--         </tr> -->
+         <tr class="tianjie_button" > 
+             <td colspan="2" style="border-right:1px solid #e6e6e6;"> 
+                 <button type="button" onclick="add()">确定添加</button> 
+             </td>   
+         </tr> 
     </tbody>
     </table>
 </form>

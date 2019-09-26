@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ssm.dao.LoginDao">
+
+	<select id="selectManage" parameterType="ssm.entity.Manage" resultType="int">
+		select count(1) from manage where username=#{username};
+	</select>
+	<select id="selectStudent" parameterType="ssm.entity.Student" resultType="int">
+		select count(1) from student where student_no=#{student_no};
+	</select>
+	<select id="selectTeacher" parameterType="ssm.entity.Teacher" resultType="int">
+		select count(1) from teacher where teacher_no=#{teacher_no};
+	</select>
+	
+	<select id="getManage" parameterType="ssm.entity.Manage" resultType="int">
+		select count(1) from manage where username=#{username} and password=#{password};
+	</select>
+	<select id="getStudent" parameterType="ssm.entity.Student" resultType="int">
+		select count(1) from student where student_no=#{student_no} and student_pwd=#{student_pwd};
+	</select>
+	<select id="getTeacher" parameterType="ssm.entity.Teacher" resultType="int">
+		select count(1) from teacher where teacher_no=#{teacher_no} and teacher_pwd=#{teacher_pwd};
+	</select>
+	
+	<!-- 通过学号查询学生姓名，班级，院系 -->
+	<select id="getInfoByStudentno" parameterType="String" resultMap="student">
+		select student.*,classes.classes_no,department.dep_name
+    	from student,classes,department 
+		where student.classes_id = classes.id and classes.dep_id = department.id
+		 and student_no=#{student_no};
+	</select>
+		<resultMap type="ssm.entity.Student" id="student">
+		<id property="id" column="id" />
+		<result property="student_no" column="student_no" />
+		<result property="student_name" column="student_name" />
+		<result property="student_pwd" column="student_pwd" />
+		<result property="classes_id" column="classes_id" />
+		<result property="sex" column="sex" />
+		<result property="tel" column="tel" />
+		<result property="time" column="time" />
+		<result property="remark" column="remark" />
+		<association property="classes" javaType="ssm.entity.Classes">
+			<id property="id" column="id" />
+			<result property="classes_no" column="classes_no" />
+			<result property="dep_id" column="dep_id" />
+			<association property="department" javaType="ssm.entity.Department">
+				<id property="id" column="id" />
+				<result property="dep_name" column="dep_name" />
+			</association>
+		</association>				
+	</resultMap>
+	
+	
+	<!-- 通过教师工号查找教师姓名，所在部门 -->
+	<select id="getInfoByTeacherno" parameterType="String" resultMap="teacher">
+		select teacher.*,department.dep_name from teacher,department
+		where teacher.dep_id=department.id and teacher.teacher_no=#{teacher_no};
+	</select>
+	
+	<resultMap type="ssm.entity.Teacher" id="teacher">
+		<id property="id" column="id"/>
+		<result property="teacher_no" column="teacher_no"/>
+		<result property="teacher_name" column="teacher_name"/>
+		<result property="teacher_pwd" column="teacher_pwd"/>
+		<result property="sex" column="sex"/>
+		<result property="tel" column="tel"/>
+		<result property="time" column="time"/>
+		<result property="remark" column="remark"/>
+		<result property="is_manage" column="is_manage"/>
+		<association property="department" javaType="ssm.entity.Department">
+			<id property="id" column="id" />
+			<result property="dep_name" column="dep_name" />
+		</association>
+	</resultMap>
+</mapper>

@@ -36,20 +36,10 @@
 
     </div>
     <!-- 筛选 -->
-    <div class="shuaix">
-        <div class="left">
-            <b>院系：</b>
-            <select>
-                <option value="软件学院">软件学院</option>
-                <option value="计算机学院">计算机学院</option>
-                <option value="管理学院">管理学院</option>
-                <option value="土木学院">土木学院</option>
-            </select>
-        </div>
-        <div class="center"></div>
+    <div class="shuaix">       
         <div class="right">
-            <input type="text" placeholder="请输入关键词查询">
-            <a href="#">查询</a>
+            <input type="text" name="getInfo" id="info" placeholder="请输入课程名查询">
+            <a href="#" onclick="selectInfo()">查询</a>
         </div>
     </div>
     <!-- 下面写内容 -->
@@ -84,6 +74,28 @@
 </div>
 <script type="text/javascript">
 
+//查询按钮
+function selectInfo(){
+	alert($("#getInfo").val());
+	$.ajax({
+		url:"${pageContext.request.contextPath}/select_info",
+		async:false,
+		type:"post",
+		data:{info:$("#getInfo").val()},
+		dataType:"json",
+			success:function(data){
+  		    if(data.flag==1){
+					alert(data.content);	 						  	
+			   		parent.location.reload();
+				}else{
+					alert(data.content);
+				}
+			}
+		});
+	
+}
+
+	
 	//修改按钮
    function update(id){
 
@@ -106,7 +118,6 @@
 	//删除按钮
 	function del(id){
 		//询问框
-
 		layer.confirm('你确定要删除该信息吗？', {
 		  btn: ['确定','取消'] //按钮
 		}, function(){

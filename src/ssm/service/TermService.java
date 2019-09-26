@@ -23,4 +23,24 @@ public class TermService {
 	public int selectTermByTermname(String term_name) {
 		return termDao.selectTermByTermname(term_name);		
 	}
+	
+	//3.添加学期信息
+	public int addTerm(Term term) {
+		return termDao.addTerm(term);
+	}
+	
+	//4.查詢學期信息（通過id）
+	public Term selectTermById(int id) {
+		return termDao.selectTermById(id);
+	}
+	
+	//5.修改學期信息
+	public int updateTerm(Term term) {
+		return termDao.updateTerm(term);
+	}
+	
+	//6.删除学期信息
+	public int deleteTerm(int id) {
+		return termDao.deleteTerm(id);
+	}
 }

@@ -13,4 +13,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectTermByTermname" parameterType="String" resultType="int">
 		select count(1) from term where term_name=#{term_name};
 	</select>
+	
+	<!-- 3.添加学期信息 -->
+	<insert id="addTerm" parameterType="ssm.entity.Term" >	
+		insert into term(term_name,is_open) values(#{term_name},#{is_open});
+	</insert>
+	
+	<!-- 4.查询學期信息，并展示  -->
+	<select id="selectTermById" parameterType="int" resultType="ssm.entity.Term">
+		select * from term where id=#{id};
+	</select>
+	
+	<!-- 5.修改课程信息  -->
+	<update id="updateTerm" parameterType="ssm.entity.Term" >
+		update term set term_name=#{term_name},is_open=#{is_open} where id=#{id};
+	</update>
+	
+	<!-- 6.删除课程信息 -->
+	<delete id="deleteTerm" parameterType="int">
+		delete from term where id=#{id};
+	</delete>
+	
 </mapper>
