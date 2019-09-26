@@ -1,124 +1,60 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>登陆页面</title>
-<link rel="stylesheet" type="text/css" href="css/login.css">
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript">
-	$(function() {
-		$(".name input").focus(function() {
-			$(this).prev("i").css({
-				"background-image" : "url(img/user2.png)"
-			});
-		});
-		$(".name input").blur(function() {
-			$(this).prev("i").css({
-				"background-image" : "url(img/user1.png)"
-			});
-		});
-		$(".password input").focus(function() {
-			$(this).prev("i").css({
-				"background-image" : "url(img/password2.png)"
-			});
-		});
-		$(".password input").blur(function() {
-			$(this).prev("i").css({
-				"background-image" : "url(img/password1.png)"
-			});
-		});
-	});
-</script>
+    <meta charset="UTF-8">
+    <title>登录界面</title>
+    <link href="css/login_in.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<div class="container">
-		<div class="wrap">
-			<header>
-				<em>Logo</em><span>教师综合评价系统</span>
-			</header>
-			<article>
-				<section>
-					<aside>
+<form method="post" action="${pageContext.request.contextPath}/login_submit" name="login" id="box1">
+    <h1 class="title">用户登录</h1>
+    <div class="form_main">
 
-						<em> <img src="img/user.png">
-						</em>
-						<form id="form" method="post">
+        <div class="">
+            <div class="user">
+                <div class="icon_user" ><img src="images/user.png"> </div>
+                <input id="username" type=text name='username' placeholder="请输入账号">
+            </div>
+        </div>
+        <div class="">
+            <div class="user">
+                <div class="icon_user" ><img src="images/password.png"> </div>
+                <input id="password" type=password name='password'placeholder="请输入密码"> <br>
+            </div>
+        </div>
 
-							<p class="name">
-								<i></i><input type="text" name="username" class="userName"
-									placeholder="请输入用户名">
-							</p>
-							<p class="password">
-								<i></i><input type="password" name="password" class="pwd"
-									placeholder="请输入密码">
-							</p>
-							<p>
-								<select name="type">
-									<option value="0">管理员</option>
-									<option value="1">教师</option>
-									<option value="2">学生</option>
-									
-								</select>
-							</p>
-							<button onclick="login()">登录</button>
-							<p class="remember">
-								<input type="checkbox" name="remember">记住密码
-							</p>
-							<p class="regist">
-								<span></span><a href="regist.html">忘记密码</a>
-							</p>
-							<div class="clear"></div>
-						</form>
-					</aside>
 
-				</section>
-			</article>
-			<footer>
-				<ul>
-					<li><a href="#">联系我们</a></li>
-					<li><a href="#">关于我们</a></li>
-					<li><a href="#">人才招聘</a></li>
-					<li><a href="#">友情链接</a></li>
-					<li><a href="#">公司地址</a></li>
-					<li><a href="#">关注我们</a></li>
-				</ul>
-				<p>本网站版权归rockmorty所有，未经许可，不得转载。</p>
-			</footer>
-		</div>
-	</div>
-	<script type="text/javascript">
-		function login() {
-			//判断输入框内容是否为空
-			var i = true;
-			$("input[type='text']").each(function() {
-				if ($(this).val() == "") {
-					layer.alert('内容不能为空！');
+        <div class="">
+            <div class="user">
+                <div class="login_btn">
+                    <input type="submit" onclick="login_submit()" name="cmdOK" value="登  录">
+                </div>
+            </div>
+        </div>
 
-					layer.msg('内容不能为空！', {
-						icon : 1
-					});
-					i = false;
-				}
-			})
+        <div class="">
+            <div class="user">
+                <a  class="forget" href="">忘记密码？</a>
+            </div>
+        </div>
 
-			if (i == true) {
-				//提交内容
-				$.ajax({
-					url : "${pageContext.request.contextPath}/loginsubmit",
-					async : false,
-					type : "post",
-					data : $("#form").serialize(),
-					dataType : "json",
-					success : function(data) {
-						alert(data);
 
-					}
-				});
-			}
+    </div>
 
-		}
-	</script>
+</form>
 </body>
+<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+    function login_submit() {
+        var url = "${pageContext.request.contextPath}/login_submit";
+        var username = $("#username").val();
+        var password = $("#password").val();
+        var param={username:username,password:password};//json方式键值对传到后台去
+        $.post(url,param,function(data){
+        });
+
+    }
+</script>
 </html>

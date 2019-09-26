@@ -6,8 +6,16 @@ public class Classes {
 	private String classes_no;
 	private int dep_id;
 	private Department department;
+	private Teacher_course teacher_course;
 	
 	
+	
+	public Teacher_course getTeacher_course() {
+		return teacher_course;
+	}
+	public void setTeacher_course(Teacher_course teacher_course) {
+		this.teacher_course = teacher_course;
+	}
 	public Department getDepartment() {
 		return department;
 	}

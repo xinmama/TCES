@@ -65,9 +65,7 @@
 		var i=true;
 		 $("input[type='text']").each(function () {
 	           if ($(this).val() == "") {
-	        	   layer.alert('内容不能为空！');
-
-   		    		layer.msg('内容不能为空！', {icon: 1});
+	        	   alert('内容不能为空！');
 	           		i=false;
 	           }
 	     });

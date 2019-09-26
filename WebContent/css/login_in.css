@@ -1,0 +1,85 @@
+*{
+    margin:0;
+    padding:0;
+}
+a{
+    text-decoration: none;
+    color:#ffffff;
+}
+body{
+    background-image: url("../images/background.jpg");
+}
+#box1{
+    width:450px;
+    height:470px;
+    background-color:#66112134;
+    margin:auto;
+    margin-top: 160px;
+    border-radius: 10px;
+    position: relative
+}
+.title{
+    width:450px;
+    height:40px;
+    color: #ffffff;
+    font-size: 2em;
+    margin-top: 30px;
+    float: left;
+    text-align:center;
+
+}
+.form_main{
+    width:450px;
+    height:320px;
+    float: left;
+    padding-top: 10px;
+}
+.user{
+    width:380px;
+    height:45px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+.user input{
+    height:44px;
+    width:317px;
+    border-radius: 0 5px 5px 0;
+    border:none;
+    padding-left: 10px;
+    outline: none;
+}
+.icon_user{
+    width:45px;
+    height:45px;
+    float: left;
+    background-color: gainsboro;
+    border-radius: 5px 0 0 5px;
+    border-right: 1px solid darkgray;
+
+}
+.icon_user img{
+    float: left;
+    margin-left: 6px;
+    margin-top: 6px;
+}
+.login_btn input{
+    width:370px;
+    height:45px;
+    border-radius: 5px;
+    background-color:rgba(217,82,78,1);
+    font-weight: bold;
+    font-size: 1em;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+}
+.login_btn input:hover{
+    background-color:rgba(201,48,44,1);
+}
+.forget{
+    float: right;
+}
+.forget:hover{
+    color:dodgerblue;
+}

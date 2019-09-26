@@ -52,7 +52,7 @@
             	<th lay-data="{type:'checkbox',fixed:'left'}"></th>
             	<th lay-data="{field:'yx', align:'center',width:60}">id</th>
             	<th lay-data="{field:'time',align:'center', minWidth:130}">学期名称</th>
-            	<th lay-data="{field:'www',align:'center',minWidth:130}">是否开启</th>           
+            	<th lay-data="{field:'www',align:'center',minWidth:130}">开启状态</th>           
             	<th lay-data="{field:'option',align:'center',width:200,fixed: 'right'}">操作</th>
         	</tr>
         </thead>
@@ -62,7 +62,10 @@
             	<td></td>
             	<td>${item.id}</td>
             	<td>${item.term_name}</td>
-            	<td>${item.is_open}</td>
+            	<td>
+            	<c:if test="${item.is_open==1}">开启</c:if>
+          		<c:if test="${item.is_open==0}">关闭</c:if>
+          		</td>
             	<td>
             		<div class="layui-inline">
 						<button class="layui-btn layui-btn-sm layui-btn-normal " data-id="1" onclick="update('${item.id}')"><i class="layui-icon"></i>修改</button>
@@ -93,7 +96,7 @@
            // offset: 'rb', //右下角弹出
            // time: 2000, //2秒后自动关闭
            anim: 5,//动画
-           content: ['class_update?id='+id, 'no'], //iframe的url，no代表不显示滚动条
+           content: ['term_update?id='+id, 'no'], //iframe的url，no代表不显示滚动条
        });
     }
 
@@ -101,13 +104,12 @@
 	//删除按钮
 	function del(id){
 		//询问框
-
-		layer.confirm('你确定要删除该信息吗？', {
+		layer.confirm('你确定要删除吗？', {
 		  btn: ['确定','取消'] //按钮
 		}, function(){
 			
 			$.ajax({
-				url:"${pageContext.request.contextPath}/delete_class?id="+id,
+				url:"${pageContext.request.contextPath}/delete_term?id="+id,
 				async:false,
 				type:"post",				
 				dataType:"json",

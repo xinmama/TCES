@@ -4,6 +4,47 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="ssm.dao.EvaluateDao">
+
+	<!-- 1.通过学生班级号，查询相应班级的课程名，任课老师 -->
+	<select id="selectCourseTeacherByNo" parameterType="String" resultMap="teacher_course">
+		select course.course_name,teacher.teacher_name 
+		from teacher_course,course,classes,teacher
+		where teacher_course.teacher_id=teacher.id
+		and teacher_course.course_id=course.id
+		and teacher_course.classes_id=classes.id
+		and classes.classes_no=#{classes.classes_no};
+	</select>
+	
+	<resultMap type="ssm.entity.Teacher_course" id="teacher_course">
+		<id property="id" column="id" />
+		<result property="teacher_id" column="teacher_id" />
+		<result property="classes_id" column="classes_id" />
+		<result property="course_id" column="course_id" />
+		<result property="term_id" column="term_id" />
+		<association property="teacher" javaType="ssm.entity.Teacher">
+			<id property="id" column="id" />
+			<result property="teacher_name" column="teacher_name" />
+		</association>
+		<association property="course" javaType="ssm.entity.Course">
+			<id property="id" column="id" />
+			<result property="course_name" column="course_name" />
+		</association>
+		<association property="department" javaType="ssm.entity.Department">
+			<id property="id" column="id" />
+			<result property="dep_name" column="dep_name" />
+		</association>
+	</resultMap>
+	
+	
+	<!-- 2.通过教师的部门号，查询改部门的课程名和相应任课教师名 -->
+	<select id="selectCourseTeacherByDepid" parameterType="int" resultMap="teacher_course">
+		select course.course_name,teacher.teacher_name 
+		from course,teacher,teacher_course,department
+		where teacher_course.course_id=course.id
+		and teacher_course.teacher_id=teacher.id
+		and department.id=teacher.dep_id
+		and department.id=#{department.id};
+	</select>
 	
 	<!-- 学生评价教师的信息插入 -->
 	<insert id="InsertSt_score" parameterType="int">

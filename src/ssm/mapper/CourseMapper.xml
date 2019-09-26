@@ -49,4 +49,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="deleteCourse" parameterType="int" >
 		delete  from course where id=#{id};
 	</delete>
+		
+	<!--8.关键字查询信息  -->
+	<select id="selectInformation" parameterType="String" resultMap="courses">
+		select  course.*,department.dep_name from course,department where course.dep_id=department.id 
+		and course_name like CONCAT('%',#{info},'%');
+	</select>
 </mapper>

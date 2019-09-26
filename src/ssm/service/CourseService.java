@@ -50,4 +50,9 @@ public class CourseService {
 	public int deleteCourse(int id) {
 		return courseDao.deleteCourse(id);
 	}
+	
+	//8.关键字查询
+	public List<Course> selectInformation(String info){
+		return courseDao.selectInformation(info);
+	}
 }

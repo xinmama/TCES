@@ -75,13 +75,13 @@
 </div>
 <script type="text/javascript">
 	 function update(){
-		 var  i=false;
+		 var  i=true;
 		 //判断输入框内容是否为空
 		 $("input[type='text']").each(function () {
 	           if ($(this).val() == "") {
 	               alert("内容不能为空！");
 	           }else{
-	        	   i=true;
+	        	   i=false;
 	           }
 	     });
 	     if(i==true){

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ssm.dao.TeacherInformationDao">
+	
+	<!-- 查看教师信息 -->
+	<select id="getTeacher" resultMap="teacher">
+		select teacher.*,department.dep_name from teacher,department
+		where teacher.dep_id=department.id
+	</select>
+	
+	<resultMap type="ssm.entity.Teacher" id="teacher">
+		<id property="id" column="id"/>
+		<result property="teacher_no" column="teacher_no"/>
+		<result property="teacher_name" column="teacher_name"/>
+		<result property="teacher_pwd" column="teacher_pwd"/>
+		<result property="sex" column="sex"/>
+		<result property="tel" column="tel"/>
+		<result property="time" column="time"/>
+		<result property="remark" column="remark"/>
+		<result property="is_manage" column="is_manage"/>
+		<association property="department" javaType="ssm.entity.Department">
+			<id property="id" column="id" />
+			<result property="dep_name" column="dep_name" />
+		</association>
+	</resultMap>
+	
+	<!-- 获取院系信息并显示 -->
+	<select id="getDepartment" resultType="ssm.entity.Department">
+		select * from department;
+	</select>
+	
+	<!-- 通过id查询1条教师信息 -->
+	<select id="selectTeacherById" parameterType="int" resultMap="teacher">
+		select teacher.*,department.dep_name from teacher,department
+		where teacher.dep_id=department.id and teacher.id=#{id}
+	</select>
+	
+	<!-- 查询添加教师信息是否存在 -->
+	<select id="selectTeacherByTeacherNo" parameterType="String" resultType="int">
+		select count(1) from teacher where teacher_no=#{teacher_no};
+	</select>
+	
+	<!-- 修改教师信息 -->
+	<update id="updateTeacherById" parameterType="ssm.entity.Teacher">
+		update teacher set teacher_name=#{teacher_name},teacher_pwd=#{teacher_pwd},sex=#{sex},tel=#{tel},dep_id=#{dep_id}
+		where id=#{id}
+	</update>
+
+</mapper>

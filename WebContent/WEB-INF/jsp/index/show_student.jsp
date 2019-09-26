@@ -63,9 +63,9 @@
 	    		<div class="head">
 	    			<i><img src="images/head.jpg" /></i><!-- 注释去间隔
 	    	     --><dl>
-	    				<dd><b>姓名：</b>欣妈妈</dd>
-	    				<dd><b>班级：</b>1690008</dd>
-	    				<dd><b>院系：</b>软件工程</dd>
+	    				<dd><b>姓名：</b>${student1.student_name}</dd>
+	    				<dd><b>班级：</b>${student1.getClasses().getClasses_no()}</dd>
+	    				<dd><b>院系：</b>${student1.getClasses().getDepartment().getDep_name()}</dd>
 	    				
 	    			</dl>
 	    		</div>
@@ -74,7 +74,7 @@
 	    				<li>
 	    					<h2>
 		    					<img src="images/sm_icon04.png">
-		    					<a>进入系统</a>
+		    					<a href="${pageContext.request.contextPath}/student_ml">进入系统</a>
 		    				</h2>
 	    				</li>					
 	    			</ul>

@@ -32,8 +32,8 @@
 	<div class="zy_weizhi bord_b">
 		<i class="fa fa-home fa-3x"></i>
 		<a>首页</a>
-		<a>评价指标管理</a>
-		<span>评价指标列表</span>
+		<a>评价选项</a>
+		<span>选项列表</span>
 	</div>
 	<!-- 筛选 --> 
 	<div class="shuaix">
@@ -46,7 +46,7 @@
 				<option value="小">小</option>    
 			</select>
 		</div>
-		<div class="center">统计：【大：20 中：30 小：60】</div>
+		<div class="center"></div>
 		<div class="right">
 			<input type="text" placeholder="请输入关键词查询">
 			<a href="#">查询</a>
@@ -58,8 +58,8 @@
 			<tr>
 				<th lay-data="{type:'checkbox',fixed:'left'}"></th>
 				<th lay-data="{field:'yx', align:'center',width:60}">id</th>
-				<th lay-data="{field:'time',align:'center', minWidth:130}">题目内容</th>
-				<th lay-data="{field:'time',align:'center', minWidth:130}">题目类别</th>
+				<th lay-data="{field:'time',align:'center', minWidth:130}">选项题目</th>
+				<th lay-data="{field:'time1',align:'center', minWidth:130}">选项类别</th>
 				<th lay-data="{field:'option',align:'center',width:260,fixed: 'right'}">操作</th>
 			</tr> 
 		</thead>
@@ -69,7 +69,14 @@
 				<td></td>
 				<td>${item.id}</td>
 				<td>${item.title_con}</td>
-				<td>${item.type}</td>
+				<td>
+					<c:if test="${item.type==0}">
+						学生
+					</c:if>
+					<c:if test="${item.type==1}">
+						教师
+					</c:if>
+				</td>
 				<td>		
 					<div class="layui-inline">
 						<button class="layui-btn layui-btn-sm layui-btn-normal " data-id="1" onclick="update('${item.id}')"><i class="layui-icon"></i>修改</button>
@@ -173,7 +180,7 @@
 				// offset: 'rb', //右下角弹出
 				// time: 2000, //2秒后自动关闭
 				anim: 5,//动画
-				content: ['department_add', 'no'], //iframe的url，no代表不显示滚动条 
+				content: ['standard_add', 'no'], //iframe的url，no代表不显示滚动条 
 				});
 				// 
 			break;

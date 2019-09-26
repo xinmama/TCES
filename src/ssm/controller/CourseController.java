@@ -25,6 +25,8 @@ public class CourseController {
 	public ModelAndView course_list() {
 		ModelAndView mView=new ModelAndView("course/course_list");
 		List<Course> courses=courseService.getCourse();
+		List<Department> depname=courseService.getDepartment();
+		mView.addObject("depname",depname);
 		mView.addObject("courses", courses);
 		return mView;
 	}
@@ -122,6 +124,16 @@ public class CourseController {
 			}
 		}
 		
+	
 		
+	//7.关键字查询信息
+	@RequestMapping("/select_info")
+	public ModelAndView select_info(String info) {
+		ModelAndView mView=new ModelAndView("course/course_list");
+		List<Course> course=courseService.selectInformation(info);
+		mView.addObject("course", course);
+		return mView;
+	}
+
 	
 }

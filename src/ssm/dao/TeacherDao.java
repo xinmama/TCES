@@ -23,7 +23,7 @@ public interface TeacherDao {
 	//查询添加教师是否存在
 	public int selectTeacherByTeacherNo(String teacher_no);
 	
-	//查询班级信息（通过id）
+	//查询教师信息（通过id）
 	public Teacher selectTeacherById(int id);
 	
 	//添加教师信息
