@@ -33,33 +33,27 @@
         <i class="fa fa-home fa-3x"></i>
         <a>首页</a>
         <a>评教管理</a>
-
     </div>
     <!-- 筛选 -->
-    <div class="shuaix">       
-        <div class="right">
-            <input type="text" name="getInfo" id="info" placeholder="请输入课程名查询">
-            <a href="#" onclick="selectInfo()">查询</a>
-        </div>
-    </div>
+
     <!-- 下面写内容 -->
     <table class="layui-table" lay-filter="mylist" lay-size="lg">
         <thead>
         	<tr>
             	<th lay-data="{type:'checkbox',fixed:'left'}"></th>
-            	<th lay-data="{field:'yx', align:'center',width:60}">id</th>
-            	<th lay-data="{field:'time',align:'center', minWidth:130}">课程名称</th>
-            	<th lay-data="{field:'www',align:'center',minWidth:130}">任课教师</th>           
+            	<th lay-data="{field:'yx', align:'center',width:60}">序号</th>
+            	<th lay-data="{field:'time',align:'center', minWidth:120}">课程名称</th>
+            	<th lay-data="{field:'www',align:'center',minWidth:120}">任课教师</th>           
             	<th lay-data="{field:'option',align:'center',width:200,fixed: 'right'}">操作</th>
         	</tr>
         </thead>
         <tbody>
-        <c:forEach items="${courses}" var="item">
+        <c:forEach items="${st_list}" var="item" varStatus="status">
         	<tr>
             	<td></td>
-            	<td>${item.id}</td>
-            	<td>${item.course_name}</td>
-            	<td>${item.department.dep_name}</td>
+            	<td>${status.index+1}</td>            	
+            	<td>${item.getCourse().getCourse_name()}</td>
+            	<td>${item.getTeacher().getTeacher_name()}</td>
             	<td>
             		<div class="layui-inline">
 						<button class="layui-btn layui-btn-sm layui-btn-normal " data-id="1" onclick="update('${item.id}')"><i class="layui-icon"></i>进入评教</button>						

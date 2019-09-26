@@ -59,7 +59,7 @@
 				<!-- 左侧导航区域（可配合layui已有的垂直导航） -->
 				<ul class="layui-nav layui-nav-tree"  lay-filter="test">
 					<li class="layui-nav-item layui-nav-itemed">
-						<a class="" href="javascript:;"><i class="fa fa-clipboard fa-fw"></i>在线评教</a>
+						<a class="" href="${pageContext.request.contextPath}/tt_evaluate_list" target="main_self_frame"><i class="fa fa-clipboard fa-fw"></i>在线评教</a>
 					</li>
 					<li class="layui-nav-item">
 						<a href="javascript:;"><i class="fa fa-shield fa-fw"></i>查看结果</a>
@@ -92,7 +92,7 @@
 				})
 			</script>
 			<!-- iframe -->
-			<iframe src="daily_mykh.html" name="main_self_frame" frameborder="0" class="layadmin-iframe" scrolling="yes"></iframe>
+			<iframe src="${pageContext.request.contextPath}/tt_evaluate_list" name="main_self_frame" frameborder="0" class="layadmin-iframe" scrolling="yes"></iframe>
 		</div>
 	  
 	</div>

@@ -11,7 +11,14 @@ public class Teacher_course {
 	private Classes classes;
 	private Course course;
 	private Term term;
+	private Department department;
 	
+	public Department getDepartment() {
+		return department;
+	}
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
 	public int getId() {
 		return id;
 	}
