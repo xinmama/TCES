@@ -60,8 +60,10 @@
         	<tr>
             	<th lay-data="{type:'checkbox',fixed:'left'}"></th>
             	<th lay-data="{field:'yx', align:'center',width:60}">id</th>
-            	<th lay-data="{field:'time',align:'center', minWidth:130}">班级</th>
-            	<th lay-data="{field:'www',align:'center',minWidth:130}">院系</th>           
+            
+            	<th lay-data="{field:'time',align:'center', minWidth:130}">班级</th>           	
+            	<th lay-data="{field:'www',align:'center',minWidth:130}">院系</th>   
+                  
             	<th lay-data="{field:'option',align:'center',width:200,fixed: 'right'}">操作</th>
         	</tr>
         </thead>
@@ -72,6 +74,8 @@
             	<td>${item.id}</td>
             	<td>${item.classes_no}</td>
             	<td>${item.department.dep_name}</td>
+            	
+            	
             	<td>
             		<div class="layui-inline">
 						<button class="layui-btn layui-btn-sm layui-btn-normal " data-id="1" onclick="update('${item.id}')"><i class="layui-icon"></i>修改</button>
