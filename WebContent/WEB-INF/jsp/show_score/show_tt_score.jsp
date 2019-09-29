@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="名榜,wangid">
-    <title>教师评教列表页面</title>
+    <title>学生评教查看结果页面</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
@@ -33,6 +33,7 @@
         <i class="fa fa-home fa-3x"></i>
         <a>首页</a>
         <a>评教管理</a>
+        <a>查看结果</a>
     </div>
     <!-- 筛选 -->
 
@@ -40,23 +41,25 @@
     <table class="layui-table" lay-filter="mylist" lay-size="lg">
         <thead>
         	<tr>
-            	
+            	<th lay-data="{type:'checkbox',fixed:'left'}"></th>
             	<th lay-data="{field:'yx', align:'center',width:60}">序号</th>
             	<th lay-data="{field:'time',align:'center', minWidth:120}">课程名称</th>
-            	<th lay-data="{field:'www',align:'center',minWidth:120}">任课教师1</th>           
+            	<th lay-data="{field:'www',align:'center',minWidth:120}">任课教师</th>   
+            	<th lay-data="{field:'ww',align:'center',minWidth:120}">评教分数</th>        
             	<th lay-data="{field:'option',align:'center',width:200,fixed: 'right'}">操作</th>
         	</tr>
         </thead>
         <tbody>
-        <c:forEach items="${tt_list}" var="item" varStatus="status">
+        <c:forEach items="${scores}" var="item" varStatus="status">
         	<tr>
-            	
+            	<td></td>
             	<td>${status.index+1}</td>            	
-            	<td>${item.getCourse().getCourse_name()}</td>
-            	<td>${item.getTeacher().getTeacher_name()}</td>
+            	<td>${item.getCourse_name()}</td>
+            	<td>${item.getTeacher2().getTeacher_name()}</td>
+            	<td>${item.tt_score}</td>
             	<td>
             		<div class="layui-inline">
-						<button class="layui-btn layui-btn-sm layui-btn-normal " data-id="1" onclick="tt_comein('${item.id}')"><i class="layui-icon"></i>进入评教</button>						
+						<button class="layui-btn layui-btn-sm layui-btn-normal " data-id="1" onclick=""><i class="layui-icon"></i>详情</button>						
 					</div>
             	</td>
 			</tr>
@@ -85,24 +88,6 @@ function selectInfo(){
 				}
 			}
 		});
-	
-}
-
-function tt_comein(id){
-	
-	layer.open({
-        type: 2,//层类型
-        title: "修改信息",//标题
-        closeBtn: 1, //不显示关闭按钮
-        shade: [0.3],//遮罩
-        skin: 'demo_class_color',//iframe皮肤
-        shadeClose:Boolean,//点击遮罩关闭
-        area: ['800px', '250px'],
-        // offset: 'rb', //右下角弹出
-        // time: 2000, //2秒后自动关闭
-        anim: 5,//动画
-        content: ['${pageContext.request.contextPath}/tt_comein?id='+id], //iframe的url，no代表不显示滚动条
-    });
 	
 }
 
@@ -252,6 +237,7 @@ function tt_comein(id){
         });
     });
 </script>
+
 
 
 </body>

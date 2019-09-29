@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ssm.dao.Show_scoreDao">
+
+	<!-- 学生评价信息查看 -->
+	<select id="selectSt_scoreById" parameterType="int" resultMap="st_score">	
+		select teacher_name,st_score,course_name 
+		from st_score,teacher
+		where st_score.teacher_id = teacher.id and student_id = #{id};
+	</select>	
+	<resultMap type="ssm.entity.St_score" id="st_score">
+		<id property="id" column="id"/>
+		<result property="student_id" column="student_id"/>
+		<result property="classes_id" column="classes_id"/>
+		<result property="teacher_id" column="teacher_id"/>
+		<result property="st_score" column="st_score"/>
+		<result property="course_name" column="course_name"/>
+		<association property="teacher" javaType="ssm.entity.Teacher">
+			<id property="id" column="id" />
+			<result property="teacher_name" column="teacher_name" />
+		</association>
+	</resultMap>
+	
+	<!-- 教师评价信息查看 -->
+	<select id="selectTt_scoreById" parameterType="int" resultMap="tt_score">	
+		select teacher_name,tt_score,course_name 
+		from tt_score,teacher
+		where tt_score.teacher2_id = teacher.id and teacher1_id = #{id};
+	</select>	
+	<resultMap type="ssm.entity.Tt_score" id="tt_score">
+		<id property="id" column="id"/>
+		<result property="teacher_id" column="teacher_id"/>
+		<result property="tt_score" column="tt_score"/>
+		<result property="course_name" column="course_name"/>
+		<association property="teacher2" javaType="ssm.entity.Teacher">
+			<id property="id" column="id" />
+			<result property="teacher_name" column="teacher_name" />
+		</association>
+	</resultMap>
+	
+</mapper>

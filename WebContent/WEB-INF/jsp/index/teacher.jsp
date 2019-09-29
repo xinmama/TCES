@@ -62,7 +62,7 @@
 						<a class="" href="${pageContext.request.contextPath}/tt_evaluate_list" target="main_self_frame"><i class="fa fa-clipboard fa-fw"></i>在线评教</a>
 					</li>
 					<li class="layui-nav-item">
-						<a href="javascript:;"><i class="fa fa-shield fa-fw"></i>查看结果</a>
+						<a href="${pageContext.request.contextPath}/show_tt_score" target="main_self_frame"><i class="fa fa-shield fa-fw"></i>查看结果</a>
 					</li>
 					<li class="layui-nav-item">				
 						<a  ><i class="fa fa-user fa-fw"></i>个人设置</a>
