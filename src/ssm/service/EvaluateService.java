@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ssm.dao.EvaluateDao;
+import ssm.entity.St_score;
 import ssm.entity.Teacher_course;
 
 @Service
@@ -40,5 +41,9 @@ public class EvaluateService {
 	//5.通过学生评教列表id，查询信息
 	public Teacher_course selectCourseTeacherByid(int id) {
 		return evaluateDao.selectCourseTeacherByid(id);
+	}
+	
+	public int insertSt_scoreInfo(St_score score) {
+		return evaluateDao.insertSt_scoreInfo(score);
 	}
 }

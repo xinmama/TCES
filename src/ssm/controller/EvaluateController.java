@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.alibaba.fastjson.JSONObject;
 
 import ssm.entity.ResultMsg;
+import ssm.entity.St_score;
 import ssm.entity.Student;
 import ssm.entity.Teacher;
 import ssm.entity.Teacher_course;
@@ -88,9 +89,16 @@ public class EvaluateController {
 			
 		//学生评价提交
 		@RequestMapping("/st_score_submit")
-		public ResultMsg st_score_submit(int score) {
+		@ResponseBody
+		public ResultMsg st_score_submit(int student_id,int classes_id,int teacher_id,float st_score,String course_name) {
 				
-			int st_scoreResult = evaluateService.InsertSt_score(score);
+			St_score score = new St_score();
+			score.setStudent_id(student_id);
+			score.setClasses_id(classes_id);
+			score.setTeacher_id(teacher_id);
+			score.setSt_score(st_score);
+			score.setCourse_name(course_name);
+			int st_scoreResult = evaluateService.insertSt_scoreInfo(score);
 			
 			if(st_scoreResult>0) {
 				return new ResultMsg(1, "评价成功！");

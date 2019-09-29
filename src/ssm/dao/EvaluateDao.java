@@ -2,6 +2,7 @@ package ssm.dao;
 
 import java.util.List;
 
+import ssm.entity.St_score;
 import ssm.entity.Teacher_course;
 
 public interface EvaluateDao {
@@ -18,4 +19,6 @@ public interface EvaluateDao {
 	
 	//5.通过学生评教列表id，查询信息
 	public Teacher_course selectCourseTeacherByid(int id);
+	
+	public int insertSt_scoreInfo(St_score score);
 }
