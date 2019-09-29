@@ -35,4 +35,8 @@ public class EvaluateService {
 		
 		return evaluateDao.InsertTt_score(score);
 	}
+	
+	public Teacher_course selectCourseTeacherAllById(int id) {
+		return evaluateDao.selectCourseTeacherAllById(id);
+	}
 }

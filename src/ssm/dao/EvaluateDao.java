@@ -15,4 +15,6 @@ public interface EvaluateDao {
 	public int InsertSt_score(int score);
 
 	public int InsertTt_score(int score);
+	
+	public Teacher_course selectCourseTeacherAllById(int id);
 }

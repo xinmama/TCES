@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 3.添加学期信息 -->
 	<insert id="addTerm" parameterType="ssm.entity.Term" >	
-		insert into term(term_name,is_open) values(#{term_name},#{is_open});
+		insert into term(term_name,is_open) values(#{term_name},0);
 	</insert>
 	
 	<!-- 4.查询學期信息，并展示  -->
@@ -33,5 +33,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="deleteTerm" parameterType="int">
 		delete from term where id=#{id};
 	</delete>
+	
+	<!-- 查询学期表全部信息 -->
+	<select id="selectTerms" resultType="ssm.entity.Term">
+		select * from term 
+	</select>
+	
+	<!-- 查询学期表是否存在启用的评价 -->
+	<select id="selectIsCurrAppraise" resultType="int">
+		select count(1) from term where is_open =1
+	</select>
+	
+	<!-- 查询学期表中该学期的启用状态 -->
+	<select id="selectIsCurrAppraiseById" parameterType="int" resultType="int">
+		select is_open from term where id = #{id}
+	</select>
+	
+	<!-- 更新学期表中该学期的启用状态 -->
+	<update id="updateIsCurrAppraise" parameterType="ssm.entity.Term">
+		update term set is_open = #{is_open} where id = #{id}
+	</update>
+	
 	
 </mapper>

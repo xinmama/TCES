@@ -39,7 +39,8 @@
         </tr>
         <tr>
             <td  class="class_no" >是否开启</td>
-            <td><input type="text" name="is_open" value="${term.is_open}"></td>
+            <td>
+            <input type="text" name="is_open" value=""></td>
         </tr>
 
         <tr class="tianjie_button">
@@ -52,6 +53,16 @@
     </form>
 </div>
 <script type="text/javascript">
+
+	$(function(){
+		if(${term.is_open}==1){
+			$("input[name=is_open]").attr("value","开启");
+		}else{
+			$("input[name=is_open]").attr("value","关闭");
+		}
+		
+	});
+
 	//修改班级信息
 	//先查询班级信息并展示
 	function update_commit(){

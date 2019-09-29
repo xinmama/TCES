@@ -43,4 +43,20 @@ public class TermService {
 	public int deleteTerm(int id) {
 		return termDao.deleteTerm(id);
 	}
+	
+	public List<Term> selectTerms() {
+		return termDao.selectTerms();
+	}
+	
+	public int selectIsCurrAppraise() {
+		return termDao.selectIsCurrAppraise();
+	}
+	
+	public int selectIsCurrAppraiseById(int id) {
+		return termDao.selectIsCurrAppraiseById(id);
+	}
+	
+	public int updateIsCurrAppraise(Term term) {
+		return termDao.updateIsCurrAppraise(term);
+	}
 }

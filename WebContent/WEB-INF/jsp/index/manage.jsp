@@ -61,22 +61,29 @@
 					<li class="layui-nav-item layui-nav-itemed">
 						<a class="" href="${pageContext.request.contextPath}/student_list" target="main_self_frame"><i class="fa fa-address-card fa-fw"></i>学生管理</a>
 					</li>
-					<li class="layui-nav-item layui-nav-itemed">
+					<li class="layui-nav-item">
 						<a class="" href="${pageContext.request.contextPath}/teacher_list" target="main_self_frame"><i class="fa fa-users fa-fw"></i>教师管理</a>
 					</li>
-					<li class="layui-nav-item layui-nav-itemed">
+					<li class="layui-nav-item">
 						<a class="" href="${pageContext.request.contextPath}/class_list" target="main_self_frame"><i class="fa fa-hourglass-half fa-fw"></i>班级管理</a>
 					</li>
-					<li class="layui-nav-item layui-nav-itemed">
+					<li class="layui-nav-item">
 						<a class="" href="${pageContext.request.contextPath}/department_list" target="main_self_frame"><i class="fa fa-sitemap fa-fw"></i>系别管理</a>
 					</li>
-					<li class="layui-nav-item layui-nav-itemed">
+					<li class="layui-nav-item">
 						<a class="" href="${pageContext.request.contextPath}/term_list" target="main_self_frame"><i class="fa fa-legal fa-fw"></i>学期管理</a>
+						<dl class="layui-nav-child">
+							<dd><a href="${pageContext.request.contextPath}/term_list" target="main_self_frame">学期设置</a></dd>
+							<dd><a href="${pageContext.request.contextPath}/isCurrAppraiseList" target="main_self_frame">学期开启</a></a>
+						</dl>
 					</li>
-					<li class="layui-nav-item layui-nav-itemed">
+					<li class="layui-nav-item">
+						<a href="${pageContext.request.contextPath}/teacher_course_list" target="main_self_frame"><i class="fa fa-address-book fa-fw"></i>授课管理</a>
+					</li>
+					<li class="layui-nav-item">
 						<a href="${pageContext.request.contextPath}/" target="main_self_frame"><i class="fa fa-area-chart fa-fw"></i>分数管理</a>
 					</li>
-					<li class="layui-nav-item layui-nav-itemed">
+					<li class="layui-nav-item">
 						<a href="javascript:;" target="main_self_frame"><i class="fa fa-file-text fa-fw"></i>评价管理</a>
 						<dl class="layui-nav-child">
 							<dd><a href="${pageContext.request.contextPath}/student_list" target="main_self_frame">评价指标管理</a></dd>
