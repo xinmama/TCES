@@ -26,7 +26,6 @@
 	<script src="layui/layui.js"></script>
 </head>
 
-
 <body style="background: #fff;">
 <div class="tianjia_xx">
 <form id="addclass">

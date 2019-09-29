@@ -39,7 +39,7 @@
             <form class="layui-form layui-form-pane" action="" id="CurrAppraise_form" method="post">
             <ul> 
                 <li style="height: 38px; overflow:initial;">
-                    <div class="left">评价学期设置：</div>
+                    <div class="left" style="width:180px;">评价学期设置：</div>
                     <div class="right"> 
                         <select name="id" lay-verify="">
 	                            <option value="">请选择要评价的学期</option>
@@ -51,14 +51,14 @@
                 </li>
                 
                 <li>
-                    <div class="left"> 状态：</div>
+                    <div class="left" style="width:180px;"> 状态：</div>
                     <div class="right">
                             <input type="radio" name="is_open" value="1" title="开启">
                             <input type="radio" name="is_open" value="0" title="关闭" checked>
                     </div>
                 </li>
                 <li>
-                    <div class="left"> &nbsp;</div>
+                    <div class="left" style="width:180px;"> &nbsp;</div>
                     <div class="right"> 
                         <button class="button_qr" onclick="CurrAppraise()">确定</button>
                     </div>

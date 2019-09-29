@@ -36,17 +36,7 @@
 		<span>学生列表</span>
 	</div>
 	<!-- 筛选 --> 
-	<div class="shuaix">
-		<div class="left">
-			<b>意向：</b>
-			<select>   
-				<option value="全部">全部</option>   
-				<option value="大">大</option>   
-				<option value="中">中</option>   
-				<option value="小">小</option>    
-			</select>
-		</div>
-		<div class="center">统计：【大：20 中：30 小：60】</div>
+	<div class="shuaix">				
 		<div class="right">
 			<input type="text" placeholder="请输入关键词查询">
 			<a href="#">查询</a>
@@ -83,16 +73,15 @@
 					</div>
 				</td>
 			</tr>
-			</c:forEach>
+		</c:forEach>
 		</tbody>  
 	</table>
 </div> 
+
 <script type="text/javascript">
 
-
-//修改按钮
-function update(id){
-
+	//1.修改按钮
+	function update(id){
    layer.open({
        type: 2,//层类型
        title: "修改学生信息",//标题
@@ -101,8 +90,6 @@ function update(id){
        skin: 'demo_class_color',//iframe皮肤
        shadeClose:Boolean,//点击遮罩关闭
        area: ['800px', '500px'],
-       // offset: 'rb', //右下角弹出
-       // time: 2000, //2秒后自动关闭
        anim: 5,//动画
        content: ['student_update?id='+id, 'no'], //iframe的url，no代表不显示滚动条
    });
@@ -124,12 +111,10 @@ function del(id){
   			success:function(data){
       		    if(data.flag==1){
   					alert(data.content);	
-  					//关闭当前遮罩层
-  				  	var index = parent.layer.getFrameIndex(window.name);  
-  			   	 	parent.layer.close(index);//关闭当前页  
-  			      
-  			   		parent.location.reload();
-
+  					//关闭当前遮罩层 			   	 	
+  			   		var index = layer.getFrameIndex(window.name);  
+    		    	layer.close(index);//关闭当前页  
+		   	 		location.reload();//刷新父级页面
   				}else{
   					alert(data.content);
   				}

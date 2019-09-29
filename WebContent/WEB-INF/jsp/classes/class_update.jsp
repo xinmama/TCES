@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +26,6 @@
     <script src="layui/layui.js"></script>
 </head>
 
-
 <body style="background: #fff;">
 <div class="tianjia_xx">
 <form id="updateclass">
@@ -38,11 +37,9 @@
             <td>
                 <div class="layui-input-inline">
                     <select name="dep_id">                      		
-                    		<c:forEach items="${department}" var="item">
-                    		
-                    				<option value="${item.id}" ${item.dep_name==classes.department.dep_name?'selected':''}>${item.dep_name}</option>
-                    		
-                        	</c:forEach>                      
+                    	<c:forEach items="${department}" var="item">                   		
+                    		<option value="${item.id}" ${item.dep_name==classes.department.dep_name?'selected':''}>${item.dep_name}</option>                   		
+                        </c:forEach>                      
                     </select>
                 </div>
             </td>
@@ -51,7 +48,6 @@
             <td  class="class_no">班级</td>
             <td><input type="text" readonly="readonly" name="classes_no" value="${classes.classes_no}"></td>
         </tr>
-
         <tr class="tianjie_button">
             <td colspan="2" style="border-right:1px solid #e6e6e6;">
                 <button type="button" onclick="update_commit()">确定修改</button>

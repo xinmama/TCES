@@ -47,9 +47,9 @@ public class StandardController {
 		}else {
 			int j=standardService.addStandard(standard);
 			if(j>0) {
-				return new ResultMsg(1,"添加教师成功！");
+				return new ResultMsg(1,"添加评价指标成功！");
 			}else {
-				return new ResultMsg(0,"添加教师失败！");
+				return new ResultMsg(0,"添加评价指标失败！");
 			}
 		}
 	}
@@ -69,7 +69,7 @@ public class StandardController {
 	public ResultMsg update_standard(Standard standard) {
 		int i=standardService.selectStandardById(standard.getTitle_con());
 		if(i==1) {
-			return new ResultMsg(-1,"该评价指标存在！");
+			return new ResultMsg(-1,"该评价指标已存在！");
 		}else {
 			int j=standardService.updateStandardById(standard);
 			if(j>0) {
@@ -94,14 +94,5 @@ public class StandardController {
 	}
 	
 }
-
-
-
-
-
-
-
-
-
 
 

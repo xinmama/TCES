@@ -38,12 +38,11 @@
 	<!-- 筛选 --> 
 	<div class="shuaix">
 		<div class="left">
-			<b>意向：</b>
+			<b>指标类别：</b>
 			<select>   
-				<option value="全部">全部</option>   
-				<option value="大">大</option>   
-				<option value="中">中</option>   
-				<option value="小">小</option>    
+				<option value="全部">学生——教师</option>   
+				<option value="大">教师——教师</option>   
+				  
 			</select>
 		</div>
 		<div class="center"></div>
@@ -58,8 +57,8 @@
 			<tr>
 				<th lay-data="{type:'checkbox',fixed:'left'}"></th>
 				<th lay-data="{field:'yx', align:'center',width:60}">id</th>
-				<th lay-data="{field:'time',align:'center', minWidth:130}">选项题目</th>
-				<th lay-data="{field:'time1',align:'center', minWidth:130}">选项类别</th>
+				<th lay-data="{field:'time',align:'center', minWidth:130}">指标内容</th>
+				<th lay-data="{field:'time1',align:'center', minWidth:130}">指标类别</th>
 				<th lay-data="{field:'option',align:'center',width:260,fixed: 'right'}">操作</th>
 			</tr> 
 		</thead>
@@ -70,12 +69,8 @@
 				<td>${item.id}</td>
 				<td>${item.title_con}</td>
 				<td>
-					<c:if test="${item.type==0}">
-						学生
-					</c:if>
-					<c:if test="${item.type==1}">
-						教师
-					</c:if>
+					<c:if test="${item.type==0}">学生</c:if>
+					<c:if test="${item.type==1}">教师</c:if>
 				</td>
 				<td>		
 					<div class="layui-inline">
@@ -97,7 +92,7 @@
 			shade: [0.3],//遮罩
 			skin: 'demo_class_color',//iframe皮肤
 			shadeClose:Boolean,//点击遮罩关闭
-			area: ['800px', '250px'],
+			area: ['650px', '300px'],
 			// offset: 'rb', //右下角弹出
 			// time: 2000, //2秒后自动关闭
 			anim: 5,//动画
@@ -121,9 +116,10 @@
       				
 	      		     if(data.flag==1){
 	      				alert(data.content);
-	      				var index = parent.layer.getFrameIndex(window.name);  
-	        		    parent.layer.close(index);//关闭当前页  
-	    		   	 	parent.location.reload();//刷新父级页面
+	      				var index = layer.getFrameIndex(window.name);  
+	        		    layer.close(index);//关闭当前页  
+	    		   	 	location.reload();//刷新父级页面
+
 	      			}else{
 		      			alert(data.content);
 		      		}
@@ -176,7 +172,7 @@
 				shade: [0.3],//遮罩
 				skin: 'demo_class_color',//iframe皮肤
 				shadeClose:Boolean,//点击遮罩关闭
-				area: ['800px', '250px'],
+				area: ['650px', '300px'],
 				// offset: 'rb', //右下角弹出
 				// time: 2000, //2秒后自动关闭
 				anim: 5,//动画

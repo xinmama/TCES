@@ -26,26 +26,26 @@
 	<script src="layui/layui.js"></script>
 </head>
 
-
 <body style="background: #fff;">
 <div class="tianjia_xx">
 	<form method="post" id="form">
 	    <table class="if_tianjiatext layui-table" lay-size="lg"> 
-	    <tbody>
-	    	<input type="hidden" name="id" value="${department.id}">
-	        <tr>
-	            <td  class="td_1">院系名称</td> 
-	            <td><input type="text" name="dep_name" value="${department.dep_name}"></td>
-	        </tr>
-	        <tr class="tianjie_button">
-	            <td colspan="2" style="border-right:1px solid #e6e6e6;">
-	                <button onclick="update()">确定修改</button>
-	            </td>  
-	        </tr>
-	    </tbody>
+		    <tbody>
+		    	<input type="hidden" name="id" value="${department.id}">
+		        <tr>
+		            <td class="td_1">院系名称</td> 
+		            <td><input type="text" name="dep_name" value="${department.dep_name}"></td>
+		        </tr>
+		        <tr class="tianjie_button">
+		            <td colspan="2" style="border-right:1px solid #e6e6e6;">
+		                <button onclick="update()">确定修改</button>
+		            </td>  
+		        </tr>
+		    </tbody>
 	    </table>
     </form>
 </div>
+
 <script type="text/javascript">
 	 function update(){
 		 //判断输入框内容是否为空

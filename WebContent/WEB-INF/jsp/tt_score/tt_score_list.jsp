@@ -34,11 +34,10 @@
         <i class="fa fa-home fa-3x"></i>
         <a>首页</a>
         <a>分数管理</a>
-
+        <a>同行教师评教分数</a>
     </div>
     <!-- 筛选 -->
     <div class="shuaix">
-    
         <div class="left">
             <b>教师：</b>
             <select>
@@ -77,47 +76,22 @@
             	<td>${item.teacher1.teacher_name}</td>            	
             	<td>${item.teacher2.teacher_name}</td>
             	<td>${item.course_name}</td>
-            	<td>${item.tt_score}</td>
-            	                      	
+            	<td>${item.tt_score}</td>          	                      	
             	<td>
             		<div class="layui-inline">
-						<button class="layui-btn layui-btn-sm layui-btn-normal " data-id="1" onclick="update('${item.id}')"><i class="layui-icon"></i>修改</button>
 						<button class="layui-btn layui-btn-sm layui-btn-danger del-btn" data-id="1" onclick="del('${item.id}')"><i class="layui-icon"></i>删除</button>
 					</div>
             	</td>
-			</tr>
-			
-       		
+			</tr>	     		
 		</c:forEach>
         </tbody>
-    </table>
-    
+    </table>   
 </div>
 <script type="text/javascript">
 
-	//修改按钮
-   /*function update(id){
-
-	   layer.open({
-           type: 2,//层类型
-           title: "修改信息",//标题
-           closeBtn: 1, //不显示关闭按钮
-           shade: [0.3],//遮罩
-           skin: 'demo_class_color',//iframe皮肤
-           shadeClose:Boolean,//点击遮罩关闭
-           area: ['800px', '250px'],
-           // offset: 'rb', //右下角弹出
-           // time: 2000, //2秒后自动关闭
-           anim: 5,//动画
-           content: ['class_update?id='+id, 'no'], //iframe的url，no代表不显示滚动条
-       });
-    }
-
-	*/
 	//删除按钮
 	function del(id){
 		//询问框
-
 		layer.confirm('你确定要删除该信息吗？', {
 		  btn: ['确定','取消'] //按钮
 		}, function(){
@@ -131,24 +105,16 @@
 	      		    if(data.flag==1){
       					alert(data.content);	
       					//关闭当前遮罩层
-      				  	var index = parent.layer.getFrameIndex(window.name);  
-      			   	 	parent.layer.close(index);//关闭当前页  
-      			        //location.reload();
-      			   		parent.location.reload();
-
+      					var index = layer.getFrameIndex(window.name);  
+	        		    layer.close(index);//关闭当前页  
+	    		   	 	location.reload();//刷新父级页面
       				}else{
       					alert(data.content);
       				}
       			}
-      		});
-		  
+      		});	  
 		});
 	}
-
-	
-	
-	
-	
 
     //静态表格
     layui.use('table',function(){

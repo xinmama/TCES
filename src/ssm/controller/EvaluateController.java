@@ -22,6 +22,7 @@ import ssm.entity.St_score;
 import ssm.entity.Student;
 import ssm.entity.Teacher;
 import ssm.entity.Teacher_course;
+import ssm.entity.Term;
 import ssm.service.EvaluateService;
 import ssm.service.TermService;
 
@@ -30,6 +31,7 @@ public class EvaluateController {
 
 	@Autowired
 	private EvaluateService evaluateService;
+	private TermService termService;
 	
 	//1.访问学生评教列表页面
 	@RequestMapping("/st_evaluate_list")
@@ -75,14 +77,11 @@ public class EvaluateController {
 	
 		//访问学生评价页面
 		@RequestMapping("/st_score_evaluate")
-		public ModelAndView st_score(int id){
-			System.out.println("id"+id);
-			Teacher_course teacher_course = evaluateService.selectCourseTeacherAllById(id);
-
+		public ModelAndView st_score(int id){						
 			ModelAndView mView= new ModelAndView("evaluate/st_score");
-			System.out.println(1);
+			Teacher_course teacher_course = evaluateService.selectCourseTeacherAllById(id);			
 			mView.addObject("teacher_course", teacher_course);
-			System.out.println(2);
+			
 			return mView;		
 		}
 		
@@ -132,7 +131,10 @@ public class EvaluateController {
 		ModelAndView mView=new ModelAndView("evaluate/st_score");
 		System.out.println(id);
 		double tmp = Double.parseDouble(id);
+		
 		Teacher_course teacher_course=evaluateService.selectCourseTeacherByid((int)tmp);
+		
+		
 		
 		System.out.println("列表id:"+teacher_course.getId());
 		

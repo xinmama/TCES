@@ -54,17 +54,17 @@
 		</thead>
 		<tbody>
 			<c:forEach items="${departments}" var="item">
-			<tr>
-				<td></td>
-				<td>${item.id}</td>
-				<td>${item.dep_name}</td>
-				<td>		
-					<div class="layui-inline">
-						<button class="layui-btn layui-btn-sm layui-btn-normal " data-id="1" onclick="update('${item.id}')"><i class="layui-icon"></i>修改</button>
-						<button class="layui-btn layui-btn-sm layui-btn-danger del-btn" data-id="1" onclick="del('${item.id}')"><i class="layui-icon"></i>删除</button>
-					</div>
-				</td>
-			</tr>
+				<tr>
+					<td></td>
+					<td>${item.id}</td>
+					<td>${item.dep_name}</td>
+					<td>		
+						<div class="layui-inline">
+							<button class="layui-btn layui-btn-sm layui-btn-normal " data-id="1" onclick="update('${item.id}')"><i class="layui-icon"></i>修改</button>
+							<button class="layui-btn layui-btn-sm layui-btn-danger del-btn" data-id="1" onclick="del('${item.id}')"><i class="layui-icon"></i>删除</button>
+						</div>
+					</td>
+				</tr>
 			</c:forEach>
 		</tbody>  
 	</table>
@@ -78,7 +78,7 @@
 			shade: [0.3],//遮罩
 			skin: 'demo_class_color',//iframe皮肤
 			shadeClose:Boolean,//点击遮罩关闭
-			area: ['800px', '250px'],
+			area: ['650px', '400px'],
 			// offset: 'rb', //右下角弹出
 			// time: 2000, //2秒后自动关闭
 			anim: 5,//动画
@@ -157,7 +157,7 @@
 				shade: [0.3],//遮罩
 				skin: 'demo_class_color',//iframe皮肤
 				shadeClose:Boolean,//点击遮罩关闭
-				area: ['800px', '250px'],
+				area: ['650px', '400px'],
 				// offset: 'rb', //右下角弹出
 				// time: 2000, //2秒后自动关闭
 				anim: 5,//动画

@@ -101,6 +101,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		and teacher_course.course_id=course.id and teacher_course.term_id=term.id
 		and teacher_course.id=#{id};
 	</select>
+	
 	<!-- 5.通过学生评教列表id，查询信息 -->
 	<select id="selectCourseTeacherByid" parameterType="int" resultMap="teacher_course">
 		select teacher_course.*,course.course_name,teacher.teacher_name 

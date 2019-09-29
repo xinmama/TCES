@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-            <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,17 +36,7 @@
         <span>教师列表</span>
     </div>
     <!-- 筛选 -->
-    <div class="shuaix">
-        <div class="left">
-            <b>意向：</b>
-            <select>
-                <option value="全部">全部</option>
-                <option value="大">大</option>
-                <option value="中">中</option>
-                <option value="小">小</option>
-            </select>
-        </div>
-        <div class="center">统计：【大：20 中：30 小：60】</div>
+    <div class="shuaix">      
         <div class="right">
             <input type="text" placeholder="请输入关键词查询">
             <a href="#">查询</a>
@@ -69,26 +59,27 @@
         </thead>
         <tbody>
         	<c:forEach items="${teachers}" var="item">
-			<tr>
-				<td></td>
-				<td>${item.id}</td>
-				<td>${item.teacher_no}</td>
-				<td>${item.teacher_name}</td>
-				<td>${item.teacher_pwd}</td>
-				<td>${item.sex}</td>
-				<td>${item.tel}</td>
-				<td>${item.department.dep_name}</td>
-				<td>		
-					<div class="layui-inline">
-						<button class="layui-btn layui-btn-sm layui-btn-normal " data-id="1" onclick="update('${item.id}')"><i class="layui-icon"></i>修改</button>
-						<button class="layui-btn layui-btn-sm layui-btn-danger del-btn" data-id="1" onclick="del('${item.id}')"><i class="layui-icon"></i>删除</button>
-					</div>
-				</td>
-			</tr>
+				<tr>
+					<td></td>
+					<td>${item.id}</td>
+					<td>${item.teacher_no}</td>
+					<td>${item.teacher_name}</td>
+					<td>${item.teacher_pwd}</td>
+					<td>${item.sex}</td>
+					<td>${item.tel}</td>
+					<td>${item.department.dep_name}</td>
+					<td>		
+						<div class="layui-inline">
+							<button class="layui-btn layui-btn-sm layui-btn-normal " data-id="1" onclick="update('${item.id}')"><i class="layui-icon"></i>修改</button>
+							<button class="layui-btn layui-btn-sm layui-btn-danger del-btn" data-id="1" onclick="del('${item.id}')"><i class="layui-icon"></i>删除</button>
+						</div>
+					</td>
+				</tr>
 			</c:forEach>
         </tbody>
     </table>
 </div>
+
 <script type="text/javascript">
 	function update(id){
 		layer.open({
@@ -119,9 +110,9 @@
       			success:function(data){
 	      		     if(data.flag==1){
 	      				alert(data.content);
-	      				var index = parent.layer.getFrameIndex(window.name);  
-	        		    parent.layer.close(index);//关闭当前页  
-	    		   	 	parent.location.reload();//刷新父级页面
+	      				var index = layer.getFrameIndex(window.name);  
+	    		    	layer.close(index);//关闭当前页  
+			   	 		location.reload();//刷新父级页面
 	      			}else{
 		      			alert(data.content);
 		      		}

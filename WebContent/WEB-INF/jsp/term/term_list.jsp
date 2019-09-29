@@ -72,19 +72,15 @@
 						<button class="layui-btn layui-btn-sm layui-btn-danger del-btn" data-id="1" onclick="del('${item.id}')"><i class="layui-icon"></i>删除</button>
 					</div>
             	</td>
-			</tr>
-			
-       		
+			</tr>      		
 		</c:forEach>
         </tbody>
     </table>
     
 </div>
 <script type="text/javascript">
-
-	//修改按钮
+	//1.修改按钮
    function update(id){
-
 	   layer.open({
            type: 2,//层类型
            title: "修改信息",//标题
@@ -117,11 +113,9 @@
 	      		    if(data.flag==1){
       					alert(data.content);	
       					//关闭当前遮罩层
-      				  	var index = parent.layer.getFrameIndex(window.name);  
-      			   	 	parent.layer.close(index);//关闭当前页  
-      			      
-      			   		parent.location.reload();
-
+      					var index = layer.getFrameIndex(window.name);  
+	        		    layer.close(index);//关闭当前页  
+	    		   	 	location.reload();//刷新父级页面
       				}else{
       					alert(data.content);
       				}

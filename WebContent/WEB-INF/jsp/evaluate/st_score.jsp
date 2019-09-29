@@ -26,18 +26,13 @@
 
 <body>
     <div class="wangid_conbox">
-        <!-- 当前位置 -->
-        <div class="zy_weizhi bord_b">
-            <i class="fa fa-home fa-3x"></i>
-            <a>首页</a>
-            <span>评价</span>
-        </div>
+
         <!-- 内容 -->    
         <div class="layui-row layui-col-space10">
 		     <div class="layui-col-md12">
 		    	<div class="layui-row grid-demo grid-demo-bg1">
 		      		<div class="layui-col-md12 " style="text-align:center;font-size:25px;height:90px;line-height:90px;margin-top:15px;">
-		        		<h3>学期：${teacher_course.term.term_name}</h3>
+		        		<h3>学期：2018-2019第一学期</h3>
 		      		</div>
 		        		<div class="layui-col-md6" style="text-align:right;padding-right:50px;font-size:20px;height:50px;line-height:50px;">
 		        		课程：<span id="course_name1">${teacher_course.course.course_name }</span>
@@ -50,32 +45,44 @@
 		</div>
 		
 		<fieldset class="layui-elem-field layui-field-title"> 
-   			<legend>概念的讲解</legend>
+   			<legend>1.语言表达清楚、准确、生动。</legend>
 		</fieldset>
 		<div class="test1" style="padding-left:30px"></div>
 		<input id="number0" type="hidden" name="number" value="0" >
 		
 		<fieldset class="layui-elem-field layui-field-title"> 
-   			<legend>重点和难点</legend>
+   			<legend>2.用标准的普通话授课。</legend>
 		</fieldset>
 		<div class="test1" style="padding-left:30px"></div>
 		<input id="number1" type="hidden" name="number" value="0" >
 		
 		<fieldset class="layui-elem-field layui-field-title"> 
-   			<legend>逻辑性和条理性</legend>
+   			<legend>3.讲授知识准确系统，突出重点，说理充分。</legend>
 		</fieldset>
 		<div class="test1" style="padding-left:30px"></div>
 		<input id="number2" type="hidden" name="number" value="0" >
 		
 		<fieldset class="layui-elem-field layui-field-title"> 
-   			<legend>趣味性和生动性</legend>
+   			<legend>4.因材施教，能激发学生兴趣，注意学生个性发展。</legend>
 		</fieldset>
 		<div class="test1" style="padding-left:30px"></div>
 		<input id="number3" type="hidden" name="number" value="0" >
 		
+		<fieldset class="layui-elem-field layui-field-title"> 
+   			<legend>5.遵守教学纪律，不迟到，不早退，上课时不打电话。</legend>
+		</fieldset>
+		<div class="test1" style="padding-left:30px"></div>
+		<input id="number3" type="hidden" name="number" value="0" >
+		
+		<fieldset class="layui-elem-field layui-field-title"> 
+   			<legend>
+			</legend>
+		</fieldset>
+		
 		<div class="layui-row layui-col-space10">
 			<div class="layui-col-md12">
-				<button type="button" class="layui-btn layui-btn-lg" onclick="submit()">提交</button>
+				<button type="button" class="layui-btn layui-btn-lg" onclick="submit()"style="width:160px;margin-left:100px;">提交</button>
+				<button type="button" class="layui-btn layui-btn-lg" onclick="submit()"style="width:160px;margin-left:100px;">重置</button>
 			</div>
 		</div>
 <script src="layui/layui.js" charset="utf-8"></script>

@@ -81,12 +81,16 @@
 						<a href="${pageContext.request.contextPath}/teacher_course_list" target="main_self_frame"><i class="fa fa-address-book fa-fw"></i>授课管理</a>
 					</li>
 					<li class="layui-nav-item">
-						<a href="${pageContext.request.contextPath}/" target="main_self_frame"><i class="fa fa-area-chart fa-fw"></i>分数管理</a>
+						<a  target="main_self_frame"><i class="fa fa-area-chart fa-fw"></i>分数管理</a>
+						<dl class="layui-nav-child">
+							<dd><a href="${pageContext.request.contextPath}/st_score" target="main_self_frame">学生评教分数</a></dd>
+							<dd><a href="${pageContext.request.contextPath}/Tt_score" target="main_self_frame">同行教师评教分数</a></a>
+						</dl>
 					</li>
 					<li class="layui-nav-item">
 						<a href="javascript:;" target="main_self_frame"><i class="fa fa-file-text fa-fw"></i>评价管理</a>
 						<dl class="layui-nav-child">
-							<dd><a href="${pageContext.request.contextPath}/student_list" target="main_self_frame">评价指标管理</a></dd>
+							<dd><a href="${pageContext.request.contextPath}/standart_list" target="main_self_frame">评价指标管理</a></dd>
 							<dd><a href="${pageContext.request.contextPath}/teacher_list" target="main_self_frame">评价选项管理</a></a>
 						</dl>
 					</li>

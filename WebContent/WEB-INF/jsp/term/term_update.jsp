@@ -26,7 +26,6 @@
     <script src="layui/layui.js"></script>
 </head>
 
-
 <body style="background: #fff;">
 <div class="tianjia_xx">
 <form id="updateterm">
@@ -42,7 +41,6 @@
             <td>
             <input type="text" name="is_open" value=""></td>
         </tr>
-
         <tr class="tianjie_button">
             <td colspan="2" style="border-right:1px solid #e6e6e6;">
                 <button type="button" onclick="update_commit()">确定修改</button>
@@ -52,6 +50,7 @@
     </table>
     </form>
 </div>
+
 <script type="text/javascript">
 
 	$(function(){

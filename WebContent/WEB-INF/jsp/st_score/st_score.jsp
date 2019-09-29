@@ -33,20 +33,20 @@
 		<i class="fa fa-home fa-3x"></i>
 		<a>首页</a>
 		<a>教师分数管理</a>
-		<span>分数列表</span>
+		<a>学生评教分数</a>
 	</div>
 	<!-- 筛选 --> 
 	<div class="shuaix">
 		<div class="left">
-			<b>意向：</b>
+			<b>班级：</b>
 			<select>   
-				<option value="全部">全部</option>   
+				<option value="全部">1690008</option>   
 				<option value="大">大</option>   
 				<option value="中">中</option>   
 				<option value="小">小</option>    
 			</select>
 		</div>
-		
+		<div class="center"></div>
 		<div class="right">
 			<input type="text" placeholder="请输入关键词查询">
 			<a href="#">查询</a>
@@ -106,11 +106,9 @@ function del(id){
       		    if(data.flag==1){
   					alert(data.content);	
   					//关闭当前遮罩层
-  				  	var index = parent.layer.getFrameIndex(window.name);  
-  			   	 	parent.layer.close(index);//关闭当前页  
-  			      
-  			   		parent.location.reload();
-
+  					var index = layer.getFrameIndex(window.name);  
+        		    layer.close(index);//关闭当前页  
+    		   	 	location.reload();//刷新父级页面
   				}else{
   					alert(data.content);
   				}

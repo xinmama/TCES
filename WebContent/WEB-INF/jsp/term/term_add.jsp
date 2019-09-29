@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,22 +26,19 @@
 	<script src="layui/layui.js"></script>
 </head>
 
-
 <body style="background: #fff;">
 <div class="tianjia_xx">
 <form id="addterm">
     <table class="if_tianjiatext layui-table" lay-size="lg"> 
     <tbody>
-
         <tr>
             <td  class="class_no" >学期名称</td>
             <td><input type="text" name="term_name" placeholder="请输入学期名称"></td>
         </tr>
         <tr>
             <td  class="class_no" >是否开启</td>
-            <td><input type="text" name="is_open" placeholder="否" value="否" readonly></td>
+            <td><input type="text" name="is_open" placeholder="否"  ></td>
         </tr>
-
         <tr class="tianjie_button" >
             <td colspan="2" style="border-right:1px solid #e6e6e6;">
                 <button type="button" onclick="addccc()">确定添加</button>

@@ -37,17 +37,7 @@
 
     </div>
     <!-- 筛选 -->
-    <div class="shuaix">
-        <div class="left">
-            <b>院系：</b>
-            <select>
-                <option value="软件学院">软件学院</option>
-                <option value="计算机学院">计算机学院</option>
-                <option value="管理学院">管理学院</option>
-                <option value="土木学院">土木学院</option>
-            </select>
-        </div>
-        <div class="center"></div>
+    <div class="shuaix">       
         <div class="right">
             <input type="text" placeholder="请输入关键词查询">
             <a href="#">查询</a>
@@ -85,13 +75,11 @@
 		</c:forEach>
         </tbody>
     </table>
-    
 </div>
-<script type="text/javascript">
 
-	//修改按钮
-   function update(id){
-		
+<script type="text/javascript">
+	//1.修改按钮
+   function update(id){	
 	   layer.open({
            type: 2,//层类型
            title: "修改信息",//标题
@@ -123,11 +111,9 @@
 	      		    if(data.flag==1){
       					alert(data.content);	
       					//关闭当前遮罩层
-      				  	var index = parent.layer.getFrameIndex(window.name);  
-      			   	 	parent.layer.close(index);//关闭当前页  
-      			        //location.reload();
-      			   		parent.location.reload();
-
+      					var index = layer.getFrameIndex(window.name);  
+	        		    layer.close(index);//关闭当前页  
+	    		   	 	location.reload();//刷新父级页面
       				}else{
       					alert(data.content);
       				}
@@ -137,9 +123,6 @@
 		});
 	}
 	
-	
-	
-
     //静态表格
     layui.use('table',function(){
         var table = layui.table;

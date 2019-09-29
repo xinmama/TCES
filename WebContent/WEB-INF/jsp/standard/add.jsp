@@ -32,12 +32,12 @@
 	    <table class="if_tianjiatext layui-table" lay-size="lg"> 
 	    <tbody>
 	        <tr>
-	            <td  class="td_1">题目内容</td> 
-	            <td><input type="text" placeholder="请输入题目内容" name="title_con"></td>
+	            <td  class="td_1">指标内容</td> 
+	            <td><input type="text" placeholder="请输入指标内容" name="title_con"></td>
 	        </tr>
 	        <tr>
-	            <td  class="td_1">题目类别</td> 
-	            <td><input type="text" placeholder="请输入题目类别" name="type"></td>
+	            <td  class="td_1">指标类别</td> 
+	            <td><input type="text" placeholder="请输入指标类别   0：学生—教师  1：教师—教师" name="type"></td>
 	        </tr>
 	        
 	        <tr class="tianjie_button">
@@ -57,8 +57,7 @@
 	           if ($(this).val() == "") {
 	        	   alert('内容不能为空！');
 	           		i=false;
-	           }
-	         
+	           }	         
 	     })
 	     
 	     if(i==true){
