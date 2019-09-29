@@ -37,7 +37,7 @@
             <td class="td_1">学期</td>
             <td>
                 <div class="layui-input-inline">
-                    <select name="dep_id">                      		
+                    <select name="term_id">                      		
                     		<c:forEach items="${term}" var="item">
                     		
                     				<option value="${item.id}" ${item.id==teacher_course.term_id?'selected':''}>${item.term_name}</option>
@@ -82,7 +82,7 @@
                     <select name="course_id">                      		
                     		<c:forEach items="${course}" var="item">
                     		
-                    				<option value="${item.id}" ${item.dep_name==teacher_course.course_id?'selected':''}>${item.course_name}</option>
+                    				<option value="${item.id}" ${item.id==teacher_course.course_id?'selected':''}>${item.course_name}</option>
                     		
                         	</c:forEach>                      
                     </select>
@@ -128,7 +128,6 @@
 	      			   	 	parent.layer.close(index);//关闭当前页  
 	      			        //location.reload();
 	      			   		parent.location.reload();
-	      			   	parent.location.reload();
 
 	      				}else{
 	      					alert(data.content);

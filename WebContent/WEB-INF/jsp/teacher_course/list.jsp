@@ -91,7 +91,7 @@
 
 	//修改按钮
    function update(id){
-
+		
 	   layer.open({
            type: 2,//层类型
            title: "修改信息",//标题
@@ -107,11 +107,9 @@
        });
     }
 
-	
 	//删除按钮
 	function del(id){
 		//询问框
-
 		layer.confirm('你确定要删除该信息吗？', {
 		  btn: ['确定','取消'] //按钮
 		}, function(){
@@ -138,8 +136,6 @@
 		  
 		});
 	}
-
-	
 	
 	
 	

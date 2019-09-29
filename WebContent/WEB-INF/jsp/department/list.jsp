@@ -102,9 +102,9 @@
       				
 	      		     if(data.flag==1){
 	      				alert(data.content);
-	      				var index = parent.layer.getFrameIndex(window.name);  
-	        		    parent.layer.close(index);//关闭当前页  
-	    		   	 	parent.location.reload();//刷新父级页面
+	      				var index = layer.getFrameIndex(window.name);  
+	        		    layer.close(index);//关闭当前页  
+	    		   	 	location.reload();//刷新父级页面
 	      			}else{
 		      			alert(data.content);
 		      		}

@@ -93,4 +93,71 @@ public class TermController {
 		}
 	}
 	
+	@RequestMapping("/isCurrAppraiseList")
+	public ModelAndView isCurrAppraiseList() {
+		ModelAndView mView = new ModelAndView("term/isCurrAppraise");
+		List<Term> terms = termService.selectTerms();
+		mView.addObject("terms",terms);
+		return mView;
+	}
+	
+	@RequestMapping("/CurrAppraise")
+	@ResponseBody
+	public ResultMsg CurrAppraise(Integer id,Integer is_open) {
+		System.out.println(id);
+		System.out.println(is_open);
+		
+		if(id==null||is_open==null) {
+
+			System.out.println("内容不能为空！");
+			return new ResultMsg(6, "内容不能为空！");
+		}
+		
+		if(is_open==1) {
+
+			int isCurrAppraise1 = termService.selectIsCurrAppraise();	
+			if(isCurrAppraise1==1) {
+				
+				int isCurrAppraise2 = termService.selectIsCurrAppraiseById(id);
+				if (isCurrAppraise2==1) {
+					System.out.println("该学期评价已开启！");
+					return new ResultMsg(2, "该学期评价已开启！");
+				}else {
+					System.out.println("开启失败，已存在评价开启！");
+					return new ResultMsg(3, "开启失败，已存在评价开启！");
+				}
+			}else {
+
+				Term term = new Term();
+				term.setId(id);
+				term.setIs_open(is_open);
+				int isCurrAppraise3 = termService.updateIsCurrAppraise(term);
+				
+				if (isCurrAppraise3>0) {
+					System.out.println("开启成功！");
+					return new ResultMsg(1, "开启成功！");
+				}else {
+					System.out.println("开启失败！");
+					return new ResultMsg(4, "开启失败！");
+				}
+			}
+			
+		}else{
+			Term term = new Term();
+			term.setId(id);
+			term.setIs_open(is_open);
+			int isCurrAppraise1 = termService.updateIsCurrAppraise(term);
+			
+			if (isCurrAppraise1>0) {
+				System.out.println("关闭成功！");
+				return new ResultMsg(0, "关闭成功！");
+			}else {
+				System.out.println("关闭失败！");
+				return new ResultMsg(5, "关闭失败！");
+			}
+		}
+		
+	}
+
+	
 }

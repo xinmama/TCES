@@ -49,14 +49,13 @@
             <td>
                 <div class="layui-input-inline">
                     <select name="teacher_id">
-                    	<c:forEach items="${teacher}" var="item1">
-                    		<option value="${item1.id}">${item1.teacher_name}</option>
+                    	<c:forEach items="${teacher}" var="item">
+                    		<option value="${item.id}">${item.teacher_name}</option>
                         </c:forEach>   
                     </select>
                 </div>
             </td>
         </tr>
-<<<<<<< HEAD
         <tr>
             <td class="td_1">班级</td>
             <td>
@@ -81,80 +80,41 @@
                 </div>
             </td>
         </tr>
-=======
-         <tr> 
-             <td class="td_1">班级</td>
-            <td>
-                 <div class="layui-input-inline"> 
-                     <select name="classes_id"> 
-                     	<c:forEach items="${classes}" var="item"> 
-                     		<option value="${item.id}">${item.classes_no}</option> 
-                         </c:forEach>    
-                     </select> 
-                 </div> 
-             </td> 
-         </tr> 
-        <tr>
-             <td class="td_1">课程</td> 
-             <td> 
-                 <div class="layui-input-inline"> 
-                     <select name="course_id"> 
-                     	<c:forEach items="${course}" var="item"> 
-                     		<option value="${item.id}">${item.course_name}</option> 
-                         </c:forEach>    
-                     </select> 
-                 </div> 
-             </td> 
-        </tr> 
->>>>>>> branch 'master' of https://github.com/xinmama/TCES.git
-
-<<<<<<< HEAD
         <tr class="tianjie_button" >
             <td colspan="2" style="border-right:1px solid #e6e6e6;">
                 <button type="button" onclick="add()">确定添加</button>
             </td>  
         </tr>
-=======
-         <tr class="tianjie_button" > 
-             <td colspan="2" style="border-right:1px solid #e6e6e6;"> 
-                 <button type="button" onclick="add()">确定添加</button> 
-             </td>   
-         </tr> 
->>>>>>> branch 'master' of https://github.com/xinmama/TCES.git
     </tbody>
     </table>
 </form>
 </div>
 <script type="text/javascript">
 	 function add(){
-		 var i=true;
-		//1.先判断输入框内容是否为空，再添加班级
-		 $("input[type='text']").each(function () {
-	           if ($(this).val() == "") {
-	               alert("内容不能为空！");
-	               i=false;
-	           }
-	     });
-		
-		 if(i==true){
-        	 var url="${pageContext.request.contextPath}/teacher_course_add";//跳的controller对应的方法
+
+        	 var url="${pageContext.request.contextPath}/add_teacher_course";//跳的controller对应的方法
       		 var param=$("#form").serialize();
 
-      			$.post(url,param,function(data){
-      				
-      				if(data.flag==1){
+      		$.ajax({
+				url:url,
+				async:false,
+				type:"post",
+				data:param,
+				dataType:"json",
+      			success:function(data){
+	      			if(data.flag==1){
       					alert(data.content);	
       					//关闭当前遮罩层
       				  	var index = parent.layer.getFrameIndex(window.name);  
       			   	 	parent.layer.close(index);//关闭当前页  
-      			        //location.reload();
       			   		parent.location.reload();
 
       				}else{
       					alert(data.content);
       				}
-      			});
-           }
+	      		    
+      			}
+      		});
 		
 	 }
 	 

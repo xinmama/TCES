@@ -23,4 +23,12 @@ public interface TermDao {
 	
 	//6.删除学期信息
 	public int deleteTerm(int id);
+	
+	List<Term> selectTerms();
+	
+	int selectIsCurrAppraise();
+	
+	int selectIsCurrAppraiseById(int id);
+	
+	int updateIsCurrAppraise(Term term);
 }

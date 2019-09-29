@@ -39,7 +39,7 @@
         </tr>
         <tr>
             <td  class="class_no" >是否开启</td>
-            <td><input type="text" name="is_open" placeholder="是否开启当前学期"></td>
+            <td><input type="text" name="is_open" placeholder="否" value="否" readonly></td>
         </tr>
 
         <tr class="tianjie_button" >

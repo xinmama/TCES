@@ -34,9 +34,9 @@ public class St_scoreController {
 	public ResultMsg delete_st_score(int id) {
 		int deleteResult=scoreService.deleteSt_score(id);
 		if(deleteResult>0) {
-			return new ResultMsg(1, "É¾³ý·ÖÊý¼ÇÂ¼³É¹¦!");
+			return new ResultMsg(1, "É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½É¹ï¿½!");
 		}else {
-			return new ResultMsg(0, "É¾³ý·ÖÊý¼ÇÂ¼Ê§°Ü!");
+			return new ResultMsg(0, "É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼Ê§ï¿½ï¿½!");
 		}
 	}
 }

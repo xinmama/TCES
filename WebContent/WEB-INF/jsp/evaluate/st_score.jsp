@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
-
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,13 +37,13 @@
 		     <div class="layui-col-md12">
 		    	<div class="layui-row grid-demo grid-demo-bg1">
 		      		<div class="layui-col-md12 " style="text-align:center;font-size:25px;height:90px;line-height:90px;margin-top:15px;">
-		        		<h3>学期：2019-2020学年  第一学期</h3>
+		        		<h3>学期：${teacher_course.term.term_name}</h3>
 		      		</div>
 		        		<div class="layui-col-md6" style="text-align:right;padding-right:50px;font-size:20px;height:50px;line-height:50px;">
-		        		课程：
+		        		课程：<span id="course_name1">${teacher_course.course.course_name }</span>
 		      			</div>
 		      			<div class="layui-col-md6" style="text-align:left;padding-left:50px;font-size:20px;height:50px;line-height:50px;">
-		        		教师：张三
+		        		教师：${teacher_course.teacher.teacher_name}
 		      			</div>
 		    	</div>
 		  	</div>
@@ -74,7 +74,6 @@
 		<input id="number3" type="hidden" name="number" value="0" >
 		
 		<div class="layui-row layui-col-space10">
-		     
 			<div class="layui-col-md12">
 				<button type="button" class="layui-btn layui-btn-lg" onclick="submit()">提交</button>
 			</div>
@@ -112,19 +111,22 @@ layui.use(['rate'], function(){
 
 function submit(){
 	
-	var score=0;
-	
-	$('input[type=hidden]').each(function(index,element){
-		score=score+parseInt($("#number"+index).val());
+	var st_score=0;
+	var student_id=${user.id};
+	var classes_id=${teacher_course.classes_id};
+	var teacher_id=${teacher_course.teacher_id};
+	var course_name=$("#course_name1").html();
+	$('input[name=number]').each(function(index,element){
+		st_score=st_score+parseInt($("#number"+index).val());
 	});
-	
+	alert(st_score);
 	//提交内容
  	$.ajax({
 		url:"${pageContext.request.contextPath}/st_score_submit",
 		async:false,
 		type:"post",
-		data:{score:score},
 		dataType:"json",
+		data:{student_id:student_id,classes_id:classes_id,teacher_id:teacher_id,st_score:st_score,course_name:course_name},
  		success:function(data){
      		  if(data.flag==1){
      				alert(data.content); 

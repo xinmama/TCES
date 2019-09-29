@@ -22,51 +22,49 @@ import ssm.service.TermService;
 
 @Controller
 public class Teacher_courseController {
-
-	@Autowired
-	private Teacher_courseService teacher_courseService;	
-	@Autowired
-	private TeacherService teacherService;
-	@Autowired
-	private ClassService classService;
-	@Autowired
-	private CourseService courseService;
-	@Autowired
-	private TermService termService;
 	
-	//1.访问授课管理页面
-	@RequestMapping("/teacher_course_list")
-	public ModelAndView teacher_course_list() {
-		ModelAndView mView=new ModelAndView("teacher_course/list");
-		List<Teacher_course> teacher_course=teacher_courseService.getTeacher_course();
-		mView.addObject("teacher_course", teacher_course);
-		return mView;
-	}
+		@Autowired
+		private Teacher_courseService teacher_courseService;	
+		@Autowired
+		private TeacherService teacherService;
+		@Autowired
+		private ClassService classService;
+		@Autowired
+		private CourseService courseService;
+		@Autowired
+		private TermService termService;
 	
-	//2.访问授课管理（添加）界面
-	@RequestMapping("/teacher_course_add")
-	public ModelAndView teacher_course_add() {
-		ModelAndView mv=new ModelAndView("teacher_course/add");
-		List<Term> term=termService.getTerm();
-		System.out.println(term+"............");
-		List<Teacher> teacher=teacherService.getTeacher();
-		System.out.println(teacher+"............");
-		List<Classes> classes=classService.getClasses();
-		List<Course> course=courseService.getCourse();
-		mv.addObject("term",term);
-		mv.addObject("teacher",teacher);
-		mv.addObject("classes",classes);
-		mv.addObject("course",course);
-		return mv;
-	}
+		//1.访问授课管理页面
+		@RequestMapping("/teacher_course_list")
+		public ModelAndView teacher_course_list() {
+			ModelAndView mView=new ModelAndView("teacher_course/list");
+			List<Teacher_course> teacher_course=teacher_courseService.getTeacher_course();
+			mView.addObject("teacher_course", teacher_course);
+			return mView;
+		}
 	
-	//3.添加授课
+		//2.访问授课管理（添加）界面
+		@RequestMapping("/teacher_course_add")
+		public ModelAndView teacher_course_add() {
+			ModelAndView mv=new ModelAndView("teacher_course/add");
+			List<Term> term=termService.getTerm();
+			List<Teacher> teacher=teacherService.getTeacher();
+			List<Classes> classes=classService.getClasses();
+			List<Course> course=courseService.getCourse();
+			mv.addObject("term",term);
+			mv.addObject("teacher",teacher);
+			mv.addObject("classes",classes);
+			mv.addObject("course",course);
+			return mv;
+		}
+	
+		//3.添加授课
 		@RequestMapping("/add_teacher_course")
 		@ResponseBody
 		public ResultMsg add_teacher_course(Teacher_course teacher_course) {
 			
 			int selectResult=teacher_courseService.selectTeacher_courseByAllId(teacher_course);
-			
+			System.out.println(selectResult);
 			if(selectResult==1) {
 				return new ResultMsg(0, "该授课已存在，请重新添加！");
 			}else {
@@ -112,12 +110,12 @@ public class Teacher_courseController {
 			int selectResult=teacher_courseService.selectTeacher_courseByAllId(teacher_course);
 			//int l=classService.selectClassesByClassNo(classes.getClasses_no());
 			//System.out.println(l);
-			
+			System.out.println("selectResult"+selectResult);
 			if(selectResult==1) {
 				return new ResultMsg(0,"该授课已存在，请重新输入！");
 			}else {
 				int updateResult=teacher_courseService.updateTeacher_course(teacher_course);
-				
+				System.out.println("updateResult"+updateResult);
 				if(updateResult>0) {
 					return new ResultMsg(1,"修改成功！");
 				}else {
@@ -129,11 +127,12 @@ public class Teacher_courseController {
 		
 		
 		//6.删除授课
-		@ResponseBody
 		@RequestMapping("/delete_teacher_course")
+		@ResponseBody
 		public ResultMsg delete_teacher_course(int id) {
 			int deleteResult=teacher_courseService.deleteTeacher_course(id);
-
+			System.out.println(id);
+			System.out.println(deleteResult);
 			if(deleteResult>0) {
 				return new ResultMsg(1,"删除成功！");
 			}else {
