@@ -70,16 +70,34 @@
 //查询按钮
 function st_comein(id){
 	
-	$.ajax({
-		url:"${pageContext.request.contextPath}/st_comein",
-		async:false,
-		type:"post",
-		data:{id:id},
-		dataType:"json",
-			success:function(data){
-  		    
-			}
-		});
+// 	$.ajax({
+// 		url:"${pageContext.request.contextPath}/st_comein",
+// 		async:false,
+// 		type:"post",
+// 		data:{id:id},
+// // 		dataType:"json",
+// 		success:function(data){
+// 			alert(data);
+// 		},
+// 		error:function(){
+// 			alert("error");
+// 		}
+// 		});
+	
+	
+	layer.open({
+        type: 2,//层类型
+        title: "修改信息",//标题
+        closeBtn: 1, //不显示关闭按钮
+        shade: [0.3],//遮罩
+        skin: 'demo_class_color',//iframe皮肤
+        shadeClose:Boolean,//点击遮罩关闭
+        area: ['800px', '250px'],
+        // offset: 'rb', //右下角弹出
+        // time: 2000, //2秒后自动关闭
+        anim: 5,//动画
+        content: ['${pageContext.request.contextPath}/st_comein?id='+id], //iframe的url，no代表不显示滚动条
+    });
 	
 }
 

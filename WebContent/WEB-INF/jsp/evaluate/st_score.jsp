@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
-
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,13 +37,13 @@
 		     <div class="layui-col-md12">
 		    	<div class="layui-row grid-demo grid-demo-bg1">
 		      		<div class="layui-col-md12 " style="text-align:center;font-size:25px;height:90px;line-height:90px;margin-top:15px;">
-		        		<h3>学期：2019-2020学年  第一学期</h3>
+		        		<h3>学期：${teacher_course.term.term_name }</h3>
 		      		</div>
 		        		<div class="layui-col-md6" style="text-align:right;padding-right:50px;font-size:20px;height:50px;line-height:50px;">
-		        		课程：
+		        		课程：${teacher_course.course.course_name }
 		      			</div>
 		      			<div class="layui-col-md6" style="text-align:left;padding-left:50px;font-size:20px;height:50px;line-height:50px;">
-		        		教师：张三
+		        		教师：${teacher_course.teacher.teacher_name }
 		      			</div>
 		    	</div>
 		  	</div>

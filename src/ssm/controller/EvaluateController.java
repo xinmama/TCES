@@ -9,8 +9,13 @@ import javax.websocket.Session;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.alibaba.fastjson.JSONObject;
 
 import ssm.entity.ResultMsg;
 import ssm.entity.Student;
@@ -109,15 +114,16 @@ public class EvaluateController {
 		
 	//点击评教按钮，进入评教界面
 	@RequestMapping("/st_comein")
-	public ModelAndView st_comein(int id) {
+	public ModelAndView st_comein(@RequestParam(value = "id")String id) {
 		ModelAndView mView=new ModelAndView("evaluate/st_score");
 		System.out.println(id);
-		Teacher_course teacher_course=evaluateService.selectCourseTeacherByid(id);
+		double tmp = Double.parseDouble(id);
+		Teacher_course teacher_course=evaluateService.selectCourseTeacherByid((int)tmp);
 		
-		System.out.println("列表id:"+evaluateService.selectCourseTeacherByid(id));
+		System.out.println("列表id:"+teacher_course.getId());
 		
 		mView.addObject("teacher_course",teacher_course);
-		
+
 		return mView;
 	}
 }
