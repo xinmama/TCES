@@ -64,8 +64,13 @@
 					<li class="layui-nav-item">
 						<a href="javascript:;"><i class="fa fa-shield fa-fw"></i>查看结果</a>
 					</li>
-					<li class="layui-nav-item">
-						<a href="javascript:;"><i class="fa fa-user fa-fw"></i>个人信息</a>
+					<li class="layui-nav-item">				
+						<a  ><i class="fa fa-user fa-fw"></i>个人设置</a>
+						<dl class="layui-nav-child">
+							<dd><a href="${pageContext.request.contextPath}/information_list"  target="main_self_frame">个人信息</a></dd>
+							<dd><a href="${pageContext.request.contextPath}/information_update" target="main_self_frame">修改密码</a></a>
+						</dl>
+						
 					</li>
 				</ul>
 			</div>

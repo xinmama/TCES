@@ -29,7 +29,7 @@
 
 <body style="background: #fff;">
 <div class="tianjia_xx">
-	<form id="form" method="post">
+	<form id="updateteacher" method="post">
 	    <table class="if_tianjiatext layui-table" lay-size="lg">
 	        <tbody>
 	        	<input type="hidden" name="id" value="${teacher.id}">
@@ -66,7 +66,7 @@
 		        </tr>
 		        <tr class="tianjie_button">
 		            <td colspan="2" style="border-right:1px solid #e6e6e6;">
-		                <button type="button"  onclick="update()">确定修改</button>
+		                <button type="button"  onclick="update_teacher()">确定修改</button>
 		            </td>  
 		        </tr>
 	        </tbody>
@@ -74,13 +74,13 @@
     </form>
 </div>
 <script type="text/javascript">
-	 function update(){
+	 function update_teacher(){
 		 var  i=true;
 		 //判断输入框内容是否为空
 		 $("input[type='text']").each(function () {
 	           if ($(this).val() == "") {
 	               alert("内容不能为空！");
-	           }else{
+	          
 	        	   i=false;
 	           }
 	     });
@@ -90,14 +90,14 @@
 					url:"${pageContext.request.contextPath}/update_teacher",
 					async:false,
 					type:"post",
-					data:$("#form").serialize(),
+					data:$("#updateteacher").serialize(),
 					dataType:"json",
 	      			success:function(data){
 		      		    if(data.flag==-1){
 		      		    	alert(data.content);	
 	      					//关闭当前遮罩层
 	      				  	 				
-		      			}else if(data.flag==1){
+		      			}if(data.flag==1){
 		      				alert(data.content);
 		      				
 		      				var index = parent.layer.getFrameIndex(window.name);  
@@ -109,6 +109,8 @@
 		      		    
 	      			}
 	      		});
+	     }else{
+	    	 alert("填写信息存在错误，请重新填写！");
 	     }
 	     
 	 }

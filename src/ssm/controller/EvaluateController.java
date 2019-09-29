@@ -72,14 +72,14 @@ public class EvaluateController {
 	}
 	
 	//访问学生评价页面
-		@RequestMapping("/st_score")
+		@RequestMapping("/st_score_evaluate")
 		public ModelAndView st_score(){
 			ModelAndView mView= new ModelAndView("evaluate/st_score");
 			return mView;		
 		}
 		
 		//访问教师评价页面
-		@RequestMapping("/tt_score")
+		@RequestMapping("/tt_score_evaluate")
 		public ModelAndView tt_score(){
 			ModelAndView mView= new ModelAndView("evaluate/tt_score");
 			return mView;		

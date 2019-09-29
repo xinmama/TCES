@@ -9,7 +9,7 @@ public class Teacher {
 	private String teacher_pwd;
 	private String sex;
 	private String tel;
-	private int dep_id;
+	private Integer dep_id;
 	private Date time;
 	private Department department;
 	private String remark;
@@ -28,12 +28,6 @@ public class Teacher {
 		this.remark = remark;
 	}
 	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public String getTeacher_no() {
 		return teacher_no;
 	}
@@ -64,10 +58,16 @@ public class Teacher {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-	public int getDep_id() {
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public Integer getDep_id() {
 		return dep_id;
 	}
-	public void setDep_id(int dep_id) {
+	public void setDep_id(Integer dep_id) {
 		this.dep_id = dep_id;
 	}
 	public Date getTime() {

@@ -41,36 +41,36 @@
     <div class="kehubh_tj_k">
         <form class="layui-form layui-form-pane" action="">
             <ul>
-            <input type="hidden" name="id" value="${teacher.id}">
+            <input type="hidden" name="id" value="${student.id}">
                 <li>
-                    <div class="left">教师工号：</div>
+                    <div class="left">学号：</div>
                     <div class="right">
-                        <input type="text" name="teacher_no" required lay-verify="required" value="${teacher.teacher_no}" autocomplete="off" class="layui-input" disabled>
+                        <input type="text" name="student_no" required lay-verify="required" value="${student.student_no}" autocomplete="off" class="layui-input" disabled>
                     </div>
                 </li>
                 <li>
                     <div class="left">姓名：</div>
                     <div class="right">
-                        <input type="text" name="teacher_name" required lay-verify="required" value="${teacher.teacher_name}" autocomplete="off" class="layui-input">
+                        <input type="text" name="student_name" required lay-verify="required" value="${student.student_name}" autocomplete="off" class="layui-input">
                     </div>
                 </li>
                 
                 <li>
                     <div class="left">性别：</div>
                     <div class="right">
-                        <input type="text" name="sex" required lay-verify="required" value="${teacher.sex}" autocomplete="off" class="layui-input">
+                        <input type="text" name="sex" required lay-verify="required" value="${student.sex}" autocomplete="off" class="layui-input">
                     </div>
                 </li>
                 <li>
                     <div class="left">电话号码：</div>
                     <div class="right">
-                        <input type="text" name="tel" required lay-verify="required" value="${teacher.tel}" autocomplete="off" class="layui-input">
+                        <input type="text" name="tel" required lay-verify="required" value="${student.tel}" autocomplete="off" class="layui-input">
                     </div>
                 </li>
                 <li>
-                    <div class="left">院系id：</div>
+                    <div class="left">班级id：</div>
                     <div class="right">
-                        <input type="text" name="del_id" required lay-verify="required" value="${teacher.department.dep_name}" autocomplete="off" class="layui-input" disabled>
+                        <input type="text" name="classes_no" required lay-verify="required" value="${student.classes.classes_no}" autocomplete="off" class="layui-input" disabled>
                     </div>
                 </li>
                 <li>
@@ -118,7 +118,7 @@
 	     if(i==true){
 	    	//提交内容
 	      		$.ajax({
-					url:"${pageContext.request.contextPath}/update_information",
+					url:"${pageContext.request.contextPath}/update_studentInformation",
 					async:false,
 					type:"post",
 					data:$("#form").serialize(),
@@ -155,7 +155,7 @@
 				// offset: 'rb', //右下角弹出
 				// time: 2000, //2秒后自动关闭
 				anim: 5,//动画
-				content: ['information_update?id='+id, 'no'], //iframe的url，no代表不显示滚动条 
+				content: ['studentinformation_update?id='+id, 'no'], //iframe的url，no代表不显示滚动条 
 			});
 		}
 	    table.on('tool(mylist)', function(obj){ //注：tool 是工具条事件名，mylist 是 table 原始容器的属性 lay-filter="对应的值"

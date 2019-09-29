@@ -2,6 +2,9 @@ package ssm.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ssm.entity.Department;
 import ssm.entity.ResultMsg;
 import ssm.entity.Teacher;
+import ssm.service.DepartmentService;
 import ssm.service.TeacherInformationService;
 
 @Controller
@@ -19,21 +23,31 @@ public class TeacherInformationController {
 	@Autowired 
 	public TeacherInformationService teacherInformationService;
 	
+	@Autowired
+	public DepartmentService departmentService;
+	
 	//查询
 		@RequestMapping("/information_list")
-		public ModelAndView teacherSelect() {
+		public ModelAndView teacherSelect(HttpServletRequest request) {
 			ModelAndView mv=new ModelAndView("information/list");
-			List<Teacher> teachers=teacherInformationService.getTeacher();
-			mv.addObject("teachers",teachers);
+			HttpSession session = request.getSession(true); 
+			Teacher teacherSession=(Teacher)session.getAttribute("user");
+			Teacher teacher=teacherInformationService.selectTeacherById(teacherSession.getId());
+			mv.addObject("teacher",teacher);
 			return mv;
 		}
-		
+		 
 		//显示教师管理修改页面
 		@RequestMapping("/information_update")
-			public ModelAndView teacher_update(int id) {
+			public ModelAndView teacher_update(HttpServletRequest request) {
 				ModelAndView mv=new ModelAndView("information/update");
-				Teacher teacher=teacherInformationService.selectTeacherById(id);
-				List<Department> department=teacherInformationService.getDepartment();
+				HttpSession session = request.getSession(true); 
+				Teacher teacherSession=(Teacher)session.getAttribute("user");
+				Teacher teacher=teacherInformationService.selectTeacherById(teacherSession.getId()); 
+				
+				Department department=departmentService.selectDepartmentById(teacher.getDep_id());
+				/*Teacher teacher=teacherInformationService.selectTeacherById(id);
+				List<Department> department=tesacherInformationService.getDepartment();*/
 				mv.addObject("department", department);
 				mv.addObject("teacher", teacher);
 				return mv;
