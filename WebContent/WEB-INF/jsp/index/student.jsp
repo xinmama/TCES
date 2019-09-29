@@ -67,8 +67,8 @@
 					<li class="layui-nav-item">
 						<a href="javascript:;"><i class="fa fa-user fa-fw"></i>个人信息</a>
 						<dl class="layui-nav-child">
-							<dd><a href="${pageContext.request.contextPath}/student_list" target="main_self_frame">查看个人信息</a></dd>
-							<dd><a href="${pageContext.request.contextPath}/teacher_list" target="main_self_frame">修改密码</a></a>
+							<dd><a href="${pageContext.request.contextPath}/studentInformation_list" target="main_self_frame">查看个人信息</a></dd>
+							<dd><a href="${pageContext.request.contextPath}/updatestudent_pwd" target="main_self_frame">修改密码</a></a>
 						</dl>
 					</li>
 

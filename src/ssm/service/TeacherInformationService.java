@@ -16,22 +16,22 @@ public class TeacherInformationService {
 	@Autowired
 	public TeacherInformationDao teacherInformationDao;
 
-	//鏌ヨ鏁欏笀淇℃伅骞舵樉绀�
+
 		public List<Teacher> getTeacher() {
 			return teacherInformationDao.getTeacher();
 		}
 		
-		//2.鑾峰彇閮ㄩ棬鍒楄〃骞跺睍绀�
+
 		public List<Department> getDepartment() {
 			return teacherInformationDao.getDepartment();
 		}
 		
-		//3.鏌ヨ娣诲姞鐝骇鏄惁瀛樺湪
+
 		public int selectTeacherByTeacherNo(String teacher_no) {
 			return teacherInformationDao.selectTeacherByTeacherNo(teacher_no);
 		}
 		
-		//淇敼鏁欏笀淇℃伅
+
 		public int updateTeacherById(Teacher teacher) {
 			return teacherInformationDao.updateTeacherById(teacher);
 		}

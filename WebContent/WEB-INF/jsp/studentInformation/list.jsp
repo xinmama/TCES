@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="名榜,wangid">
-    <title>教师综合评价系统</title>
+    <title>WangID办公管理系统</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
@@ -41,36 +41,36 @@
     <div class="kehubh_tj_k">
         <form class="layui-form layui-form-pane" action="">
             <ul>
-            <input type="hidden" name="id" value="${teacher.id}">
+            <input type="hidden" name="id" value="${student.id}">
                 <li>
-                    <div class="left">教师工号：</div>
+                    <div class="left">学号：</div>
                     <div class="right">
-                        <input type="text" name="teacher_no" required lay-verify="required" value="${teacher.teacher_no}" autocomplete="off" class="layui-input" disabled>
+                        <input type="text" name="student_no" required lay-verify="required" value="${student.student_no}" autocomplete="off" class="layui-input" disabled>
                     </div>
                 </li>
                 <li>
                     <div class="left">姓名：</div>
                     <div class="right">
-                        <input type="text" name="teacher_name" required lay-verify="required" value="${teacher.teacher_name}" autocomplete="off" class="layui-input">
+                        <input type="text" name="student_name" required lay-verify="required" value="${student.student_name}" autocomplete="off" class="layui-input">
                     </div>
                 </li>
                 
                 <li>
                     <div class="left">性别：</div>
                     <div class="right">
-                        <input type="text" name="sex" required lay-verify="required" value="${teacher.sex}" autocomplete="off" class="layui-input">
+                        <input type="text" name="sex" required lay-verify="required" value="${student.sex}" autocomplete="off" class="layui-input">
                     </div>
                 </li>
                 <li>
                     <div class="left">电话号码：</div>
                     <div class="right">
-                        <input type="text" name="tel" required lay-verify="required" value="${teacher.tel}" autocomplete="off" class="layui-input">
+                        <input type="text" name="tel" required lay-verify="required" value="${student.tel}" autocomplete="off" class="layui-input">
                     </div>
                 </li>
                 <li>
-                    <div class="left">院系id：</div>
+                    <div class="left">班级id：</div>
                     <div class="right">
-                        <input type="text" name="del_id" required lay-verify="required" value="${teacher.department.dep_name}" autocomplete="off" class="layui-input" disabled>
+                        <input type="text" name="classes_no" required lay-verify="required" value="${student.classes.classes_no}" autocomplete="off" class="layui-input" disabled>
                     </div>
                 </li>
                 <li>
@@ -118,7 +118,7 @@
 	     if(i==true){
 	    	//提交内容
 	      		$.ajax({
-					url:"${pageContext.request.contextPath}/update_information",
+					url:"${pageContext.request.contextPath}/update_studentInformation",
 					async:false,
 					type:"post",
 					data:$("#form").serialize(),
@@ -155,7 +155,7 @@
 				// offset: 'rb', //右下角弹出
 				// time: 2000, //2秒后自动关闭
 				anim: 5,//动画
-				content: ['information_list?id='+id, 'no'], //iframe的url，no代表不显示滚动条 
+				content: ['studentinformation_update?id='+id, 'no'], //iframe的url，no代表不显示滚动条 
 			});
 		}
 	    table.on('tool(mylist)', function(obj){ //注：tool 是工具条事件名，mylist 是 table 原始容器的属性 lay-filter="对应的值"
@@ -171,5 +171,44 @@
 			    layer.msg('修改操作');
 			}
 		}); 
-	
+		//监听头工具栏事件
+		table.on('toolbar(mylist)', function(obj){
+			var checkStatus = table.checkStatus(obj.config.id),
+			data = checkStatus.data; //获取选中的数据 
+			switch(obj.event){ 
+			case 'add': 
+				//iframe窗 
+				layer.open({
+					type: 2,//层类型
+					title: "添加信息",//标题
+					closeBtn: 1, //不显示关闭按钮
+					shade: [0.3],//遮罩
+					skin: 'demo_class_color',//iframe皮肤
+					shadeClose:Boolean,//点击遮罩关闭
+					area: ['650px', '500px'],
+					// offset: 'rb', //右下角弹出
+					// time: 2000, //2秒后自动关闭
+					anim: 5,//动画
+					content: ['student_add', 'no'], //iframe的url，no代表不显示滚动条 
+				});
+				// 
+				break;
+				case 'update':
+					if(data.length === 0){
+					layer.msg('请选择一行');
+					} else if(data.length > 1){
+					layer.msg('只能同时编辑一个');
+					} else {
+					layer.alert('编辑 [id]：'+ checkStatus.data[0].id);
+					}
+				break;
+				case 'delete':
+					if(data.length === 0){
+					layer.msg('请选择一行');
+					} else {
+					layer.msg('删除');
+					}
+				break;
+				};
+			});
 </script>
