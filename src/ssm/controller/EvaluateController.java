@@ -23,7 +23,9 @@ import ssm.entity.Student;
 import ssm.entity.Teacher;
 import ssm.entity.Teacher_course;
 import ssm.entity.Term;
+import ssm.entity.Tt_score;
 import ssm.service.EvaluateService;
+import ssm.service.TeacherService;
 import ssm.service.TermService;
 
 @Controller
@@ -31,8 +33,12 @@ public class EvaluateController {
 
 	@Autowired
 	private EvaluateService evaluateService;
+
 	private TermService termService;
-	
+
+	@Autowired
+	private TeacherService teacherService;
+
 	//1.访问学生评教列表页面
 	@RequestMapping("/st_evaluate_list")
 	public ModelAndView st_evaluate_list(HttpServletRequest request) {
@@ -42,15 +48,12 @@ public class EvaluateController {
 		Student student=(Student)session.getAttribute("user");
 			
 		List<Teacher_course> st_list=evaluateService.selectCourseTeacherByNo(student.getClasses().getClasses_no());
-		for (Teacher_course teacher_course : st_list) {
-			System.out.println("课程名："+teacher_course.getCourse().getCourse_name());
-			System.out.println("教师名："+teacher_course.getTeacher().getTeacher_name());
-			System.out.println("id"+teacher_course.getId());
-		}
+
 		mView.addObject("st_list", st_list);
 		return mView;
 	}	
 	
+	//新
 	//2.访问教师评教列表页面
 	@RequestMapping("/tt_evaluate_list")
 	public ModelAndView tt_evaluate_list(HttpServletRequest request) {
@@ -58,18 +61,8 @@ public class EvaluateController {
 		
 		HttpSession session = request.getSession(true); 
 		Teacher teacher=(Teacher)session.getAttribute("user");
-		
-		System.out.println(teacher.getTeacher_no());
-		System.out.println(teacher.getDepartment().getId());
-		
-		List<Teacher_course> tt_list=evaluateService.selectCourseTeacherByDepid(teacher.getDepartment().getId());
-		
-		System.out.println("111111111111");
-		for (Teacher_course teacher_course : tt_list) {
-			System.out.println("2222222222222");
-			System.out.println("课程名："+teacher_course.getCourse().getCourse_name());
-			System.out.println("教师名："+teacher_course.getTeacher().getTeacher_name());
-		}
+		System.out.println(teacher.getDep_id()+"x:"+teacher.getTeacher_name());
+		List<Teacher_course> tt_list=evaluateService.selectCourseTeacherByDepid(teacher);
 		
 		mView.addObject("tt_list", tt_list);
 		return mView;
@@ -114,11 +107,18 @@ public class EvaluateController {
 		
 		//教师评价提交
 		@RequestMapping("/tt_score_submit")
-		public ResultMsg tt_score_submit(int score) {
-					
-			int st_scoreResult = evaluateService.InsertSt_score(score);
-				
-			if(st_scoreResult>0) {
+		@ResponseBody
+		public ResultMsg tt_score_submit(int teacher1_id,int dep_id,int teacher2_id,float tt_score,String course_name) {
+			System.out.println("test1");
+			Tt_score score = new Tt_score();
+			score.setTeacher1_id(teacher1_id);
+			score.setDep_id(dep_id);
+			score.setTeacher2_id(teacher2_id);
+			score.setTt_score(tt_score);
+			score.setCourse_name(course_name);
+			int tt_scoreResult = evaluateService.insertTt_scoreInfo(score);
+			
+			if(tt_scoreResult>0) {
 				return new ResultMsg(1, "评价成功！");
 			}else {
 				return new ResultMsg(0, "评价失败！");
@@ -142,4 +142,18 @@ public class EvaluateController {
 
 		return mView;
 	}
+	
+	//点击评教按钮，进入评教界面
+	@RequestMapping("/tt_comein")
+	public ModelAndView tt_comein(@RequestParam(value = "id")String id) {
+		ModelAndView mView=new ModelAndView("evaluate/tt_score");
+		System.out.println("id:"+id);
+		double tmp = Double.parseDouble(id);
+		
+		Teacher_course teacher_course=evaluateService.selectCourseTeacherByTeacher_courseId((int)tmp);
+
+		mView.addObject("teacher_course",teacher_course);
+		return mView;
+	}
+	
 }

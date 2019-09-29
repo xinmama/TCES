@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
-
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,13 +37,13 @@
 		     <div class="layui-col-md12">
 		    	<div class="layui-row grid-demo grid-demo-bg1">
 		      		<div class="layui-col-md12 " style="text-align:center;font-size:25px;height:90px;line-height:90px;margin-top:15px;">
-		        		<h3>学期：2019-2020学年  第一学期</h3>
+		        		<h3>学期：${teacher_course.term.term_name}</h3>
 		      		</div>
 		        		<div class="layui-col-md6" style="text-align:right;padding-right:50px;font-size:20px;height:50px;line-height:50px;">
-		        		课程：java web
+		        		课程：<span id="course_name1">${teacher_course.course.course_name }</span>
 		      			</div>
 		      			<div class="layui-col-md6" style="text-align:left;padding-left:50px;font-size:20px;height:50px;line-height:50px;">
-		        		教师：张三
+		        		教师：${teacher_course.teacher.teacher_name}
 		      			</div>
 		    	</div>
 		  	</div>
@@ -112,19 +112,21 @@ layui.use(['rate'], function(){
 
 function submit(){
 	
-	var score=0;
-	
-	$('input[type=hidden]').each(function(index,element){
-		score=score+parseInt($("#number"+index).val());
+	var tt_score=0;
+	var teacher1_id=${user.id};
+	var dep_id=${user.dep_id};
+	var teacher2_id=${teacher_course.teacher_id};
+	var course_name=$("#course_name1").html();
+	$('input[name=number]').each(function(index,element){
+		tt_score=tt_score+parseInt($("#number"+index).val());
 	});
-	
 	//提交内容
  	$.ajax({
 		url:"${pageContext.request.contextPath}/tt_score_submit",
 		async:false,
 		type:"post",
-		data:{score:score},
 		dataType:"json",
+		data:{teacher1_id:teacher1_id,dep_id:dep_id,teacher2_id:teacher2_id,tt_score:tt_score,course_name:course_name},
  		success:function(data){
      		  if(data.flag==1){
      				alert(data.content); 

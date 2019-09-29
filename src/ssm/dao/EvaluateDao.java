@@ -3,7 +3,9 @@ package ssm.dao;
 import java.util.List;
 
 import ssm.entity.St_score;
+import ssm.entity.Teacher;
 import ssm.entity.Teacher_course;
+import ssm.entity.Tt_score;
 
 public interface EvaluateDao {
 
@@ -23,4 +25,11 @@ public interface EvaluateDao {
 	public Teacher_course selectCourseTeacherByid(int id);
 	
 	public int insertSt_scoreInfo(St_score score);
+	
+	public int insertTt_scoreInfo(Tt_score score);
+	
+	//新
+	public List<Teacher_course> selectCourseTeacherByDepid(Teacher teacher);
+	
+	public Teacher_course selectCourseTeacherByTeacher_courseId(int id);
 }

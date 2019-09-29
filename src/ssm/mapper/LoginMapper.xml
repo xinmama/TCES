@@ -67,6 +67,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="sex" column="sex"/>
 		<result property="tel" column="tel"/>
 		<result property="time" column="time"/>
+		<result property="dep_id" column="dep_id"/>
 		<result property="remark" column="remark"/>
 		<result property="is_manage" column="is_manage"/>
 		<association property="department" javaType="ssm.entity.Department">

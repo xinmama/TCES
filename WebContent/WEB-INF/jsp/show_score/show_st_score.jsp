@@ -50,16 +50,16 @@
         	</tr>
         </thead>
         <tbody>
-        <c:forEach items="${st_list}" var="item" varStatus="status">
+        <c:forEach items="${scores}" var="item" varStatus="status">
         	<tr>
             	<td></td>
             	<td>${status.index+1}</td>            	
-            	<td>${item.getCourse().getCourse_name()}</td>
+            	<td>${item.getCourse_name()}</td>
             	<td>${item.getTeacher().getTeacher_name()}</td>
-            	<td></td>
+            	<td>${item.st_score}</td>
             	<td>
             		<div class="layui-inline">
-						<button class="layui-btn layui-btn-sm layui-btn-normal " data-id="1" onclick="update('${item.id}')"><i class="layui-icon"></i>详情</button>						
+						<button class="layui-btn layui-btn-sm layui-btn-normal " data-id="1" onclick=""><i class="layui-icon"></i>详情</button>						
 					</div>
             	</td>
 			</tr>
