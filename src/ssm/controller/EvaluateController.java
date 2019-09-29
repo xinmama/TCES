@@ -106,8 +106,9 @@ public class EvaluateController {
 		
 		//教师评价提交
 		@RequestMapping("/tt_score_submit")
+		@ResponseBody
 		public ResultMsg tt_score_submit(int teacher1_id,int dep_id,int teacher2_id,float tt_score,String course_name) {
-					
+			System.out.println("test1");
 			Tt_score score = new Tt_score();
 			score.setTeacher1_id(teacher1_id);
 			score.setDep_id(dep_id);
@@ -144,7 +145,9 @@ public class EvaluateController {
 		ModelAndView mView=new ModelAndView("evaluate/tt_score");
 		System.out.println("id:"+id);
 		double tmp = Double.parseDouble(id);
-		Teacher_course teacher_course=evaluateService.selectCourseTeacherByid((int)tmp);
+		
+		Teacher_course teacher_course=evaluateService.selectCourseTeacherByTeacher_courseId((int)tmp);
+
 		mView.addObject("teacher_course",teacher_course);
 		return mView;
 	}

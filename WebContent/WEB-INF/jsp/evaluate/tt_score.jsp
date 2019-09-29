@@ -43,7 +43,7 @@
 		        		课程：<span id="course_name1">${teacher_course.course.course_name }</span>
 		      			</div>
 		      			<div class="layui-col-md6" style="text-align:left;padding-left:50px;font-size:20px;height:50px;line-height:50px;">
-		        		教师：{teacher_course.teacher.teacher_name}
+		        		教师：${teacher_course.teacher.teacher_name}
 		      			</div>
 		    	</div>
 		  	</div>

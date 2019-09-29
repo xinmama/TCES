@@ -59,4 +59,8 @@ public class EvaluateService {
 	public List<Teacher_course> selectCourseTeacherByDepid(Teacher teacher) {
 		return evaluateDao.selectCourseTeacherByDepid(teacher);
 	}
+	
+	public Teacher_course selectCourseTeacherByTeacher_courseId(int id) {
+		return evaluateDao.selectCourseTeacherByTeacher_courseId(id);
+	}
 }

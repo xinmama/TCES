@@ -30,4 +30,6 @@ public interface EvaluateDao {
 	
 	//新
 	public List<Teacher_course> selectCourseTeacherByDepid(Teacher teacher);
+	
+	public Teacher_course selectCourseTeacherByTeacher_courseId(int id);
 }

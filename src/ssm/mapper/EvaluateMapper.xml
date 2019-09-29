@@ -132,6 +132,36 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		and teacher_course.id=#{id};
 	</select>
 	
+	<!-- 新 -->
+	<select id="selectCourseTeacherByTeacher_courseId" parameterType="int" resultMap="teacher_courseByTeacher_courseId">
+		select teacher_course.*,teacher.id,teacher.teacher_name,teacher.dep_id,course.course_name,term.*
+  		from teacher_course,teacher,course,term
+		where teacher_course.teacher_id = teacher.id and teacher_course.course_id = course.id
+		and teacher_course.term_id = term.id and teacher_course.id = #{id};
+	</select>
+	
+	<resultMap type="ssm.entity.Teacher_course" id="teacher_courseByTeacher_courseId">
+		<id property="id" column="id" />
+		<result property="teacher_id" column="teacher_id" />
+		<result property="classes_id" column="classes_id" />
+		<result property="course_id" column="course_id" />
+		<result property="term_id" column="term_id" />
+		<association property="teacher" javaType="ssm.entity.Teacher">
+			<id property="id" column="id" />
+			<result property="teacher_no" column="teacher_no" />
+			<result property="teacher_name" column="teacher_name" />
+			<result property="dep_id" column="dep_id" />
+		</association>
+		<association property="course" javaType="ssm.entity.Course">
+			<id property="id" column="id" />
+			<result property="course_name" column="course_name" />
+		</association>
+		<association property="term" javaType="ssm.entity.Term">
+			<id property="id" column="id" />
+			<result property="term_name" column="term_name" />
+		</association>
+	</resultMap>
+	
 	<insert id="insertSt_scoreInfo" parameterType="ssm.entity.St_score" > 
 		insert into st_score(student_id,classes_id,teacher_id,st_score,course_name) values 
 		(#{student_id},#{classes_id},#{teacher_id},#{st_score},#{course_name});

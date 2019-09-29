@@ -90,21 +90,6 @@ function selectInfo(){
 
 function tt_comein(id){
 	
-// 	$.ajax({
-// 		url:"${pageContext.request.contextPath}/st_comein",
-// 		async:false,
-// 		type:"post",
-// 		data:{id:id},
-// // 		dataType:"json",
-// 		success:function(data){
-// 			alert(data);
-// 		},
-// 		error:function(){
-// 			alert("error");
-// 		}
-// 		});
-	
-	
 	layer.open({
         type: 2,//层类型
         title: "修改信息",//标题
