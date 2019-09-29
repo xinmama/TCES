@@ -35,6 +35,9 @@ public class TeacherInformationController1 {
 			mv.addObject("teacher",teacher);
 			return mv;
 		}
+		
+		
+		
 		//修改页面
 		@RequestMapping("/information_update")
 			public ModelAndView teacher_update(HttpServletRequest request) {
@@ -50,6 +53,10 @@ public class TeacherInformationController1 {
 				mv.addObject("teacher", teacher);
 				return mv;
 			}
+		
+		
+		
+		
 			
 			//修改
 			@ResponseBody
