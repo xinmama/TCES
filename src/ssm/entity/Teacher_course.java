@@ -7,6 +7,7 @@ public class Teacher_course {
 	private int classes_id;
 	private int course_id;
 	private int term_id;
+	private int dep_id;
 	private Teacher teacher;
 	private Classes classes;
 	private Course course;
@@ -72,6 +73,12 @@ public class Teacher_course {
 	}
 	public void setTerm(Term term) {
 		this.term = term;
+	}
+	public int getDep_id() {
+		return dep_id;
+	}
+	public void setDep_id(int dep_id) {
+		this.dep_id = dep_id;
 	}
 	
 	

@@ -43,7 +43,7 @@
             	
             	<th lay-data="{field:'yx', align:'center',width:60}">序号</th>
             	<th lay-data="{field:'time',align:'center', minWidth:120}">课程名称</th>
-            	<th lay-data="{field:'www',align:'center',minWidth:120}">任课教师</th>           
+            	<th lay-data="{field:'www',align:'center',minWidth:120}">任课教师1</th>           
             	<th lay-data="{field:'option',align:'center',width:200,fixed: 'right'}">操作</th>
         	</tr>
         </thead>
@@ -56,7 +56,7 @@
             	<td>${item.getTeacher().getTeacher_name()}</td>
             	<td>
             		<div class="layui-inline">
-						<button class="layui-btn layui-btn-sm layui-btn-normal " data-id="1" onclick="update('${item.id}')"><i class="layui-icon"></i>进入评教</button>						
+						<button class="layui-btn layui-btn-sm layui-btn-normal " data-id="1" onclick="tt_comein('${item.id}')"><i class="layui-icon"></i>${item.id}进入评教</button>						
 					</div>
             	</td>
 			</tr>
@@ -85,6 +85,39 @@ function selectInfo(){
 				}
 			}
 		});
+	
+}
+
+function tt_comein(id){
+	
+// 	$.ajax({
+// 		url:"${pageContext.request.contextPath}/st_comein",
+// 		async:false,
+// 		type:"post",
+// 		data:{id:id},
+// // 		dataType:"json",
+// 		success:function(data){
+// 			alert(data);
+// 		},
+// 		error:function(){
+// 			alert("error");
+// 		}
+// 		});
+	
+	
+	layer.open({
+        type: 2,//层类型
+        title: "修改信息",//标题
+        closeBtn: 1, //不显示关闭按钮
+        shade: [0.3],//遮罩
+        skin: 'demo_class_color',//iframe皮肤
+        shadeClose:Boolean,//点击遮罩关闭
+        area: ['800px', '250px'],
+        // offset: 'rb', //右下角弹出
+        // time: 2000, //2秒后自动关闭
+        anim: 5,//动画
+        content: ['${pageContext.request.contextPath}/tt_comein?id='+id], //iframe的url，no代表不显示滚动条
+    });
 	
 }
 

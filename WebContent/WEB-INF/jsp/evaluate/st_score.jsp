@@ -119,7 +119,6 @@ function submit(){
 	$('input[name=number]').each(function(index,element){
 		st_score=st_score+parseInt($("#number"+index).val());
 	});
-	alert(st_score);
 	//提交内容
  	$.ajax({
 		url:"${pageContext.request.contextPath}/st_score_submit",

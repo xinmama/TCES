@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ssm.dao.EvaluateDao;
 import ssm.entity.St_score;
+import ssm.entity.Teacher;
 import ssm.entity.Teacher_course;
+import ssm.entity.Tt_score;
 
 @Service
 public class EvaluateService {
@@ -47,5 +49,14 @@ public class EvaluateService {
 	
 	public int insertSt_scoreInfo(St_score score) {
 		return evaluateDao.insertSt_scoreInfo(score);
+	}
+	
+	public int insertTt_scoreInfo(Tt_score score) {
+		return evaluateDao.insertTt_scoreInfo(score);
+	}
+	
+	//新
+	public List<Teacher_course> selectCourseTeacherByDepid(Teacher teacher) {
+		return evaluateDao.selectCourseTeacherByDepid(teacher);
 	}
 }
