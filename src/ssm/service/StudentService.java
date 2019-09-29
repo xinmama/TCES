@@ -40,6 +40,14 @@ public class StudentService {
 		return studentDao.deletestudent(id);
 	}
 	
+	public String selectStudentpwdByNo(String student_no) {
+		return studentDao.selectStudentpwdByNo(student_no);
+	}
+	
+	public int updateStudentpwd(Student student) {
+		return studentDao.updateStudentpwd(student);
+	}
+	
 	
 
 }

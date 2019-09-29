@@ -48,5 +48,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update teacher set teacher_name=#{teacher_name},teacher_pwd=#{teacher_pwd},sex=#{sex},tel=#{tel},dep_id=#{dep_id}
 		where id=#{id}
 	</update>
+	
+	<!-- 修改教师密码 -->
+	<update id="updateTeacherpwd" parameterType="ssm.entity.Teacher" >
+		update teacher set teacher_pwd=#{teacher_pwd} where teacher_no=#{teacher_no};
+	</update>
+	
+	<!-- 根据工号查看教师密码 -->
+	<select id="selectTeacherpwdByNo" resultType="String" parameterType="String">
+		select  teacher_pwd from teacher where teacher_no=#{teacher_no};
+	</select>
 
 </mapper>

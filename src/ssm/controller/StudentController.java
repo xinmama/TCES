@@ -89,5 +89,36 @@ public class StudentController {
 				return new ResultMsg(0, "删除学生失败!");
 			}
 		}
+	
+	//学生修改密码
+			@RequestMapping("/updatestudent_pwd")
+			public ModelAndView updatepwd() {
+				ModelAndView mv=new ModelAndView("information/updatestudent_pwd");
+//				List<Teacher> teachers=teacherInformationService.getTeacher();
+//				mv.addObject("teachers",teachers);
+				return mv;
+			}
+			
+			@RequestMapping("/studentpwd_update")
+			@ResponseBody
+			public ResultMsg pwd_update(String student_no,String oldpwd,String newpwd2) {
+				
+				Student student=new Student();
+				student.setStudent_no(student_no);
+				student.setStudent_pwd(newpwd2);
+				String  oldpwdResult=studentService.selectStudentpwdByNo(student_no);
+				//System.out.println(oldpwd);
+				if (oldpwd.equals(oldpwdResult)) {
+					int i=studentService.updateStudentpwd(student);
+					if (i>0) {
+						return new ResultMsg(1, "修改密码成功");
+					}else {
+						return new ResultMsg(0, "修改密码失败");
+					}
+					
+				}else {
+					return new ResultMsg(-1, "原密码不对");
+				}
+		}
 	}
 

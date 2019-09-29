@@ -18,4 +18,8 @@ public interface StudentDao {
 	public int updateStudent(Student student);
 	
 	public int deletestudent(int id);
+	
+	public String selectStudentpwdByNo(String student_no);
+	
+	public int updateStudentpwd(Student student);
 }

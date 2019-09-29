@@ -9,10 +9,16 @@ import javax.websocket.Session;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.fastjson.JSONObject;
+
 import ssm.entity.ResultMsg;
+import ssm.entity.St_score;
 import ssm.entity.Student;
 import ssm.entity.Teacher;
 import ssm.entity.Teacher_course;
@@ -32,16 +38,13 @@ public class EvaluateController {
 		
 		HttpSession session = request.getSession(true); 
 		Student student=(Student)session.getAttribute("user");
-		
-		System.out.println(student.getStudent_no());
-		
+			
 		List<Teacher_course> st_list=evaluateService.selectCourseTeacherByNo(student.getClasses().getClasses_no());
 		for (Teacher_course teacher_course : st_list) {
 			System.out.println("课程名："+teacher_course.getCourse().getCourse_name());
 			System.out.println("教师名："+teacher_course.getTeacher().getTeacher_name());
 			System.out.println("id"+teacher_course.getId());
 		}
-		
 		mView.addObject("st_list", st_list);
 		return mView;
 	}	
@@ -75,6 +78,7 @@ public class EvaluateController {
 		public ModelAndView st_score(int id){
 			System.out.println("id"+id);
 			Teacher_course teacher_course = evaluateService.selectCourseTeacherAllById(id);
+
 			ModelAndView mView= new ModelAndView("evaluate/st_score");
 			System.out.println(1);
 			mView.addObject("teacher_course", teacher_course);
@@ -91,9 +95,16 @@ public class EvaluateController {
 			
 		//学生评价提交
 		@RequestMapping("/st_score_submit")
-		public ResultMsg st_score_submit(int score) {
+		@ResponseBody
+		public ResultMsg st_score_submit(int student_id,int classes_id,int teacher_id,float st_score,String course_name) {
 				
-			int st_scoreResult = evaluateService.InsertSt_score(score);
+			St_score score = new St_score();
+			score.setStudent_id(student_id);
+			score.setClasses_id(classes_id);
+			score.setTeacher_id(teacher_id);
+			score.setSt_score(st_score);
+			score.setCourse_name(course_name);
+			int st_scoreResult = evaluateService.insertSt_scoreInfo(score);
 			
 			if(st_scoreResult>0) {
 				return new ResultMsg(1, "评价成功！");
@@ -114,4 +125,19 @@ public class EvaluateController {
 				return new ResultMsg(0, "评价失败！");
 			}
 		}
+		
+	//点击评教按钮，进入评教界面
+	@RequestMapping("/st_comein")
+	public ModelAndView st_comein(@RequestParam(value = "id")String id) {
+		ModelAndView mView=new ModelAndView("evaluate/st_score");
+		System.out.println(id);
+		double tmp = Double.parseDouble(id);
+		Teacher_course teacher_course=evaluateService.selectCourseTeacherByid((int)tmp);
+		
+		System.out.println("列表id:"+teacher_course.getId());
+		
+		mView.addObject("teacher_course",teacher_course);
+
+		return mView;
+	}
 }
