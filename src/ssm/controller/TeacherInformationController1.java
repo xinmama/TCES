@@ -13,20 +13,19 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ssm.entity.Department;
 import ssm.entity.ResultMsg;
+import ssm.entity.Student;
 import ssm.entity.Teacher;
 import ssm.service.DepartmentService;
 import ssm.service.TeacherInformationService;
 
 @Controller
-public class TeacherInformationController {
+public class TeacherInformationController1 {
 	
 	@Autowired 
 	public TeacherInformationService teacherInformationService;
 	
-	@Autowired
 	public DepartmentService departmentService;
-	
-	//查询
+		//查询
 		@RequestMapping("/information_list")
 		public ModelAndView teacherSelect(HttpServletRequest request) {
 			ModelAndView mv=new ModelAndView("information/list");
@@ -36,8 +35,7 @@ public class TeacherInformationController {
 			mv.addObject("teacher",teacher);
 			return mv;
 		}
-		 
-		//显示教师管理修改页面
+		//修改页面
 		@RequestMapping("/information_update")
 			public ModelAndView teacher_update(HttpServletRequest request) {
 				ModelAndView mv=new ModelAndView("information/update");
@@ -53,11 +51,11 @@ public class TeacherInformationController {
 				return mv;
 			}
 			
-			//执行修改页面
+			//修改
 			@ResponseBody
 			@RequestMapping("/update_information")
 			public ResultMsg update_teacher(Teacher teacher) {
-				//判断被修改的教师信息是否存在
+			
 				int selectResult= teacherInformationService.selectTeacherByTeacherNo(teacher.getTeacher_no());
 				
 				if(selectResult==1) {
@@ -75,5 +73,7 @@ public class TeacherInformationController {
 				}
 				
 			}
+			
+			
 		
 }

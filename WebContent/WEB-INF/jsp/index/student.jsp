@@ -62,13 +62,13 @@
 						<a  href="${pageContext.request.contextPath}/st_evaluate_list" target="main_self_frame"><i class="fa fa-clipboard fa-fw"></i>在线评教</a>
 					</li>
 					<li class="layui-nav-item">
-						<a href="javascript:;"><i class="fa fa-shield fa-fw"></i>查看结果</a>
+						<a href="${pageContext.request.contextPath}/show_st_score" target="main_self_frame"><i class="fa fa-shield fa-fw"></i>查看结果</a>
 					</li>
 					<li class="layui-nav-item">
 						<a href="javascript:;"><i class="fa fa-user fa-fw"></i>个人信息</a>
 						<dl class="layui-nav-child">
 							<dd><a href="${pageContext.request.contextPath}/studentInformation_list" target="main_self_frame">查看个人信息</a></dd>
-							<dd><a href="${pageContext.request.contextPath}/studentInformation_update" target="main_self_frame">修改密码</a></a>
+							<dd><a href="${pageContext.request.contextPath}/updatestudent_pwd" target="main_self_frame">修改密码</a></a>
 						</dl>
 					</li>
 

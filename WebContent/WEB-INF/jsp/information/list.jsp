@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="名榜,wangid">
-    <title>WangID办公管理系统</title>
+    <title>教师综合评价系统</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
@@ -155,7 +155,7 @@
 				// offset: 'rb', //右下角弹出
 				// time: 2000, //2秒后自动关闭
 				anim: 5,//动画
-				content: ['information_update?id='+id, 'no'], //iframe的url，no代表不显示滚动条 
+				content: ['information_list?id='+id, 'no'], //iframe的url，no代表不显示滚动条 
 			});
 		}
 	    table.on('tool(mylist)', function(obj){ //注：tool 是工具条事件名，mylist 是 table 原始容器的属性 lay-filter="对应的值"
@@ -171,44 +171,5 @@
 			    layer.msg('修改操作');
 			}
 		}); 
-		//监听头工具栏事件
-		table.on('toolbar(mylist)', function(obj){
-			var checkStatus = table.checkStatus(obj.config.id),
-			data = checkStatus.data; //获取选中的数据 
-			switch(obj.event){ 
-			case 'add': 
-				//iframe窗 
-				layer.open({
-					type: 2,//层类型
-					title: "添加信息",//标题
-					closeBtn: 1, //不显示关闭按钮
-					shade: [0.3],//遮罩
-					skin: 'demo_class_color',//iframe皮肤
-					shadeClose:Boolean,//点击遮罩关闭
-					area: ['650px', '500px'],
-					// offset: 'rb', //右下角弹出
-					// time: 2000, //2秒后自动关闭
-					anim: 5,//动画
-					content: ['teacher_add', 'no'], //iframe的url，no代表不显示滚动条 
-				});
-				// 
-				break;
-				case 'update':
-					if(data.length === 0){
-					layer.msg('请选择一行');
-					} else if(data.length > 1){
-					layer.msg('只能同时编辑一个');
-					} else {
-					layer.alert('编辑 [id]：'+ checkStatus.data[0].id);
-					}
-				break;
-				case 'delete':
-					if(data.length === 0){
-					layer.msg('请选择一行');
-					} else {
-					layer.msg('删除');
-					}
-				break;
-				};
-			});
+	
 </script>

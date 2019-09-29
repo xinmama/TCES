@@ -35,4 +35,10 @@ public class EvaluateService {
 		
 		return evaluateDao.InsertTt_score(score);
 	}
+	
+	
+	//5.通过学生评教列表id，查询信息
+	public Teacher_course selectCourseTeacherByid(int id) {
+		return evaluateDao.selectCourseTeacherByid(id);
+	}
 }

@@ -68,7 +68,7 @@
 						<a  ><i class="fa fa-user fa-fw"></i>个人设置</a>
 						<dl class="layui-nav-child">
 							<dd><a href="${pageContext.request.contextPath}/information_list"  target="main_self_frame">个人信息</a></dd>
-							<dd><a href="${pageContext.request.contextPath}/information_update" target="main_self_frame">修改密码</a></a>
+							<dd><a href="${pageContext.request.contextPath}/updatestudent_pwd" target="main_self_frame">修改密码</a></a>
 						</dl>
 						
 					</li>

@@ -15,4 +15,7 @@ public interface EvaluateDao {
 	public int InsertSt_score(int score);
 
 	public int InsertTt_score(int score);
+	
+	//5.通过学生评教列表id，查询信息
+	public Teacher_course selectCourseTeacherByid(int id);
 }

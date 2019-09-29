@@ -50,5 +50,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete  from student where id=#{id};
 	</delete>
 	
+	<!-- 修改学生密码 -->
+	<update id="updateStudentpwd" parameterType="ssm.entity.Student" >
+		update student set student_pwd=#{student_pwd} where student_no=#{student_no};
+	</update>
+	
+	<!-- 根据学号查看学生密码 -->
+	<select id="selectStudentpwdByNo" resultType="String" parameterType="String">
+		select  student_pwd from student where student_no=#{student_no};
+	</select>
 	
 </mapper>
