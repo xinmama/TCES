@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 1.通过学生班级号，查询相应班级的课程名，任课老师 -->
 	<select id="selectCourseTeacherByNo" parameterType="String" resultMap="teacher_course">
-		select course.course_name,teacher.teacher_name 
+		select teacher_course.*,course.course_name,teacher.teacher_name 
 		from teacher_course,course,classes,teacher
 		where teacher_course.teacher_id=teacher.id
 		and teacher_course.course_id=course.id
@@ -46,16 +46,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		and department.id=#{department.id};
 	</select>
 	
-	<!-- 学生评价教师的信息插入 -->
+	<!-- 3.学生评价教师的信息插入 -->
 	<insert id="InsertSt_score" parameterType="int">
 		insert into st_score (student_id,classes_id,teacher_id,st_score,course_name)
 		values (#{student_id},#{classes_id},#{teacher_id},#{st_score},#{course_name})
 	</insert>
 	
-	<!-- 教师评价教师的信息插入 -->
+	<!-- 4.教师评价教师的信息插入 -->
 	<insert id="InsertTt_score" parameterType="int">
 		insert into tt_score (teacher1_id,dep_id,teacher2_id,tt_score,course_name)
 		values (#{teacher1_id},#{dep_id},#{teacher2_id},#{tt_score},#{course_name})
 	</insert>
+	
+	<!-- 5.通过学生评教列表id，查询信息 -->
+	<select id="selectCourseTeacherByid" parameterType="int" resultMap="teacher_course">
+		select teacher_course.*,course.course_name,teacher.teacher_name 
+		from teacher_course,course,classes,teacher
+		where teacher_course.teacher_id=teacher.id
+		and teacher_course.course_id=course.id
+		and teacher_course.classes_id=classes.id
+		and teacher_course.id=#{id};
+		
+	</select>
 	
 </mapper>

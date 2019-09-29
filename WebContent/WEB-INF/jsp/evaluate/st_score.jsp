@@ -40,7 +40,7 @@
 		        		<h3>学期：2019-2020学年  第一学期</h3>
 		      		</div>
 		        		<div class="layui-col-md6" style="text-align:right;padding-right:50px;font-size:20px;height:50px;line-height:50px;">
-		        		课程：java web
+		        		课程：
 		      			</div>
 		      			<div class="layui-col-md6" style="text-align:left;padding-left:50px;font-size:20px;height:50px;line-height:50px;">
 		        		教师：张三

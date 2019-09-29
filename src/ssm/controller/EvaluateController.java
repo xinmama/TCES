@@ -32,17 +32,13 @@ public class EvaluateController {
 		
 		HttpSession session = request.getSession(true); 
 		Student student=(Student)session.getAttribute("user");
-		
-		System.out.println(student.getStudent_no());
-		
+			
 		List<Teacher_course> st_list=evaluateService.selectCourseTeacherByNo(student.getClasses().getClasses_no());
 		for (Teacher_course teacher_course : st_list) {
 			System.out.println("课程名："+teacher_course.getCourse().getCourse_name());
 			System.out.println("教师名："+teacher_course.getTeacher().getTeacher_name());
 		}
-		
-		
-		
+					
 		mView.addObject("st_list", st_list);
 		return mView;
 	}	
@@ -72,14 +68,14 @@ public class EvaluateController {
 	}
 	
 	//访问学生评价页面
-		@RequestMapping("/st_score")
+		@RequestMapping("/st_score_evaluate")
 		public ModelAndView st_score(){
 			ModelAndView mView= new ModelAndView("evaluate/st_score");
 			return mView;		
 		}
 		
 		//访问教师评价页面
-		@RequestMapping("/tt_score")
+		@RequestMapping("/tt_score_evaluate")
 		public ModelAndView tt_score(){
 			ModelAndView mView= new ModelAndView("evaluate/tt_score");
 			return mView;		
@@ -110,4 +106,18 @@ public class EvaluateController {
 				return new ResultMsg(0, "评价失败！");
 			}
 		}
+		
+	//点击评教按钮，进入评教界面
+	@RequestMapping("/st_comein")
+	public ModelAndView st_comein(int id) {
+		ModelAndView mView=new ModelAndView("evaluate/st_score");
+		System.out.println(id);
+		Teacher_course teacher_course=evaluateService.selectCourseTeacherByid(id);
+		
+		System.out.println("列表id:"+evaluateService.selectCourseTeacherByid(id));
+		
+		mView.addObject("teacher_course",teacher_course);
+		
+		return mView;
+	}
 }
