@@ -97,7 +97,7 @@ function tt_comein(id){
         shade: [0.3],//遮罩
         skin: 'demo_class_color',//iframe皮肤
         shadeClose:Boolean,//点击遮罩关闭
-        area: ['800px', '250px'],
+        area: ['1300px', '650px'],
         // offset: 'rb', //右下角弹出
         // time: 2000, //2秒后自动关闭
         anim: 5,//动画

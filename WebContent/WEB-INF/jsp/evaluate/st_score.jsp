@@ -72,7 +72,7 @@
    			<legend>5.遵守教学纪律，不迟到，不早退，上课时不打电话。</legend>
 		</fieldset>
 		<div class="test1" style="padding-left:30px"></div>
-		<input id="number3" type="hidden" name="number" value="0" >
+		<input id="number4" type="hidden" name="number" value="0" >
 		
 		<fieldset class="layui-elem-field layui-field-title"> 
    			<legend>
