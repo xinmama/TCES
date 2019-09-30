@@ -86,7 +86,7 @@
 	  var teacher_no=$("#teacher_no").val();
 	  var oldpwd=$("#oldpwd").val();
 	  var newpwd2=$("#newpwd2").val();
-	  alert(oldpwd);
+	  //alert(oldpwd);
 	 // alert(student_no);
 		$.ajax({
 			url : "${pageContext.request.contextPath}/teacherpwd_update",

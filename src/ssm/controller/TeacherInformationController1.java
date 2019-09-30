@@ -25,7 +25,7 @@ public class TeacherInformationController1 {
 	public TeacherInformationService teacherInformationService;
 	
 	public DepartmentService departmentService;
-		//查询
+		//鏌ヨ
 		@RequestMapping("/information_list")
 		public ModelAndView teacherSelect(HttpServletRequest request) {
 			ModelAndView mv=new ModelAndView("information/list");
@@ -38,7 +38,7 @@ public class TeacherInformationController1 {
 		
 		
 		
-		//修改页面
+		//淇敼椤甸潰
 		@RequestMapping("/information_update")
 			public ModelAndView teacher_update(HttpServletRequest request) {
 				ModelAndView mv=new ModelAndView("information/update");
@@ -58,7 +58,7 @@ public class TeacherInformationController1 {
 		
 		
 			
-			//修改
+			//淇敼
 			@ResponseBody
 			@RequestMapping("/update_information")
 			public ResultMsg update_teacher(Teacher teacher) {
@@ -66,20 +66,51 @@ public class TeacherInformationController1 {
 				int selectResult= teacherInformationService.selectTeacherByTeacherNo(teacher.getTeacher_no());
 				
 				if(selectResult==1) {
-					return new ResultMsg(0,"该教师已存在，请重新输入！");
+					return new ResultMsg(0,"璇ユ暀甯堝凡瀛樺湪锛岃閲嶆柊杈撳叆锛�");
 				}else {
 					
 					int updateResult = teacherInformationService.updateTeacherById(teacher);
 						
 					if(updateResult>0) {
-						return new ResultMsg(1, "修改信息成功！");
+						return new ResultMsg(1, "淇敼淇℃伅鎴愬姛锛�");
 					}else {
-						return new ResultMsg(0, "修改信息失败！");
+						return new ResultMsg(0, "淇敼淇℃伅澶辫触锛�");
 						
 					}
 				}
 				
 			}
+			
+			//访问教师修改密码页面
+			@RequestMapping("/updateteacher_pwd")
+			public ModelAndView updatepwd() {
+				ModelAndView mv=new ModelAndView("information/updatestudent_pwd");
+//				List<Teacher> teachers=teacherInformationService.getTeacher();
+//				mv.addObject("teachers",teachers);
+				return mv;
+			}
+			//修改教师密码
+			@RequestMapping("/teacherpwd_update")
+			@ResponseBody
+			public ResultMsg pwd_update(String teacher_no,String oldpwd,String newpwd2) {
+				
+				Teacher teacher=new Teacher();
+				teacher.setTeacher_no(teacher_no);
+				teacher.setTeacher_pwd(newpwd2);
+				String  oldpwdResult=teacherInformationService.selectTeacherpwdByNo(teacher_no);
+				//System.out.println(oldpwd);
+				if (oldpwd.equals(oldpwdResult)) {
+					int i=teacherInformationService.updateTeacherpwd(teacher);
+					if (i>0) {
+						return new ResultMsg(1, "修改密码成功");
+					}else {
+						return new ResultMsg(0, "修改密码失败");
+					}
+					
+				}else {
+					return new ResultMsg(-1, "原密码不对");
+				}
+		}
 			
 			
 		
