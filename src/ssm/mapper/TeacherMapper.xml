@@ -48,7 +48,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 添加教师信息 -->
 	<insert id="addTeacher" parameterType="ssm.entity.Teacher">
 		insert into teacher(teacher_no,teacher_name,teacher_pwd,sex,tel,dep_id)
-		values(#{teacher_no},#{teacher_name},#{teacher_no},#{sex},#{tel},#{dep_id});
+		values(#{teacher_no},#{teacher_name},#{teacher_pwd},#{sex},#{tel},#{dep_id});
 	</insert>
 	
 	<!-- 修改教师信息 -->

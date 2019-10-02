@@ -13,6 +13,7 @@ import ssm.entity.ResultMsg;
 import ssm.entity.Student;
 import ssm.service.ClassService;
 import ssm.service.StudentService;
+import ssm.util.Md5;
 
 @Controller
 public class StudentController {
@@ -42,13 +43,15 @@ public class StudentController {
 	public ResultMsg add_student(Student student) {
 		int idResult=studentService.selectStudentById(student.getStudent_no());
 		if(idResult==1) {
-			return new ResultMsg(-1, "¸ÃÑ§ºÅÒÑ±»ËùÓÃ!");
+			return new ResultMsg(-1, "ï¿½ï¿½Ñ§ï¿½ï¿½ï¿½Ñ±ï¿½ï¿½ï¿½ï¿½ï¿½!");
 		}else {
+			String passwordByMd5 = Md5.MD5(student.getStudent_no());
+			student.setStudent_pwd(passwordByMd5);
 			int addResult=studentService.addStudent(student);
 			if(addResult>0) {
-				return new ResultMsg(1, "Ìí¼ÓÑ§Éú³É¹¦!");
+				return new ResultMsg(1, "ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½ï¿½É¹ï¿½!");
 			}else {
-				return new ResultMsg(0, "Ìí¼ÓÑ§ÉúÊ§°Ü!");
+				return new ResultMsg(0, "ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½Ê§ï¿½ï¿½!");
 			}
 		}
 	}
@@ -70,9 +73,9 @@ public class StudentController {
 		
 			int updateResult=studentService.updateStudent(student);
 			if(updateResult>0) {
-				return new ResultMsg(1, "ĞŞ¸ÄĞÅÏ¢³É¹¦!");
+				return new ResultMsg(1, "ï¿½Ş¸ï¿½ï¿½ï¿½Ï¢ï¿½É¹ï¿½!");
 			}else {
-				return new ResultMsg(0, "ĞŞ¸ÄĞÅÏ¢Ê§°Ü!");
+				return new ResultMsg(0, "ï¿½Ş¸ï¿½ï¿½ï¿½Ï¢Ê§ï¿½ï¿½!");
 			}
 		}
 	
@@ -84,13 +87,13 @@ public class StudentController {
 		
 			int deleteResult=studentService.deletestudent(id);
 			if(deleteResult>0) {
-				return new ResultMsg(1, "É¾³ıÑ§Éú³É¹¦!");
+				return new ResultMsg(1, "É¾ï¿½ï¿½Ñ§ï¿½ï¿½ï¿½É¹ï¿½!");
 			}else {
-				return new ResultMsg(0, "É¾³ıÑ§ÉúÊ§°Ü!");
+				return new ResultMsg(0, "É¾ï¿½ï¿½Ñ§ï¿½ï¿½Ê§ï¿½ï¿½!");
 			}
 		}
 	
-	//Ñ§ÉúĞŞ¸ÄÃÜÂë
+	//Ñ§ï¿½ï¿½ï¿½Ş¸ï¿½ï¿½ï¿½ï¿½ï¿½
 			@RequestMapping("/updatestudent_pwd")
 			public ModelAndView updatepwd() {
 				ModelAndView mv=new ModelAndView("information/updatestudent_pwd");
@@ -111,13 +114,13 @@ public class StudentController {
 				if (oldpwd.equals(oldpwdResult)) {
 					int i=studentService.updateStudentpwd(student);
 					if (i>0) {
-						return new ResultMsg(1, "ĞŞ¸ÄÃÜÂë³É¹¦");
+						return new ResultMsg(1, "ï¿½Ş¸ï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½");
 					}else {
-						return new ResultMsg(0, "ĞŞ¸ÄÃÜÂëÊ§°Ü");
+						return new ResultMsg(0, "ï¿½Ş¸ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½");
 					}
 					
 				}else {
-					return new ResultMsg(-1, "Ô­ÃÜÂë²»¶Ô");
+					return new ResultMsg(-1, "Ô­ï¿½ï¿½ï¿½ë²»ï¿½ï¿½");
 				}
 		}
 	}

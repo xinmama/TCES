@@ -10,6 +10,7 @@ http://www.springframework.org/schema/mvc http://www.springframework.org/schema/
 
 <!-- 扫描控制器所在的包 -->
 	<context:component-scan base-package="ssm.controller"></context:component-scan>
+	<context:component-scan base-package="ssm.util"></context:component-scan>
 	
 	
 <!-- 视图解析器 -->

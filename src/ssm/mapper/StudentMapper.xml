@@ -32,7 +32,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 添加学生信息 -->
 	<insert id="addStudent" parameterType="ssm.entity.Student" >
 		insert into student(student_no,student_name,student_pwd,classes_id,sex,tel) 
-		values(#{student_no},#{student_name},#{student_no},#{classes_id},#{sex},#{tel});
+		values(#{student_no},#{student_name},#{student_pwd},#{classes_id},#{sex},#{tel});
 	</insert>
 	
 	<!-- 通过id查询学生信息 -->

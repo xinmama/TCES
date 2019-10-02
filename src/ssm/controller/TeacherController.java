@@ -13,12 +13,14 @@ import ssm.entity.Department;
 import ssm.entity.ResultMsg;
 import ssm.entity.Teacher;
 import ssm.service.TeacherService;
+import ssm.util.Md5;
 
 @Controller
 public class TeacherController {
 	
 	@Autowired
 	public TeacherService teacherService;
+	
 	
 	//查询
 	@RequestMapping("/teacher_list")
@@ -47,6 +49,8 @@ public class TeacherController {
 		if(i==1) {
 			return new ResultMsg(-1,"该教师信息已存在，请重新输入！");
 		}else{
+			String passwordByMd5 = Md5.MD5(teacher.getTeacher_no());
+			teacher.setTeacher_pwd(passwordByMd5);
 			int addResult=teacherService.addTeacher(teacher);
 			if(addResult>0) {
 				System.out.println("添加教师成功！");

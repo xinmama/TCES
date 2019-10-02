@@ -13,6 +13,7 @@ import ssm.entity.Teacher;
 import ssm.service.ClassService;
 import ssm.service.LoginService;
 import ssm.service.StudentService;
+import ssm.util.Md5;
 
 @Controller
 public class LoginController {
@@ -36,11 +37,13 @@ public class LoginController {
 		
 		Student student = new Student();
 		student.setStudent_no(username);
-		student.setStudent_pwd(password);
+		String studentPasswordByMd5 = Md5.MD5(password);
+		student.setStudent_pwd(studentPasswordByMd5);
 		
 		Teacher teacher = new Teacher();
 		teacher.setTeacher_no(username);
-		teacher.setTeacher_pwd(password);
+		String teacherPasswordByMd5 = Md5.MD5(password);
+		teacher.setTeacher_pwd(teacherPasswordByMd5);
 		
 		int selectResultManage = loginService.selectManage(manage);//判断是否是管理员
 		if(selectResultManage==1) {//如果是
