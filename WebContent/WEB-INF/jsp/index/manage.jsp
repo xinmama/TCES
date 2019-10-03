@@ -49,7 +49,7 @@
 		        <div class="top_icon">
 		        	<a href="index.html" title="首页"><img src="images/top_home.png"></a>
 		        	<a href="#" title="个人设置"><img src="images/top_person.png"></a>
-		        	<a href="#" title="退出"><img src="images/top_exit.png"></a>
+		        	<a href="${pageContext.request.contextPath}/exit" title="退出"><img src="images/top_exit.png"></a>
 		        </div>
 		    </div>
 		</div> 

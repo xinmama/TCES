@@ -53,9 +53,9 @@
 	        	<b></b>
 	        </div>
 	        <div class="top_icon">
-	        	<a href="#"><img src="images/top_home.png"></a>
+	        	<a href="${pageContext.request.contextPath}/ReturnTeacherIndex"><img src="images/top_home.png"></a>
 	        	<a href="#"><img src="images/top_person.png"></a>
-	        	<a href="#"><img src="images/top_exit.png"></a>
+	        	<a href="${pageContext.request.contextPath}/exit"><img src="images/top_exit.png"></a>
 	        </div>
 	    </div>
 	    <div class="content_box">

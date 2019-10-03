@@ -68,7 +68,6 @@ public class LoginController {
 				{
 					ModelAndView mv = new  ModelAndView("index/show_student");
 					HttpSession session = request.getSession(true); 
-					
 													
 					Student student1=loginService.getInfoByStudentno(username);
 					session.setAttribute("user",student1);
@@ -104,5 +103,44 @@ public class LoginController {
 			}
 		}
 	}
+	
+	//退出
+	@RequestMapping("/exit")
+	public ModelAndView exit(HttpServletRequest request) {	
+		//退出session
+		HttpSession session = request.getSession(true);
+	
+		session.removeAttribute("user");
+		
+		ModelAndView mv = new ModelAndView("login/login");		
+		return mv;
+	}
+	
+	//学生返回首页
+	@RequestMapping("/ReturnStudentIndex")
+	public ModelAndView ReturnStudentIndex(HttpServletRequest request) {	
+		ModelAndView mv = new  ModelAndView("index/show_student");
+		HttpSession session = request.getSession(true); 
+		Student student=(Student)session.getAttribute("user");
+										
+		Student student1=loginService.getInfoByStudentno(student.getStudent_no());
+		mv.addObject("student1", student1);		
+		return mv;
+	}
+	
+	//教师返回首页
+	@RequestMapping("/ReturnTeacherIndex")
+	public ModelAndView ReturnTeacherIndex(HttpServletRequest request) {	
+		ModelAndView mv = new  ModelAndView("index/show_teacher");
+		HttpSession session = request.getSession(true); 
+		Teacher teacher=(Teacher)session.getAttribute("user");
+		
+		Teacher teacher1=loginService.getInfoByTeacherno(teacher.getTeacher_no());
+		session.setAttribute("user",teacher1);
+		mv.addObject("teacher1", teacher1);						
+		return mv;
+	}	
+	
+	
 	
 }
