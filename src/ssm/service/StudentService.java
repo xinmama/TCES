@@ -48,6 +48,8 @@ public class StudentService {
 		return studentDao.updateStudentpwd(student);
 	}
 	
-	
+	public List<Student> selectStudentByName(String info){
+		return studentDao.selectStudentByName(info);
+	}
 
 }

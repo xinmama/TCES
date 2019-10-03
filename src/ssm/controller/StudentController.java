@@ -22,6 +22,18 @@ public class StudentController {
 	@Autowired
 	private ClassService classService;
 	
+	//1.模糊查询
+	@RequestMapping("/student_list_inquire")
+	public ModelAndView list_inquire(String info) {
+		System.out.println(info);
+		
+		ModelAndView mView=new ModelAndView("student/list");
+		List<Student> students=studentService.selectStudentByName(info);
+		mView.addObject("students", students);
+		return mView;
+	}
+	
+		
 	@RequestMapping("/student_list")
 	public ModelAndView list() {
 		List<Student> students=studentService.selectStudent();

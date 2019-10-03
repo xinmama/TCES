@@ -22,4 +22,6 @@ public interface StudentDao {
 	public String selectStudentpwdByNo(String student_no);
 	
 	public int updateStudentpwd(Student student);
+	
+	public List<Student> selectStudentByName(String info);
 }

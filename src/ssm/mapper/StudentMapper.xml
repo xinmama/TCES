@@ -60,4 +60,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select  student_pwd from student where student_no=#{student_no};
 	</select>
 	
+	<!-- 根据姓名查询学生信息 -->
+	<select id="selectStudentByName" parameterType="String" resultMap="student">
+		select * from student where student_name like CONCAT(CONCAT('%',#{info}),'%');
+	</select>
 </mapper>

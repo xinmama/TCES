@@ -32,14 +32,13 @@
 	<div class="zy_weizhi bord_b">
 		<i class="fa fa-home fa-3x"></i>
 		<a>首页</a>
-		<a>学生管理</a>
-		<span>学生列表</span>
+		<a>学生管理</a>		
 	</div>
 	<!-- 筛选 --> 
 	<div class="shuaix">				
 		<div class="right">
-			<input type="text" placeholder="请输入关键词查询">
-			<a href="#">查询</a>
+			<input id="inquire" type="text" placeholder="请输入关键词查询">
+			<a href="#" onclick="getInput()">查询</a>
 		</div>
 	</div>
 	<!-- 下面写内容 -->
@@ -80,6 +79,26 @@
 
 <script type="text/javascript">
 
+	function getInput(){
+		var val=$("#inquire").val();
+		
+		$.ajax({
+			url:"${pageContext.request.contextPath}/student_list_inquire",
+			async:false,
+			type:"post",
+			data:{info:val},
+			dataType:"json",
+				success:function(data){
+	  		    if(data.flag==1){
+						alert(data.content);	 						  	
+				   		parent.location.reload();
+					}else{
+						alert(data.content);
+					}
+				}
+			});
+	};
+	
 	//1.修改按钮
 	function update(id){
    layer.open({
@@ -194,7 +213,5 @@ function del(id){
 	}); 
 </script> 
 
-
 </body>
-
 </html>
