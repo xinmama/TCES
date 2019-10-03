@@ -36,11 +36,6 @@
             <td  class="class_no" >学期名称</td>
             <td><input type="text" name="term_name" value="${term.term_name}"></td>
         </tr>
-        <tr>
-            <td  class="class_no" >是否开启</td>
-            <td>
-            <input type="text" name="is_open" value=""></td>
-        </tr>
         <tr class="tianjie_button">
             <td colspan="2" style="border-right:1px solid #e6e6e6;">
                 <button type="button" onclick="update_commit()">确定修改</button>
@@ -53,14 +48,14 @@
 
 <script type="text/javascript">
 
-	$(function(){
+/* 	$(function(){
 		if(${term.is_open}==1){
 			$("input[name=is_open]").attr("value","开启");
 		}else{
 			$("input[name=is_open]").attr("value","关闭");
 		}
 		
-	});
+	}); */
 
 	//修改班级信息
 	//先查询班级信息并展示
@@ -69,16 +64,19 @@
 		 $("input[type='text']").each(function () {
 	           if ($(this).val() == "") {	   
 	               alert("内容不能为空！");
-	               i=false;}
+	               i=false;
+	           }
 	     });
          
          if(i==true){
       	//提交内容
+      	var id = $("input[name='id']").val();
+      	var term_name = $("input[name='term_name']").val();
     		$.ajax({
 				url:"${pageContext.request.contextPath}/update_term",
 				async:false,
 				type:"post",
-				data:$("#updateterm").serialize(),
+				data:{id:id,term_name:term_name},
 				dataType:"json",
     			success:function(data){
 	      			if(data.flag==1){

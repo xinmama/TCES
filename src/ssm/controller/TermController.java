@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javafx.scene.control.TextFormatter;
 import ssm.entity.Course;
 import ssm.entity.Department;
 import ssm.entity.ResultMsg;
@@ -25,9 +26,6 @@ public class TermController {
 	public ModelAndView term_list() {
 		ModelAndView mView=new ModelAndView("term/term_list");
 		List<Term> term=termService.getTerm();
-		for (Term term2 : term) {
-			System.out.println(term2);
-		}
 		mView.addObject("term",term);
 		return mView;
 	}
@@ -43,7 +41,7 @@ public class TermController {
 	//3.添加学期
 	@ResponseBody
 	@RequestMapping("/add_term")
-	public ResultMsg add_term(Term term) {		
+	public ResultMsg add_term(Term term) {	
 		int termResult=termService.selectTermByTermname(term.getTerm_name());
 		if(termResult==1) {
 			return new ResultMsg(0, "该学期已存在，请重新添加！");
@@ -69,8 +67,8 @@ public class TermController {
 		
 	
 	//5.修改学期信息
+	@RequestMapping("/update_term")	
 	@ResponseBody
-	@RequestMapping("/update_term")			
 	public ResultMsg update_term(Term term) {
 		int j=termService.updateTerm(term);
 		if(j>0) {

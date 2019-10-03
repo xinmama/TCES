@@ -26,7 +26,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 5.修改课程信息  -->
 	<update id="updateTerm" parameterType="ssm.entity.Term" >
-		update term set term_name=#{term_name},is_open=#{is_open} where id=#{id};
+		update term set term_name=#{term_name} where id=#{id};
 	</update>
 	
 	<!-- 6.删除课程信息 -->
@@ -54,5 +54,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update term set is_open = #{is_open} where id = #{id}
 	</update>
 	
+	<!-- 查询学期表中启动状态的学期id -->
+	<select id="selectIsCurrAppraiseByIs_open" resultType="int">
+		select id from term where is_open=1;
+	</select>
 	
 </mapper>

@@ -1,28 +1,26 @@
 package ssm.controller;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.alibaba.fastjson.JSONObject;
 
 import ssm.entity.ResultMsg;
 import ssm.entity.St_score;
 import ssm.entity.Student;
 import ssm.entity.Teacher;
 import ssm.entity.Teacher_course;
-import ssm.entity.Term;
 import ssm.entity.Tt_score;
 import ssm.service.EvaluateService;
-import ssm.service.TeacherService;
 import ssm.service.TermService;
 
 @Controller
@@ -30,11 +28,8 @@ public class EvaluateController {
 
 	@Autowired
 	private EvaluateService evaluateService;
-
-	private TermService termService;
-
 	@Autowired
-	private TeacherService teacherService;
+	private TermService termService;
 
 	//1.访问学生评教列表页面
 	@RequestMapping("/st_evaluate_list")
@@ -43,11 +38,46 @@ public class EvaluateController {
 		
 		HttpSession session = request.getSession(true); 
 		Student student=(Student)session.getAttribute("user");
+		
+		//查询学期是否存在
+		int termResult = termService.selectIsCurrAppraise();
+		if(termResult==1) {//如果存在，查询学期的id
+			int termResultId = termService.selectIsCurrAppraiseByIs_open();
 			
-		List<Teacher_course> st_list=evaluateService.selectCourseTeacherByNo(student.getClasses().getClasses_no());
+			HashMap <String,Object> map = new HashMap<String,Object>();
 
-		mView.addObject("st_list", st_list);
-		return mView;
+			map.put("classes_no",student.getClasses().getClasses_no());
+
+			map.put("term_id",termResultId);
+				
+			List<Teacher_course> st_list = evaluateService.selectCourseTeacherByNo(map);//查询该学生在开启学期的可评价记录
+			
+			List<St_score> st_scores = evaluateService.selectSt_scoreByStudent_id(student.getId());//查询该学期已评价的记录
+			
+			Iterator<Teacher_course> it = st_list.iterator();
+			 while(it.hasNext()){
+			  Teacher_course x = it.next();
+			  System.out.println(x.getId());
+			  Iterator<St_score> is = st_scores.iterator();
+			  while(is.hasNext()){
+				  St_score y = is.next();
+				  System.out.println(y.getId());
+				  if(y.getStudent_id() == student.getId() && y.getTeacher_id() == x.getTeacher_id() && y.getCourse_name() .equals(x.getCourse().getCourse_name()) ){
+					    it.remove();
+				  }
+			  }  
+			}
+			 
+			mView.addObject("st_list", st_list);
+			
+			return mView;
+		}else {
+			return mView.addObject("st_list", "");
+		}
+		
+		//使用HashMap定义:
+
+		
 	}	
 	
 	//新

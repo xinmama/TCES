@@ -37,7 +37,7 @@
         </tr>
         <tr>
             <td  class="class_no" >是否开启</td>
-            <td><input type="text" name="is_open" placeholder="否"  ></td>
+            <td><input type="text" name="is_open"  value="否" readonly></td>
         </tr>
         <tr class="tianjie_button" >
             <td colspan="2" style="border-right:1px solid #e6e6e6;">
@@ -62,12 +62,14 @@
 		
 
          if(i==true){
+			var term_name = $("input[name='term_name']").val();
+			var is_open = 0;
 			
     		$.ajax({
 				url:"${pageContext.request.contextPath}/add_term",
 				async:false,
 				type:"post",
-				data:$("#addterm").serialize(),
+				data:{term_name:term_name,is_open:is_open},
 				dataType:"json",
     			success:function(data){
 	      		    if(data.flag==1){

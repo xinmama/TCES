@@ -1,6 +1,8 @@
 package ssm.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import ssm.entity.St_score;
 import ssm.entity.Teacher;
@@ -10,7 +12,7 @@ import ssm.entity.Tt_score;
 public interface EvaluateDao {
 
 	//1.通过学生班级号，查询相应班级的课程名，任课老师 
-	public List<Teacher_course> selectCourseTeacherByNo(String classes_no);
+	public List<Teacher_course> selectCourseTeacherByNo(HashMap<String, Object> map);
 	
 	//2.通过教师所在的部门id，查询相应部门的课程名，任课老师 
 	public List<Teacher_course> selectCourseTeacherByDepid(int dep_id);
@@ -32,4 +34,6 @@ public interface EvaluateDao {
 	public List<Teacher_course> selectCourseTeacherByDepid(Teacher teacher);
 	
 	public Teacher_course selectCourseTeacherByTeacher_courseId(int id);
+	
+	public List<St_score> selectSt_scoreByStudent_id(int student_id);
 }

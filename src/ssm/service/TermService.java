@@ -59,4 +59,8 @@ public class TermService {
 	public int updateIsCurrAppraise(Term term) {
 		return termDao.updateIsCurrAppraise(term);
 	}
+	
+	public int selectIsCurrAppraiseByIs_open() {
+		return termDao.selectIsCurrAppraiseByIs_open();
+	}
 }

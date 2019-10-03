@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ssm.dao.EvaluateDao;
+
+import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,8 +22,8 @@ public class EvaluateService {
 	private EvaluateDao evaluateDao;
 	
 	//1.通过学生班级号，查询相应班级的课程名，任课老师 
-	public List<Teacher_course> selectCourseTeacherByNo(String classes_no){
-		return evaluateDao.selectCourseTeacherByNo(classes_no);
+	public List<Teacher_course> selectCourseTeacherByNo(HashMap<String, Object> map){
+		return evaluateDao.selectCourseTeacherByNo(map);
 	}
 	
 	//2.通过教师所在的部门id，查询相应部门的课程名，任课老师 
@@ -62,5 +64,9 @@ public class EvaluateService {
 	
 	public Teacher_course selectCourseTeacherByTeacher_courseId(int id) {
 		return evaluateDao.selectCourseTeacherByTeacher_courseId(id);
+	}
+	
+	public List<St_score> selectSt_scoreByStudent_id(int student_id) {
+		return evaluateDao.selectSt_scoreByStudent_id(student_id);
 	}
 }

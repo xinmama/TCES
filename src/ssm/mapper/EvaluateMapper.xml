@@ -5,14 +5,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="ssm.dao.EvaluateDao">
 
-	<!-- 1.通过学生班级号，查询相应班级的课程名，任课老师 -->
-	<select id="selectCourseTeacherByNo" parameterType="String" resultMap="teacher_course">
+	<!-- 1.通过学生班级号,学期id，查询相应班级的课程名，任课老师 -->
+	<select id="selectCourseTeacherByNo" parameterType="Map" resultMap="teacher_course">
 		select teacher_course.*,course.course_name,teacher.teacher_name 
 		from teacher_course,course,classes,teacher
 		where teacher_course.teacher_id=teacher.id
 		and teacher_course.course_id=course.id
 		and teacher_course.classes_id=classes.id
-		and classes.classes_no=#{classes.classes_no};
+		and classes.classes_no=#{classes_no} and term_id = #{term_id}
 	</select>
 	
 	<resultMap type="ssm.entity.Teacher_course" id="teacher_course">
@@ -172,6 +172,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into tt_score(teacher1_id,dep_id,teacher2_id,tt_score,course_name) values 
 		(#{teacher1_id},#{dep_id},#{teacher2_id},#{tt_score},#{course_name});
 	</insert>
+	
+	<!-- 查询学生评价表，查询该学生在评价表中评价的记录 -->
+	<select id="selectSt_scoreByStudent_id" parameterType="int" resultType="ssm.entity.St_score">
+		select id,student_id,teacher_id,course_name from st_score where student_id = #{student_id}
+	</select>
 	
 
 </mapper>
