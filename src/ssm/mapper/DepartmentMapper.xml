@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 查询全部院系信息 -->
 	<select id="selectDepartment" resultType="ssm.entity.Department">
-		select * from department;
+		select * from department order by department.id desc;
 	</select>
 	
 	<!-- 查询该院系是否存在 -->

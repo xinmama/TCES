@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="ssm.dao.StandardDao">
 	<!-- 查询全部评价指标信息 -->
 	<select id="selectStandard" resultType="ssm.entity.Standard">
-		select * from standard;
+		select * from standard order by standard.id desc;
 	</select>
 	
 	<!-- 查询该评价指标是否存在 -->

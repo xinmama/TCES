@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select teacher_course.*,teacher.teacher_name,classes.classes_no,course.course_name,term.term_name
 		from teacher_course,teacher,classes,course,term where teacher_course.teacher_id=teacher.id and
 		teacher_course.classes_id=classes.id and teacher_course.course_id=course.id and
-		teacher_course.term_id=term.id;
+		teacher_course.term_id=term.id order by teacher_course.id desc;
 	</select>
 	
 	<resultMap type="ssm.entity.Teacher_course" id="teacher_course">

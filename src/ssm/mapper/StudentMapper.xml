@@ -23,7 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 查询全部学生信息 -->
 	<select id="selectStudent" resultMap="student">
-		select  student.*,classes.classes_no from student,classes where student.classes_id=classes.id;
+		select  student.*,classes.classes_no from student,classes where student.classes_id=classes.id order by student.id desc;
 	</select>
 	<!-- 查询全部学生学号 -->
 	<select id="selectStudentById" resultType="int" parameterType="String">

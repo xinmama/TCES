@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 查看教师信息 -->
 	<select id="getTeacher" resultMap="teacher">
 		select teacher.*,department.dep_name from teacher,department
-		where teacher.dep_id=department.id
+		where teacher.dep_id=department.id order by teacher.id desc;
 	</select>
 	
 	<resultMap type="ssm.entity.Teacher" id="teacher">
