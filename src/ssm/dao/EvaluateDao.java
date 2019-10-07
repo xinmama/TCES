@@ -36,4 +36,8 @@ public interface EvaluateDao {
 	public Teacher_course selectCourseTeacherByTeacher_courseId(int id);
 	
 	public List<St_score> selectSt_scoreByStudent_id(int student_id);
+	
+	public List<Teacher_course> selectCourseTeacherByInfo(HashMap<String, Object> map);
+	
+	public List<Tt_score> selectSt_scoreByTeacher_id(int id);
 }

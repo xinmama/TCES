@@ -38,6 +38,10 @@ public class StandardService {
 		return standardDao.deleteStandardById(id);
 	}
 	
+	public List<Standard> selectStandardByType(int type) {
+		return standardDao.selectStandardByType(type);
+	}
+	
 }
 
 

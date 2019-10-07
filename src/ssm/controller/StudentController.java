@@ -25,10 +25,8 @@ public class StudentController {
 	//1.模糊查询
 	@RequestMapping("/student_list_inquire")
 	public ModelAndView list_inquire(String info) {
-		System.out.println(info);
-		
-		ModelAndView mView=new ModelAndView("student/list");
 		List<Student> students=studentService.selectStudentByName(info);
+		ModelAndView mView=new ModelAndView("student/add");
 		mView.addObject("students", students);
 		return mView;
 	}

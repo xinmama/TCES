@@ -16,5 +16,7 @@ public interface StandardDao {
 	
 	public int updateStandardById(Standard standard);
 
-	public  int deleteStandardById(int id);
+	public int deleteStandardById(int id);
+	
+	public List<Standard> selectStandardByType(int type);
 }

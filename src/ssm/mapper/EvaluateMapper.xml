@@ -15,6 +15,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		and classes.classes_no=#{classes_no} and term_id = #{term_id}
 	</select>
 	
+	<select id="selectCourseTeacherByInfo" parameterType="Map" resultMap="teacher_course">
+		select teacher_course.*,course.course_name,teacher.teacher_name
+		from teacher_course,course,classes,teacher,department
+		where teacher_course.teacher_id=teacher.id
+		and teacher_course.course_id=course.id
+		and teacher_course.classes_id=classes.id
+		and teacher.dep_id=department.id
+		and teacher.dep_id=#{dep_id} and term_id = #{term_id}
+	</select>
+	
 	<resultMap type="ssm.entity.Teacher_course" id="teacher_course">
 		<id property="id" column="id" />
 		<result property="teacher_id" column="teacher_id" />
@@ -178,5 +188,42 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select id,student_id,teacher_id,course_name from st_score where student_id = #{student_id}
 	</select>
 	
+		<resultMap type="ssm.entity.Tt_score" id="tt_scoreInfo">
+		<id property="id" column="id" />
+		<result property="teacher1_id" column="teacher1_id" />
+		<result property="dep_id" column="dep_id" />
+		<result property="teacher2_id" column="teacher2_id" />
+		<result property="tt_score" column="tt_score" />
+		<result property="course_name" column="course_name" />
+		<association property="teacher1"
+			javaType="ssm.entity.Teacher">
+			<id property="id" column="id" />
+			<result property="teacher_name" column="name1" />
+		</association>
+
+		<association property="teacher2"
+			javaType="ssm.entity.Teacher">
+			<id property="id" column="id" />
+			<result property="teacher_name" column="name2" />
+		</association>
+
+		<association property="department"
+			javaType="ssm.entity.Department">
+			<id property="id" column="id" />
+			<result property="dep_name" column="dep_name" />
+		</association>
+
+
+	</resultMap>
+	
+	<!-- 查询学生评价表，查询该学生在评价表中评价的记录 -->
+	<!-- 2.获取评价老师与被评价老师的信息，展示 -->
+	<select id="selectSt_scoreByTeacher_id" resultMap="tt_scoreInfo"  parameterType="int">
+		select a.id as id,teacher1_id,teacher2_id,a.teacher_name as name1,a.dep_id,teacher.teacher_name as name2,course_name,dep_name,a.tt_score from
+		(select tt_score.*,teacher.teacher_name,department.dep_name from tt_score,teacher,department
+		where tt_score.teacher1_id=teacher.id and tt_score.dep_id=department.id) a
+		INNER JOIN teacher
+		on teacher.id = a.teacher2_id  and teacher1_id = #{id}
+	</select>
 
 </mapper>

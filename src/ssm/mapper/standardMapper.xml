@@ -34,6 +34,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from standard where id=#{id}
 	</delete>
 	
+	<select id="selectStandardByType" parameterType="int" resultType="ssm.entity.Standard">
+		select * from standard where type = #{type}
+	</select>
+	
 </mapper>
 
 

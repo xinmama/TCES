@@ -88,14 +88,7 @@
 			type:"post",
 			data:{info:val},
 			dataType:"json",
-				success:function(data){
-	  		    if(data.flag==1){
-						alert(data.content);	 						  	
-				   		parent.location.reload();
-					}else{
-						alert(data.content);
-					}
-				}
+			success:function(data){}
 			});
 	};
 	

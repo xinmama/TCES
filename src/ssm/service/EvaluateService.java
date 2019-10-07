@@ -69,4 +69,12 @@ public class EvaluateService {
 	public List<St_score> selectSt_scoreByStudent_id(int student_id) {
 		return evaluateDao.selectSt_scoreByStudent_id(student_id);
 	}
+	
+	public List<Teacher_course> selectCourseTeacherByInfo(HashMap<String, Object> map){
+		return evaluateDao.selectCourseTeacherByInfo(map);
+	}
+	
+	public List<Tt_score> selectSt_scoreByTeacher_id(int id){
+		return evaluateDao.selectSt_scoreByTeacher_id(id);
+	}
 }

@@ -43,46 +43,18 @@
 		    	</div>
 		  	</div>
 		</div>
-		
-		<fieldset class="layui-elem-field layui-field-title"> 
-   			<legend>1.语言表达清楚、准确、生动。</legend>
-		</fieldset>
-		<div class="test1" style="padding-left:30px"></div>
-		<input id="number0" type="hidden" name="number" value="0" >
-		
-		<fieldset class="layui-elem-field layui-field-title"> 
-   			<legend>2.用标准的普通话授课。</legend>
-		</fieldset>
-		<div class="test1" style="padding-left:30px"></div>
-		<input id="number1" type="hidden" name="number" value="0" >
-		
-		<fieldset class="layui-elem-field layui-field-title"> 
-   			<legend>3.讲授知识准确系统，突出重点，说理充分。</legend>
-		</fieldset>
-		<div class="test1" style="padding-left:30px"></div>
-		<input id="number2" type="hidden" name="number" value="0" >
-		
-		<fieldset class="layui-elem-field layui-field-title"> 
-   			<legend>4.因材施教，能激发学生兴趣，注意学生个性发展。</legend>
-		</fieldset>
-		<div class="test1" style="padding-left:30px"></div>
-		<input id="number3" type="hidden" name="number" value="0" >
-		
-		<fieldset class="layui-elem-field layui-field-title"> 
-   			<legend>5.遵守教学纪律，不迟到，不早退，上课时不打电话。</legend>
-		</fieldset>
-		<div class="test1" style="padding-left:30px"></div>
-		<input id="number4" type="hidden" name="number" value="0" >
-		
-		<fieldset class="layui-elem-field layui-field-title"> 
-   			<legend>
-			</legend>
-		</fieldset>
+		<c:forEach items="${standards}" var="item" varStatus="status">
+			<fieldset class="layui-elem-field layui-field-title"> 
+   				<legend>${item.title_con}</legend>${status.index}
+			</fieldset>
+			<div class="test1" style="padding-left:30px"></div>
+			<input id="number"+${status.index} type="hidden" name="number" value="0" >
+		</c:forEach>
 		
 		<div class="layui-row layui-col-space10">
 			<div class="layui-col-md12">
 				<button type="button" class="layui-btn layui-btn-lg" onclick="submit()"style="width:160px;margin-left:100px;">提交</button>
-				<button type="button" class="layui-btn layui-btn-lg" onclick="submit()"style="width:160px;margin-left:100px;">重置</button>
+				<button type="button" class="layui-btn layui-btn-lg" style="width:160px;margin-left:100px;">重置</button>
 			</div>
 		</div>
 <script src="layui/layui.js" charset="utf-8"></script>

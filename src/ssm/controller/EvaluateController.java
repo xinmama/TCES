@@ -16,11 +16,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ssm.entity.ResultMsg;
 import ssm.entity.St_score;
+import ssm.entity.Standard;
 import ssm.entity.Student;
 import ssm.entity.Teacher;
 import ssm.entity.Teacher_course;
 import ssm.entity.Tt_score;
 import ssm.service.EvaluateService;
+import ssm.service.StandardService;
 import ssm.service.TermService;
 
 @Controller
@@ -30,6 +32,8 @@ public class EvaluateController {
 	private EvaluateService evaluateService;
 	@Autowired
 	private TermService termService;
+	@Autowired
+	private StandardService standardService;
 
 	//1.访问学生评教列表页面
 	@RequestMapping("/st_evaluate_list")
@@ -74,8 +78,6 @@ public class EvaluateController {
 		}else {
 			return mView.addObject("st_list", "");
 		}
-		
-		//使用HashMap定义:
 
 		
 	}	
@@ -88,11 +90,50 @@ public class EvaluateController {
 		
 		HttpSession session = request.getSession(true); 
 		Teacher teacher=(Teacher)session.getAttribute("user");
-		System.out.println(teacher.getDep_id()+"x:"+teacher.getTeacher_name());
-		List<Teacher_course> tt_list=evaluateService.selectCourseTeacherByDepid(teacher);
+		
+		//查询学期是否存在
+				int termResult = termService.selectIsCurrAppraise();
+				if(termResult==1) {//如果存在，查询学期的id
+					int termResultId = termService.selectIsCurrAppraiseByIs_open();
+					
+					HashMap <String,Object> map = new HashMap<String,Object>();
+
+					map.put("dep_id",teacher.getDep_id());
+
+					map.put("term_id",termResultId);
+						
+					List<Teacher_course> tt_list = evaluateService.selectCourseTeacherByInfo(map);//查询该学生在开启学期的可评价记录
+					
+					List<Tt_score> tt_scores = evaluateService.selectSt_scoreByTeacher_id(teacher.getId());//查询该学期已评价的记录
+					Iterator<Teacher_course> it = tt_list.iterator();
+					 while(it.hasNext()){
+					  Teacher_course x = it.next();
+					  if(x.getTeacher_id() == teacher.getId()) {
+						  it.remove();
+						  continue;
+					  }
+					  Iterator<Tt_score> is = tt_scores.iterator();
+					  while(is.hasNext()){
+						  Tt_score y = is.next();
+						  if(y.getTeacher1_id() == teacher.getId() && y.getTeacher2_id() == x.getTeacher_id() && y.getCourse_name().equals(x.getCourse().getCourse_name())){
+							    it.remove();
+						  }
+					  }  
+					}
+					 
+					 
+					mView.addObject("tt_list", tt_list);
+					
+					return mView;
+				}else {
+					return mView.addObject("tt_list", "");
+				}
+		
+		
+		/*List<Teacher_course> tt_list=evaluateService.selectCourseTeacherByDepid(teacher);
 		
 		mView.addObject("tt_list", tt_list);
-		return mView;
+		return mView;*/
 	}
 	
 		//访问学生评价页面
@@ -161,10 +202,11 @@ public class EvaluateController {
 		
 		Teacher_course teacher_course=evaluateService.selectCourseTeacherByid((int)tmp);
 		
-		
+		List<Standard> standards = standardService.selectStandardByType(0);
 		
 		System.out.println("列表id:"+teacher_course.getId());
 		
+		mView.addObject("standards",standards);
 		mView.addObject("teacher_course",teacher_course);
 
 		return mView;

@@ -42,7 +42,7 @@
         <div class="center"></div>
         <div class="right">
             <input type="text" placeholder="请输入关键词查询">
-            <a href="#">查询</a>
+            <a href="#">查询</a>    
         </div>
     </div>
     <!-- 下面写内容 -->
@@ -79,6 +79,8 @@
     
 </div>
 <script type="text/javascript">
+
+
 	//1.修改按钮
    function update(id){
 	   layer.open({
