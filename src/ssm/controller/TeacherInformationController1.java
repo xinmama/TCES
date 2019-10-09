@@ -84,7 +84,7 @@ public class TeacherInformationController1 {
 			//访问教师修改密码页面
 			@RequestMapping("/updateteacher_pwd")
 			public ModelAndView updatepwd() {
-				ModelAndView mv=new ModelAndView("information/updatestudent_pwd");
+				ModelAndView mv=new ModelAndView("information/updateteacher_pwd");
 //				List<Teacher> teachers=teacherInformationService.getTeacher();
 //				mv.addObject("teachers",teachers);
 				return mv;
