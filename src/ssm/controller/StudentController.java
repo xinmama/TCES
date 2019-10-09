@@ -26,7 +26,7 @@ public class StudentController {
 	@RequestMapping("/student_list_inquire")
 	public ModelAndView list_inquire(String info) {
 		List<Student> students=studentService.selectStudentByName(info);
-		ModelAndView mView=new ModelAndView("student/add");
+		ModelAndView mView=new ModelAndView("student/list");
 		mView.addObject("students", students);
 		return mView;
 	}

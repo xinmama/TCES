@@ -78,6 +78,9 @@
 						</dl>
 					</li>
 					<li class="layui-nav-item">
+						<a class="" href="${pageContext.request.contextPath}/course_list" target="main_self_frame"><i class="fa fa-sitemap fa-fw"></i>课程管理</a>
+					</li>
+					<li class="layui-nav-item">
 						<a href="${pageContext.request.contextPath}/teacher_course_list" target="main_self_frame"><i class="fa fa-address-book fa-fw"></i>授课管理</a>
 					</li>
 					<li class="layui-nav-item">

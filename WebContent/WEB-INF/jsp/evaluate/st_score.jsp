@@ -45,10 +45,10 @@
 		</div>
 		<c:forEach items="${standards}" var="item" varStatus="status">
 			<fieldset class="layui-elem-field layui-field-title"> 
-   				<legend>${item.title_con}</legend>${status.index}
+   				<legend>${item.title_con}</legend>
 			</fieldset>
 			<div class="test1" style="padding-left:30px"></div>
-			<input id="number"+${status.index} type="hidden" name="number" value="0" >
+			<input id="${status.index}" type="hidden" name="number" value="0" >
 		</c:forEach>
 		
 		<div class="layui-row layui-col-space10">
@@ -69,7 +69,7 @@ layui.use(['rate'], function(){
 			  ,value: 0
 			  ,text: true
 			  ,choose: function(value){
-				  $("#number"+index).val(value);
+				  $("#"+index).val(value);
 			  }
 			  ,setText: function(value){ //自定义文本的回调
 			    var arrs = {
@@ -96,7 +96,7 @@ function submit(){
 	var teacher_id=${teacher_course.teacher_id};
 	var course_name=$("#course_name1").html();
 	$('input[name=number]').each(function(index,element){
-		st_score=st_score+parseInt($("#number"+index).val());
+		st_score=st_score+parseInt($("#"+index).val());
 	});
 	//提交内容
  	$.ajax({

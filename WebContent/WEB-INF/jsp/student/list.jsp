@@ -81,7 +81,26 @@
 
 	function getInput(){
 		var val=$("#inquire").val();
+		var url = "${pageContext.request.contextPath}/student_list_inquire";
+		var val=$("#inquire").val();        
+        var param={info:val};//json方式键值对传到后台去
+        $.post(url,param,function(data){
+        });
+		layer.open({
+			 type: 2,//层类型
+		        //title: "修改信息",//标题
+		        closeBtn: 1, //不显示关闭按钮
+		        shade: [0.3],//遮罩
+		        skin: 'demo_class_color',//iframe皮肤
+		        shadeClose:Boolean,//点击遮罩关闭
+		        area: ['1300px', '650px'],
+		        // offset: 'rb', //右下角弹出
+		        // time: 2000, //2秒后自动关闭
+		        anim: 5,//动画
+		        content: ['${pageContext.request.contextPath}/student_list_inquire'], //iframe的url，no代表不显示滚动条
+		});
 		
+		/* 
 		$.ajax({
 			url:"${pageContext.request.contextPath}/student_list_inquire",
 			async:false,
@@ -89,8 +108,15 @@
 			data:{info:val},
 			dataType:"json",
 			success:function(data){}
-			});
+			}); */
+		
+		
+		
 	};
+	
+	
+	
+	
 	
 	//1.修改按钮
 	function update(id){

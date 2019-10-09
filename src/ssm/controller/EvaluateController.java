@@ -220,7 +220,10 @@ public class EvaluateController {
 		double tmp = Double.parseDouble(id);
 		
 		Teacher_course teacher_course=evaluateService.selectCourseTeacherByTeacher_courseId((int)tmp);
-
+		
+		List<Standard> standards=standardService.selectStandardByType(1);
+		
+		mView.addObject("standards",standards);
 		mView.addObject("teacher_course",teacher_course);
 		return mView;
 	}

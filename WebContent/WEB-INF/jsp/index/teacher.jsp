@@ -32,13 +32,13 @@
 		<!-- top -->
 		<div class="layui-header">
 			<div class="top_box">
-		        <div class="logo">
-		        	<img src="images/logo_touming.gif">
-		        	<span></span>
-		        	<b><img src="images/word.png" /></b>
+		        <div class="logo" style="background-color:red;background-image:none;">
+		        	<img src="">
+		        	<span style="background-image:none"></span>
+		        	<b><img src="" /></b>
 		        </div>
 
-				<div class="top_user">
+				<div class="top_user" style="background-color:yellow;">
 					<span><img src="images/head.jpg" /></span>
 					<dl>
 						<dt>姓名：${user.teacher_name}</dt>

@@ -49,34 +49,18 @@
 		  	</div>
 		</div>
 		
-		<fieldset class="layui-elem-field layui-field-title"> 
-   			<legend>概念的讲解</legend>
-		</fieldset>
-		<div class="test1" style="padding-left:30px"></div>
-		<input id="number0" type="hidden" name="number" value="0" >
-		
-		<fieldset class="layui-elem-field layui-field-title"> 
-   			<legend>重点和难点</legend>
-		</fieldset>
-		<div class="test1" style="padding-left:30px"></div>
-		<input id="number1" type="hidden" name="number" value="0" >
-		
-		<fieldset class="layui-elem-field layui-field-title"> 
-   			<legend>逻辑性和条理性</legend>
-		</fieldset>
-		<div class="test1" style="padding-left:30px"></div>
-		<input id="number2" type="hidden" name="number" value="0" >
-		
-		<fieldset class="layui-elem-field layui-field-title"> 
-   			<legend>趣味性和生动性</legend>
-		</fieldset>
-		<div class="test1" style="padding-left:30px"></div>
-		<input id="number3" type="hidden" name="number" value="0" >
-		
-		<div class="layui-row layui-col-space10">
-		     
+		<c:forEach items="${standards}" var="item" varStatus="status">
+			<fieldset class="layui-elem-field layui-field-title"> 
+	   			<legend>${item.title_con}</legend>
+			</fieldset>
+			<div class="test1" style="padding-left:30px"></div>
+			<input id="${status.index}" type="hidden" name="number" value="0" >
+		</c:forEach>
+				
+		<div class="layui-row layui-col-space10">		     
 			<div class="layui-col-md12">
-				<button type="button" class="layui-btn layui-btn-lg" onclick="submit()">提交</button>
+				<button type="button" class="layui-btn layui-btn-lg" style="width:160px;margin_left:100px;" onclick="submit()">提交</button>
+				<button type="button" class="layui-btn layui-btn-lg" style="width:160px;margin_left:100px;" >重置</button>
 			</div>
 		</div>
 <script src="layui/layui.js" charset="utf-8"></script>
@@ -91,7 +75,7 @@ layui.use(['rate'], function(){
 			  ,value: 0
 			  ,text: true
 			  ,choose: function(value){
-				  $("#number"+index).val(value);
+				  $("#"+index).val(value);
 			  }
 			  ,setText: function(value){ //自定义文本的回调
 			    var arrs = {
@@ -118,7 +102,7 @@ function submit(){
 	var teacher2_id=${teacher_course.teacher_id};
 	var course_name=$("#course_name1").html();
 	$('input[name=number]').each(function(index,element){
-		tt_score=tt_score+parseInt($("#number"+index).val());
+		tt_score=tt_score+parseInt($("#"+index).val());
 	});
 	//提交内容
  	$.ajax({
