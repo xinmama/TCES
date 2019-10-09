@@ -123,8 +123,7 @@
 			</script>
 			<!-- iframe -->
 			<iframe src="${pageContext.request.contextPath}/student_list" name="main_self_frame" frameborder="0" class="layadmin-iframe" scrolling="yes"></iframe>
-		</div>
-	  
+		</div>	  
 	</div>
 	<!-- layui js -->
 	<script src="layui/layui.js"></script>
