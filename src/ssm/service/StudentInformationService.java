@@ -30,4 +30,8 @@ public class StudentInformationService {
 	public int updateStudent(Student student) {
 		return studentInformationDao.updateStudent(student);
 	}
+	
+	public int selectStudentByStudentNo(String student_no) {
+		return studentInformationDao.selectStudentByStudentNo(student_no);
+	}
 }

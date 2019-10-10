@@ -25,36 +25,43 @@ public class StudentInformationController {
 	
 	@Autowired
 	private ClassService classService;
-
+	
+	//学生信息显示页面
 	@RequestMapping("/studentInformation_list")
 	public ModelAndView list(HttpServletRequest request) {
 		ModelAndView mView = new ModelAndView("studentInformation/list");
 		HttpSession session = request.getSession(true); 
 		Student studentSession=(Student)session.getAttribute("user");
-		
 		Student student=studentInformationService.selectStudentById2(studentSession.getStudent_no());
 				
-		
 		mView.addObject("student",student);
 		return mView;
 	}
 	
+	//学生信息修改页面
 	@RequestMapping("/studentInformation_update")
-	public ModelAndView student_update(int id) {
-		List<Classes> classes=classService.getClasses();
-		Student student=studentInformationService.selectStudentById1(id);
-		ModelAndView mView = new ModelAndView("studentInformation/update");
-		mView.addObject("student",student);
-		mView.addObject("classes",classes);
+	public ModelAndView student_update(HttpServletRequest request) {
+		
+		ModelAndView mView = new ModelAndView("studentInformation/list");
+		HttpSession session = request.getSession(true); 
+		Student studentSession=(Student)session.getAttribute("user");
+		Student student=studentInformationService.selectStudentById2(studentSession.getStudent_no());
+		
+		Classes classes = classService.selectClassesById(student.getClasses_id());
 		return mView;
 	}
 	
+	//学生信息修改
 	@RequestMapping("/update_studentInformation")
 	@ResponseBody
 	public ResultMsg update_student(Student student) {
 		
 		//int idResult=studentService.selectStudentById(student.getStudent_no());
 		
+		int selectResult=	studentInformationService.selectStudentByStudentNo(student.getStudent_no());
+		if(selectResult==1) {
+			return new ResultMsg(0, "该学生存在！");
+		}else {
 			int updateResult=studentInformationService.updateStudent(student);
 			if(updateResult>0) {
 				return new ResultMsg(1, "修改学生信息成功!");
@@ -62,5 +69,5 @@ public class StudentInformationController {
 				return new ResultMsg(0, "修改学生信息失败!");
 			}
 		}
-
+	}
 }

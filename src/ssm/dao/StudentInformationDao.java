@@ -8,6 +8,8 @@ public interface StudentInformationDao {
 
 	public List<Student> selectStudent();
 	
+	public int selectStudentByStudentNo(String student_no);
+	
 	public Student selectStudentById2(String student_no);
 	
 	public Student selectStudentById1(int id);

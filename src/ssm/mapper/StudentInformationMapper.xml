@@ -28,7 +28,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	<!-- 查询全部学生学号 -->
 	<select id="selectStudentById2" resultMap="student" parameterType="String">
-		select  student.*,classes.classes_no from student,classes where student.classes_id=classes.id and student_no=#{student_no};
+		select  student.*,classes.classes_no from student,classes 
+		where student.classes_id=classes.id and student_no=#{student_no};
+	</select>
+	
+	<!-- 查询添加教师信息是否存在 -->
+	<select id="selectStudentByStudentNo" parameterType="String" resultType="int">
+		select count(1) from student where student_no=#{student_no};
 	</select>
 
 	<!-- 通过id查询学生信息 -->
@@ -38,7 +44,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 修改学生信息 -->
 	<update id="updateStudent" parameterType="ssm.entity.Student" >
-		update student set student_no=#{student_no},student_name=#{student_name},classes_id=#{classes_id},student_pwd=#{student_pwd},sex=#{sex},tel=#{tel} where id=#{id};
+		update student set student_no=#{student_no},student_name=#{student_name},classes_id=#{classes_id},sex=#{sex},tel=#{tel} where id=#{id};
 	</update>
 
 </mapper>

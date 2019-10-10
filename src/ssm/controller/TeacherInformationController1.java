@@ -25,7 +25,7 @@ public class TeacherInformationController1 {
 	public TeacherInformationService teacherInformationService;
 	
 	public DepartmentService departmentService;
-		//鏌ヨ
+		//教师信息显示页面
 		@RequestMapping("/information_list")
 		public ModelAndView teacherSelect(HttpServletRequest request) {
 			ModelAndView mv=new ModelAndView("information/list");
@@ -38,10 +38,10 @@ public class TeacherInformationController1 {
 		
 		
 		
-		//淇敼椤甸潰
+		//教师修改信息页面
 		@RequestMapping("/information_update")
 			public ModelAndView teacher_update(HttpServletRequest request) {
-				ModelAndView mv=new ModelAndView("information/update");
+				ModelAndView mv=new ModelAndView("information/list");
 				HttpSession session = request.getSession(true); 
 				Teacher teacherSession=(Teacher)session.getAttribute("user");
 				Teacher teacher=teacherInformationService.selectTeacherById(teacherSession.getId()); 
@@ -53,12 +53,8 @@ public class TeacherInformationController1 {
 				mv.addObject("teacher", teacher);
 				return mv;
 			}
-		
-		
-		
-		
 			
-			//淇敼
+			//修改教师信息
 			@ResponseBody
 			@RequestMapping("/update_information")
 			public ResultMsg update_teacher(Teacher teacher) {
@@ -66,15 +62,15 @@ public class TeacherInformationController1 {
 				int selectResult= teacherInformationService.selectTeacherByTeacherNo(teacher.getTeacher_no());
 				
 				if(selectResult==1) {
-					return new ResultMsg(0,"璇ユ暀甯堝凡瀛樺湪锛岃閲嶆柊杈撳叆锛�");
+					return new ResultMsg(0,"该教师存在!");
 				}else {
 					
 					int updateResult = teacherInformationService.updateTeacherById(teacher);
 						
 					if(updateResult>0) {
-						return new ResultMsg(1, "淇敼淇℃伅鎴愬姛锛�");
+						return new ResultMsg(1, "教师信息修改成功！");
 					}else {
-						return new ResultMsg(0, "淇敼淇℃伅澶辫触锛�");
+						return new ResultMsg(0, "教师信息修改失败");
 						
 					}
 				}

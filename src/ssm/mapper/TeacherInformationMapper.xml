@@ -18,6 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="teacher_pwd" column="teacher_pwd"/>
 		<result property="sex" column="sex"/>
 		<result property="tel" column="tel"/>
+		<result property="dep_id" column="dep_id"/>
 		<result property="time" column="time"/>
 		<result property="remark" column="remark"/>
 		<result property="is_manage" column="is_manage"/>
@@ -45,7 +46,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 修改教师信息 -->
 	<update id="updateTeacherById" parameterType="ssm.entity.Teacher">
-		update teacher set teacher_name=#{teacher_name},teacher_pwd=#{teacher_pwd},sex=#{sex},tel=#{tel},dep_id=#{dep_id}
+		update teacher set teacher_name=#{teacher_name},sex=#{sex},tel=#{tel},dep_id=#{dep_id}
 		where id=#{id}
 	</update>
 	
