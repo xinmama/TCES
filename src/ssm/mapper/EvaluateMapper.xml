@@ -2,7 +2,6 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="ssm.dao.EvaluateDao">
 
 	<!-- 1.通过学生班级号,学期id，查询相应班级的课程名，任课老师 -->
