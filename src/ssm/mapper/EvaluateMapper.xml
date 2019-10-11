@@ -227,4 +227,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		on teacher.id = a.teacher2_id  and teacher1_id = #{id}
 	</select>
 
+
 </mapper>
