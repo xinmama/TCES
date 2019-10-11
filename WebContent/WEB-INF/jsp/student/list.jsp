@@ -79,13 +79,10 @@
 
 <script type="text/javascript">
 
+	//1.模糊查询
 	function getInput(){
-		var val=$("#inquire").val();
 		var url = "${pageContext.request.contextPath}/student_list_inquire";
-		var val=$("#inquire").val();        
-        var param={info:val};//json方式键值对传到后台去
-        $.post(url,param,function(data){
-        });
+		var info=$("#inquire").val();        
 		layer.open({
 			 type: 2,//层类型
 		        //title: "修改信息",//标题
@@ -97,7 +94,7 @@
 		        // offset: 'rb', //右下角弹出
 		        // time: 2000, //2秒后自动关闭
 		        anim: 5,//动画
-		        content: ['${pageContext.request.contextPath}/student_list_inquire'], //iframe的url，no代表不显示滚动条
+		        content: ['${pageContext.request.contextPath}/student_list_inquire?info='+info], //iframe的url，no代表不显示滚动条
 		});
 		
 		/* 

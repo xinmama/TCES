@@ -108,6 +108,7 @@ public class EvaluateController {
 					Iterator<Teacher_course> it = tt_list.iterator();
 					 while(it.hasNext()){
 					  Teacher_course x = it.next();
+					  					  
 					  if(x.getTeacher_id() == teacher.getId()) {
 						  it.remove();
 						  continue;

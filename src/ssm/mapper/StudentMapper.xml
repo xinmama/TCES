@@ -62,6 +62,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 根据姓名查询学生信息 -->
 	<select id="selectStudentByName" parameterType="String" resultMap="student">
-		select * from student where student_name like CONCAT(CONCAT('%',#{info}),'%');
+		select student.*,classes.classes_no from student,classes where student.classes_id=classes.id and student_name like CONCAT(CONCAT('%',#{info}),'%');
 	</select>
 </mapper>

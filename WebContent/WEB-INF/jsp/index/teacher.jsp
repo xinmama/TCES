@@ -32,8 +32,8 @@
 		<!-- top -->
 		<div class="layui-header">
 			<div class="top_box">
-		        <div class="logo" style="background-color:red;background-image:none;">
-		        	<img src="">
+		        <div class="logo" style="background-image:none;">
+		        	<img src="images/logopeng.png">
 		        	<span style="background-image:none"></span>
 		        	<b><img src="" /></b>
 		        </div>

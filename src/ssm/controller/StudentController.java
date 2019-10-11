@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -24,8 +25,11 @@ public class StudentController {
 	
 	//1.模糊查询
 	@RequestMapping("/student_list_inquire")
-	public ModelAndView list_inquire(String info) {
+	public ModelAndView list_inquire(@RequestParam(value = "info")String info) {
 		List<Student> students=studentService.selectStudentByName(info);
+		for (Student student : students) {
+			System.out.println(student.getStudent_name()+student.getClasses().getClasses_no());
+		}
 		ModelAndView mView=new ModelAndView("student/list");
 		mView.addObject("students", students);
 		return mView;
