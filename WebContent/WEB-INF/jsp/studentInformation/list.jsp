@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="名榜,wangid">
-    <title>WangID办公管理系统</title>
+    <title>教师综合评价系统</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
@@ -31,12 +31,12 @@
     <div class="zy_weizhi bord_b">
         <i class="fa fa-home fa-3x"></i>
         <a>首页</a>
-        <a>教师管理</a>
-        <span>教师个人信息</span>
+        <a>学生管理</a>
+        <span>学生个人信息</span>
     </div>
     <!-- 内容 -->
     <div class="wenxts_ke">
-        <p><i>温馨提示：</i>请认真核对员工信息正确无误后再确定添加，并上传员工的对应简历图片</p>
+        <p><i>温馨提示：</i>请认真核对学生信息正确无误后再确定修改</p>
     </div>
     <div class="kehubh_tj_k">
         <form class="layui-form layui-form-pane" action="" id="form">
@@ -80,6 +80,7 @@
                         <button class="button_qr" onclick="studentUpdate()">确定修改</button>
                     </div>
                 </li>
+                
             </ul>
         </form>
     </div>
@@ -114,6 +115,7 @@
 	               alert("内容不能为空！");
 	           
 	        	   i=false;
+	        	   
 	           }
 	     });
 	     if(i==true){

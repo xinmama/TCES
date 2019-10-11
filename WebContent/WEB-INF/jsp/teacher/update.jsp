@@ -72,6 +72,7 @@
 	        </tbody>
 	    </table>
     </form>
+    
 </div>
 <script type="text/javascript">
 	 function update_teacher(){

@@ -9,7 +9,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="名榜,wangid">
-	<title>教师综合评价系统</title>
+	<title>增加选项指标内容</title>
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="css/style.css">

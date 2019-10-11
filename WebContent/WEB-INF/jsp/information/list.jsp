@@ -36,7 +36,7 @@
     </div>
     <!-- 内容 -->
     <div class="wenxts_ke">
-        <p><i>温馨提示：</i>请认真核对员工信息正确无误后再确定添加，并上传员工的对应简历图片</p>
+        <p><i>温馨提示：</i>请认真核对教师信息正确无误后再确定修改</p>
     </div>
     <div class="kehubh_tj_k">
         <form class="layui-form layui-form-pane" action="" id="form">
@@ -83,6 +83,7 @@
                 </li>
             </ul>
         </form>
+        
     </div>
 </div>
 <style>

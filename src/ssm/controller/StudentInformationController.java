@@ -48,6 +48,8 @@ public class StudentInformationController {
 		Student student=studentInformationService.selectStudentById2(studentSession.getStudent_no());
 		
 		Classes classes = classService.selectClassesById(student.getClasses_id());
+		mView.addObject("student",student);
+		mView.addObject("classes", classes);
 		return mView;
 	}
 	
@@ -67,6 +69,8 @@ public class StudentInformationController {
 				return new ResultMsg(1, "修改学生信息成功!");
 			}else {
 				return new ResultMsg(0, "修改学生信息失败!");
+				
+				
 			}
 		}
 	}
