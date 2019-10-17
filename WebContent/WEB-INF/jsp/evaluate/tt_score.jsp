@@ -75,18 +75,23 @@ layui.use(['rate'], function(){
 			  ,value: 0
 			  ,text: true
 			  ,choose: function(value){
-				  $("#"+index).val(value);
+				  
+				  if(value==0){
+					  $("#"+index).val(value);
+				  }else{
+					  $("#"+index).val(value*2);
+				  }
 			  }
 			  ,setText: function(value){ //自定义文本的回调
 			    var arrs = {
 			      '0': '',  
-			      '1': '极差',
-			      '2': '差',
-			      '3': '中等',
-			      '4': '好',
-			      '5': '极好'
+			      '2': '极差',
+			      '4': '差',
+			      '6': '中等',
+			      '8': '好',
+			      '10': '极好'
 			    };
-			    this.span.text(arrs[value] || ( value + "星"));
+			    this.span.text( ( value*2 + "分"));
 			  }			   
 			    
 		  });

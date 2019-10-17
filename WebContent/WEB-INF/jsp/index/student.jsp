@@ -34,8 +34,8 @@
 			<div class="top_box">
 		        <div class="logo">
 		        	<img src="images/logo_touming.gif">
-		        	<span></span>
-		        	<b><img src="images/word.png" /></b>
+		        	<span style="background-image:none"></span>
+		        	<b></b>
 		        </div>
 
 				<div class="top_user">

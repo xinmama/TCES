@@ -43,7 +43,7 @@
             	
             	<th lay-data="{field:'yx', align:'center',width:60}">序号</th>
             	<th lay-data="{field:'time',align:'center', minWidth:120}">课程名称</th>
-            	<th lay-data="{field:'www',align:'center',minWidth:120}">任课教师1</th>           
+            	<th lay-data="{field:'www',align:'center',minWidth:120}">任课教师</th>           
             	<th lay-data="{field:'option',align:'center',width:200,fixed: 'right'}">操作</th>
         	</tr>
         </thead>

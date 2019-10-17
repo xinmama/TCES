@@ -69,7 +69,7 @@
                     </div>
                 </li>
                 <li>
-                    <div class="left">院系id：</div>
+                    <div class="left">院系：</div>
                     <div class="right">
                     	<input type="hidden" name="dep_id" value="${teacher.dep_id}">
                         <input type="text"  value="${teacher.department.dep_name}"  class="layui-input" disabled>

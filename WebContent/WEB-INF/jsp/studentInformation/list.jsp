@@ -69,7 +69,7 @@
                     </div>
                 </li>
                 <li>
-                    <div class="left">班级id：</div>
+                    <div class="left">班级：</div>
                     <div class="right">
                         <input type="text" name="classes_no"  value="${student.classes.classes_no}"  class="layui-input" disabled>
                     </div>

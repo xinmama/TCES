@@ -57,15 +57,15 @@ public class StudentController {
 	public ResultMsg add_student(Student student) {
 		int idResult=studentService.selectStudentById(student.getStudent_no());
 		if(idResult==1) {
-			return new ResultMsg(-1, "��ѧ���ѱ�����!");
+			return new ResultMsg(-1, "记录已存在!");
 		}else {
 			String passwordByMd5 = Md5.MD5(student.getStudent_no());
 			student.setStudent_pwd(passwordByMd5);
 			int addResult=studentService.addStudent(student);
 			if(addResult>0) {
-				return new ResultMsg(1, "���ѧ���ɹ�!");
+				return new ResultMsg(1, "添加成功！");
 			}else {
-				return new ResultMsg(0, "���ѧ��ʧ��!");
+				return new ResultMsg(0, "添加失败！");
 			}
 		}
 	}
@@ -84,12 +84,11 @@ public class StudentController {
 	public ResultMsg update_student(Student student) {
 		
 		//int idResult=studentService.selectStudentById(student.getStudent_no());
-		
 			int updateResult=studentService.updateStudent(student);
 			if(updateResult>0) {
-				return new ResultMsg(1, "�޸���Ϣ�ɹ�!");
+				return new ResultMsg(1, "修改成功！");
 			}else {
-				return new ResultMsg(0, "�޸���Ϣʧ��!");
+				return new ResultMsg(0, "修改失败！");
 			}
 		}
 	
@@ -101,9 +100,9 @@ public class StudentController {
 		
 			int deleteResult=studentService.deletestudent(id);
 			if(deleteResult>0) {
-				return new ResultMsg(1, "ɾ��ѧ���ɹ�!");
+				return new ResultMsg(1, "删除成功！");
 			}else {
-				return new ResultMsg(0, "ɾ��ѧ��ʧ��!");
+				return new ResultMsg(0, "删除失败！");
 			}
 		}
 	
@@ -121,20 +120,25 @@ public class StudentController {
 			public ResultMsg pwd_update(String student_no,String oldpwd,String newpwd2) {
 				
 				Student student=new Student();
+				
+				String oldpasswordByMd5 = Md5.MD5(oldpwd);
+				
 				student.setStudent_no(student_no);
-				student.setStudent_pwd(newpwd2);
+				
+				String newPasswordByMd5 = Md5.MD5(newpwd2);
+				student.setStudent_pwd(newPasswordByMd5);
 				String  oldpwdResult=studentService.selectStudentpwdByNo(student_no);
 				//System.out.println(oldpwd);
-				if (oldpwd.equals(oldpwdResult)) {
+				if (oldpasswordByMd5.equals(oldpwdResult)) {
 					int i=studentService.updateStudentpwd(student);
 					if (i>0) {
-						return new ResultMsg(1, "�޸�����ɹ�");
+						return new ResultMsg(1, "修改成功！");
 					}else {
-						return new ResultMsg(0, "�޸�����ʧ��");
+						return new ResultMsg(0, "修改失败！");
 					}
 					
 				}else {
-					return new ResultMsg(-1, "ԭ���벻��");
+					return new ResultMsg(-1, "记录已存在！");
 				}
 		}
 	}

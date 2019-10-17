@@ -48,9 +48,9 @@
 	<div class="container">
 		<div class="top_box">
 	        <div class="logo">
-
-	        	<span></span>
-	        	<b></b>
+				<img src="images/logo_touming.gif">
+		        <span style="background-image:none"></span>
+		        <b></b>
 	        </div>
 	        <div class="top_icon">
 	        	<a href="${pageContext.request.contextPath}/ReturnTeacherIndex"><img src="images/top_home.png"></a>
@@ -138,16 +138,16 @@
 	    				<div class="tit">
 	    					<a class="on">学生评价</a><a>教师评价</a><!-- 注释去间隔
 	    	   注释去间隔 --><div class="scrollnews">
-	    	   					<span>最新情况：</span>
+	    	   					<span>最新发言：</span>
 	    	   					<ul>
-	    	   						<li title="最新战报，章泽天 关晓彤 签名榜一个！2018-08-10 15:41:58">
-	    	   							<b>彭彭</b> 6666666<i>2018-08-10 15:41:58</i>
+	    	   						<li >
+	    	   							<b>（彭诗媛）</b>陈彬老师厉害厉害真厉害！<i></i>
 	    	   						</li>
-	    	   						<li title="最新战报，章泽天 签名榜一个！2018-08-10 15:41:58">
-	    	   							<b>郎朗</b> 777777<i>2018-08-10 15:41:58</i>
+	    	   						<li >
+	    	   							<b>（覃朗）</b>朱老师讲得很清楚，棒棒的！<i></i>
 	    	   						</li>
-	    	   						<li title="最新战报，秋名山 签名榜一个！2018-08-10 15:41:58">
-	    	   							<b>秋名山</b> 88888<i>2018-08-10 15:41:58</i>
+	    	   						<li >
+	    	   							<b>（袁国进）</b>我最喜欢上李兴春老师的课。<i></i>
 	    	   						</li>
 	    	   					</ul>
 	    	   					<script type="text/javascript">
@@ -178,7 +178,7 @@
 	    				</div>
 	    				<div class="conbox">
 	    					<div class="con">
-	    						<h1>2018-2019学年第一学期最佳教师度展示图</h1>
+	    						<h1>2018-2019学年第一学期最受欢迎教师展示图</h1>
 	    						<div class="countbox">
 	    							<div class="count">
 	    								<span class="x"><img src="images/X.png"> x/教师</span>
@@ -201,37 +201,53 @@
 	    								</ul>
 	    							</div>
 	    							<div class="num">
-	    								<a>1区</a>
-	    								<a>2区</a>
-	    								<a>3区</a>
-	    								<a>6区</a>
-	    								<a>8区</a>
-	    								<a>10区</a>
-	    								<a>11区</a>
-	    								<a>12区</a>
-	    								<a>13区</a>
-	    								<a>16区</a>
-	    								<a>18区</a>
+	    								<a>tom</a>
+	    								<a>李兴春</a>
+	    								<a>刘阳</a>
+	    								<a>彭娟</a>
+	    								<a>孙双林</a>
+	    								<a>朱世宇</a>
+	    								<a>平思源</a>
+	    								<a>王一婷</a>
+	    								<a>陈绮玲</a>
+	    								<a>郎朗</a>
+	    								<a>陈彬</a>
 	    							</div>
 	    						</div>
 	    					</div>
 	    					<div class="con">
-	    						<h1>渠道部各部门本月新增业绩PK实时展示图</h1>
+	    						<h1>2018-2019学年第一学期最佳教师度展示图</h1>
 	    						<div class="countbox">
 	    							<div class="count">
-	    								<span class="x"><img src="images/X.png"> x/渠道部门</span>
-	    								<span class="y"><img src="images/Y.png"> y/渠道业绩</span>
+	    								<span class="x"><img src="images/X.png"> x/教师</span>
+	    								<span class="y"><img src="images/Y.png"> y/分数</span>
 	    								<ul>
 	    									<li class="y1" style="height: calc(40% * 2); background: #ff4e00;"></li>
 	    									<li class="y2 on" style="height: calc(60% * 2); background: #ffa200;">
 	    								 		<img src="images/flag.png" />
 	    								 	</li>
+	    								 	<li class="y3" style="height: calc(7% * 2); background: #fffc00;"></li>
+	    									<li class="y6" style="height: calc(5% * 2); background: #00ff55;"></li>
+	    									<li class="y8" style="height: calc(3% * 2); background: #00ffd5;"></li>
+	    								 	<li class="y10" style="height: calc(8% * 2); background: #00c0ff;"></li>
+	    									<li class="y11" style="height: calc(4% * 2); background: #0078ff;"></li>
+	    									<li class="y12" style="height: calc(6% * 2); background: #4200ff;"></li>
+	    									<li class="y13" style="height: calc(14% * 2); background: #fc00ff;"></li>
+	    									<li class="y16" style="height: calc(8% * 2); background: #ff007e;"></li>
 	    								 <!-- 计算出每个大区所占百分比 以两倍高度展示，所占比超过百分之五十的，超出百分百以外的隐藏 -->
 	    								</ul>
 	    							</div>
 	    							<div class="num">
-	    								<a>6部</a>
-	    								<a>8部</a>
+	    								<a>陈彬</a>
+	    								<a>李兴春</a>
+	    								<a>刘阳</a>
+	    								<a>彭娟</a>
+	    								<a>孙双林</a>
+	    								<a>王一婷</a>
+	    								<a>陈绮玲</a>
+	    								<a>朱世宇</a>
+	    								<a>平思源</a>	    								
+	    								<a>tom</a>
 	    							</div>
 	    						</div>
 	    					</div>
@@ -252,7 +268,7 @@
 	    			</div>
 	    			<div class="box honor">
 	    				<div class="tit">
-	    					<a class="on">营销业绩排行榜</a><a>渠道业绩排行榜</a><!-- 注释去间隔
+	    					<a class="on">本学年最受欢迎教师</a><a>本学年最佳教师</a><!-- 注释去间隔
 	    				 --><div></div>
 	    				</div>
 	    				<div class="conbox">
@@ -262,36 +278,36 @@
 		    							<li>
 		    								<i><img src="images/head.jpg"></i>
 		    								<dl>
-		    									<dt>章泽天</dt>
-		    									<dd>所属分区：营销1区</dd>
+		    									<dt>陈琦玲</dt>
+		    									<dd>学院：软件学院</dd>
 		    								</dl>
 		    								<b><img src="images/honor_1.png"></b>
 		    							</li>
 		    							<li>
 		    								<i><img src="images/head.jpg"></i>
 		    								<dl>
-		    									<dt>鹿晗</dt>
-		    									<dd>所属分区：营销11区</dd>
+		    									<dt>陈彬</dt>
+		    									<dd>学院：软件学院</dd>
 		    								</dl>
 		    								<b><img src="images/honor_2.png"></b>
 		    							</li>
 		    							<li>
 		    								<i><img src="images/head.jpg"></i>
 		    								<dl>
-		    									<dt>关晓彤</dt>
-		    									<dd>所属分区：营销3区</dd>
+		    									<dt>朱世宇</dt>
+		    									<dd>学院：计算机学院</dd>
 		    								</dl>
 		    								<b><img src="images/honor_3.png"></b>
 		    							</li>
 		    						</ul>
 		    						<dl>
-		    							<dt>上月前三名</dt>
-		    							<dd>鹿晗</dd>
-		    							<dd>关晓彤</dd>
-		    							<dd>张娜拉</dd>
+		    							<dt>去年前三名</dt>
+		    							<dd>陈琦玲</dd>
+		    							<dd>陈彬</dd>
+		    							<dd>朱世宇</dd>
 		    						</dl>
 		    					</div>
-		    					<p>干的不错，小伙伴们继续加油哦！</p>
+		    					<p>软件学院的老师们很给力，加油！</p>
 	    					</div>
 	    					<div class="con">
 	    						<div>
@@ -299,36 +315,36 @@
 		    							<li>
 		    								<i><img src="images/head.jpg"></i>
 		    								<dl>
-		    									<dt>章泽天</dt>
-		    									<dd>所属分区：渠道6部</dd>
+		    									<dt>李兴春</dt>
+		    									<dd>学院：软件学院</dd>
 		    								</dl>
 		    								<b><img src="images/honor_1.png"></b>
 		    							</li>
 		    							<li>
 		    								<i><img src="images/head.jpg"></i>
 		    								<dl>
-		    									<dt>鹿晗</dt>
-		    									<dd>所属分区：渠道8部</dd>
+		    									<dt>陈彬</dt>
+		    									<dd>学院：软件学院</dd>
 		    								</dl>
 		    								<b><img src="images/honor_2.png"></b>
 		    							</li>
 		    							<li>
 		    								<i><img src="images/head.jpg"></i>
 		    								<dl>
-		    									<dt>关晓彤</dt>
-		    									<dd>所属分区：渠道8部</dd>
+		    									<dt>平思源</dt>
+		    									<dd>学院：土木学院</dd>
 		    								</dl>
 		    								<b><img src="images/honor_3.png"></b>
 		    							</li>
 		    						</ul>
 		    						<dl>
-		    							<dt>上月前三名</dt>
-		    							<dd>鹿晗</dd>
-		    							<dd>关晓彤</dd>
-		    							<dd>张娜拉</dd>
+		    							<dt>去年前三名</dt>
+		    							<dd>李兴春</dd>
+		    							<dd>陈彬</dd>
+		    							<dd>平思源</dd>
 		    						</dl>
 		    					</div>
-		    					<p>渠道部的同学们很给力，加油！</p>
+		    					<p>软件学院的老师们很给力，加油！</p>
 	    					</div>
 	    				</div>
 	    				<script type="text/javascript">

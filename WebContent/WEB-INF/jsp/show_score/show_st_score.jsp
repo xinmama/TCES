@@ -46,7 +46,6 @@
             	<th lay-data="{field:'time',align:'center', minWidth:120}">课程名称</th>
             	<th lay-data="{field:'www',align:'center',minWidth:120}">任课教师</th>   
             	<th lay-data="{field:'ww',align:'center',minWidth:120}">评教分数</th>        
-            	<th lay-data="{field:'option',align:'center',width:200,fixed: 'right'}">操作</th>
         	</tr>
         </thead>
         <tbody>
@@ -57,11 +56,6 @@
             	<td>${item.getCourse_name()}</td>
             	<td>${item.getTeacher().getTeacher_name()}</td>
             	<td>${item.st_score}</td>
-            	<td>
-            		<div class="layui-inline">
-						<button class="layui-btn layui-btn-sm layui-btn-normal " data-id="1" onclick=""><i class="layui-icon"></i>详情</button>						
-					</div>
-            	</td>
 			</tr>
 		</c:forEach>
         </tbody>

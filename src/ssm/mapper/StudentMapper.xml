@@ -42,7 +42,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 修改学生信息 -->
 	<update id="updateStudent" parameterType="ssm.entity.Student" >
-		update student set student_no=#{student_no},student_name=#{student_name},classes_id=#{classes_id},student_pwd=#{student_pwd},sex=#{sex},tel=#{tel} where id=#{id};
+		update student set student_no=#{student_no},student_name=#{student_name},classes_id=#{classes_id},sex=#{sex},tel=#{tel} where id=#{id};
 	</update>
 	
 	<!-- 删除学生信息 -->

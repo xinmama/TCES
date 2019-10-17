@@ -21,6 +21,7 @@ import ssm.entity.Student;
 import ssm.entity.Teacher;
 import ssm.service.DepartmentService;
 import ssm.service.TeacherInformationService;
+import ssm.util.Md5;
 
 @Controller
 public class TeacherInformationController1 {
@@ -95,11 +96,16 @@ public class TeacherInformationController1 {
 			public ResultMsg pwd_update(String teacher_no,String oldpwd,String newpwd2) {
 				
 				Teacher teacher=new Teacher();
+				
+				String oldpasswordByMd5 = Md5.MD5(oldpwd);
+				
 				teacher.setTeacher_no(teacher_no);
-				teacher.setTeacher_pwd(newpwd2);
+				
+				String newPasswordByMd5 = Md5.MD5(newpwd2);
+				teacher.setTeacher_pwd(newPasswordByMd5);
 				String  oldpwdResult=teacherInformationService.selectTeacherpwdByNo(teacher_no);
 				//System.out.println(oldpwd);
-				if (oldpwd.equals(oldpwdResult)) {
+				if (oldpasswordByMd5.equals(oldpwdResult)) {
 					int i=teacherInformationService.updateTeacherpwd(teacher);
 					if (i>0) {
 						return new ResultMsg(1, "修改密码成功");

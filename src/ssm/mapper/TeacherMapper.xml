@@ -53,7 +53,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 修改教师信息 -->
 	<update id="updateTeacherById" parameterType="ssm.entity.Teacher">
-		update teacher set teacher_name=#{teacher_name},teacher_pwd=#{teacher_pwd},sex=#{sex},tel=#{tel},dep_id=#{dep_id}
+		update teacher set teacher_name=#{teacher_name},sex=#{sex},tel=#{tel},dep_id=#{dep_id}
 		where id=#{id}
 	</update>
 	

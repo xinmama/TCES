@@ -86,7 +86,6 @@
 	  var student_no=$("#student_no").val();
 	  var oldpwd=$("#oldpwd").val();
 	  var newpwd2=$("#newpwd2").val();
-	  alert(oldpwd);
 	 // alert(student_no);
 		$.ajax({
 			url : "${pageContext.request.contextPath}/studentpwd_update",
@@ -101,11 +100,7 @@
 				if (data.flag == 1) {
 					alert(data.content);
 					//关闭当前遮罩层
-					var index = parent.layer.getFrameIndex(window.name);
-					parent.layer.close(index);//关闭当前页  
-					//location.reload();
-					parent.location.reload();
-
+					 /* location.href = "${pageContext.request.contextPath}/login"; */
 				} else {
 					alert(data.content);
 				}

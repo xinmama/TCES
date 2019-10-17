@@ -34,8 +34,8 @@
 			<div class="top_box">
 		        <div class="logo">
 		        	<img src="images/logo_touming.gif">
-		        	<span></span>
-		        	<b><img src="images/word.png" /></b>
+		        	<span style="background-image:none"></span>
+		        	<b></b>
 		        </div>
 
 				<div class="top_user">
@@ -94,7 +94,6 @@
 						<a href="javascript:;" target="main_self_frame"><i class="fa fa-file-text fa-fw"></i>评价管理</a>
 						<dl class="layui-nav-child">
 							<dd><a href="${pageContext.request.contextPath}/standart_list" target="main_self_frame">评价指标管理</a></dd>
-							<dd><a href="${pageContext.request.contextPath}/teacher_list" target="main_self_frame">评价选项管理</a></a>
 						</dl>
 					</li>
 				</ul>

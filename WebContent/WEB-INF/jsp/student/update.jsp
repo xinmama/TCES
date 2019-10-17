@@ -54,11 +54,9 @@
 								</select>
 							</div>
 						</td>
-					</tr>  
-					<tr>
-						<td class="td_1">密码</td>
-						<td><input type="text" placeholder="请输入新密码"name="student_pwd" value="${student.student_pwd}"></td>
 					</tr>
+					<input type="hidden" placeholder="请输入新密码"name="student_pwd" value="${student.student_pwd}">
+					
 					<tr>
 						<td class="td_1">性别</td>
 						<td><input type="text" placeholder="请输入性别" name="sex" value="${student.sex}"></td>

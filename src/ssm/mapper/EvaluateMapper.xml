@@ -16,13 +16,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 教师列表 -->
 	<select id="selectCourseTeacherByInfo" parameterType="Map" resultMap="teacher_course">
-		select DISTINCT a.teacher_name,a.course_name,a.teacher_id from (select course.course_name,teacher_course.*,teacher.teacher_name
+		select course.course_name,teacher_course.*,teacher.teacher_name
 		from teacher_course,course,classes,teacher,department
 		where teacher_course.teacher_id=teacher.id
 		and teacher_course.course_id=course.id
 		and teacher_course.classes_id=classes.id
 		and teacher.dep_id=department.id
-		and teacher.dep_id=#{dep_id} and term_id =#{term_id}) as a;
+		and teacher.dep_id=#{dep_id} and term_id =#{term_id};
 	</select>
 	
 	<resultMap type="ssm.entity.Teacher_course" id="teacher_course">

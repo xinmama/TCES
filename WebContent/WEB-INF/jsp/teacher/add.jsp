@@ -42,10 +42,6 @@
          	 <td><input type="text" placeholder="姓名" name="teacher_name"></td>
          </tr>
          <tr>
-         	<td class="td_1">密码</td>
-         	 <td><input type="text" placeholder="密码" name="teacher_pwd"></td>
-         </tr>
-         <tr>
          	<td class="td_1">性别</td>
          	<td><input type="text" placeholder="性别" name="sex"></td>
          </tr>
